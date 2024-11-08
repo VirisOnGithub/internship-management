@@ -180,8 +180,8 @@ function tableFromStage(\Stage $stage): array
 {
 	return [
 		"num_stage" => $stage->getNumero(),
-		"debut_stage" => $stage->getDebut(),
-		"fin_stage" => $stage->getFin(),
+		"debut_stage" => $stage->getDebut()->format("Y-m-d H:i:s"),
+		"fin_stage" => $stage->getFin()->format("Y-m-d H:i:s"),
 		"type_stage" => $stage->getType(),
 		"desc_projet" => $stage->getDescription(),
 		"observation_stage" => $stage->getObservation(),
