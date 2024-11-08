@@ -11,7 +11,7 @@ class Stage
 	private DateTime $fin;
 	private string $type;
 	private string $description;
-	private string $observation;
+	private ?string $observation;
 	private Etudiant $stagiaire;
 	private Professeur $professeur;
 	private Entreprise $entreprise;
@@ -22,7 +22,7 @@ class Stage
 		DateTime $fin,
 		string $type,
 		string $description,
-		string $observation,
+		?string $observation,
 		Etudiant $stagiaire,
 		Professeur $professeur,
 		Entreprise $entreprise,
@@ -121,7 +121,7 @@ class Stage
 	/**
 	 * Get the value of observation
 	 */
-	public function getObservation(): string
+	public function getObservation(): ?string
 	{
 		return $this->observation;
 	}
@@ -129,7 +129,7 @@ class Stage
 	/**
 	 * Set the value of observation
 	 */
-	public function setObservation(string $observation): self
+	public function setObservation(?string $observation): self
 	{
 		$this->observation = $observation;
 

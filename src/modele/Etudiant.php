@@ -13,7 +13,7 @@ class Etudiant
 	private Classe $classe;
 	private bool $activite;
 
-	private function __construct(
+	public function __construct(
 		int $numero,
 		string $nom,
 		string $prenom,

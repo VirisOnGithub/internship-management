@@ -5,15 +5,15 @@ class Entreprise
 	private int $numero;
 	private string $raison_sociale;
 	private string $nom_contact;
-	private string $nom_responsable;
+	private ?string $nom_responsable;
 	private string $rue;
 	private int $code_postal;
 	private string $ville;
 	private string $telephone;
 	private string $fax;
 	private string $email;
-	private string $observations;
-	private string $lien_site;
+	private ?string $observations;
+	private ?string $lien_site;
 	private string $niveau_etude;
 	private bool $en_activite;
 
@@ -21,15 +21,15 @@ class Entreprise
 		int $numero,
 		string $raison_sociale,
 		string $nom_contact,
-		string $nom_responsable,
+		?string $nom_responsable,
 		string $rue,
 		int $code_postal,
 		string $ville,
 		string $telephone,
 		string $fax,
 		string $email,
-		string $observations,
-		string $lien_site,
+		?string $observations,
+		?string $lien_site,
 		string $niveau_etude,
 		bool $en_activite
 	) {
@@ -96,7 +96,7 @@ class Entreprise
 	/**
 	 * Get the value of nom_responsable
 	 */
-	public function getNomResponsable(): string
+	public function getNomResponsable(): ?string
 	{
 		return $this->nom_responsable;
 	}
@@ -104,7 +104,7 @@ class Entreprise
 	/**
 	 * Set the value of nom_responsable
 	 */
-	public function setNomResponsable(string $nom_responsable): self
+	public function setNomResponsable(?string $nom_responsable): self
 	{
 		$this->nom_responsable = $nom_responsable;
 
@@ -222,7 +222,7 @@ class Entreprise
 	/**
 	 * Get the value of observations
 	 */
-	public function getObservations(): string
+	public function getObservations(): ?string
 	{
 		return $this->observations;
 	}
@@ -230,7 +230,7 @@ class Entreprise
 	/**
 	 * Set the value of observations
 	 */
-	public function setObservations(string $observations): self
+	public function setObservations(?string $observations): self
 	{
 		$this->observations = $observations;
 
@@ -240,7 +240,7 @@ class Entreprise
 	/**
 	 * Get the value of lien_site
 	 */
-	public function getLienSite(): string
+	public function getLienSite(): ?string
 	{
 		return $this->lien_site;
 	}
@@ -248,7 +248,7 @@ class Entreprise
 	/**
 	 * Set the value of lien_site
 	 */
-	public function setLienSite(string $lien_site): self
+	public function setLienSite(?string $lien_site): self
 	{
 		$this->lien_site = $lien_site;
 
