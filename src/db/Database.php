@@ -9,9 +9,9 @@ class Connection
 {
 	private \PDO $db;
 
-	private static string $host = "localhost";
+	private static string $host = "local_db";
 	private static string $user = "root";
-	private static string $password = "motdepasse";
+	private static string $password = "super_strong_password";
 
 	public function __construct()
 	{
