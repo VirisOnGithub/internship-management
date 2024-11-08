@@ -17,7 +17,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - sqldata:/var/lib/mysql
+      - internship_sqldata:/var/lib/mysql
 
 volumes:
-  sqldata:
+  internship_sqldata:
