@@ -1,12 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <p>Internship Management</p>
     <div class="container">
         <div class="row">
             {% for i in 1..4 %}
                 <a class="col-md-6 position-relative m-0 p-0 hero border border-primary rounded" style="height: 300px;">
-                    <img src="../public/img/stages.webp" alt="Stages" class="img-fluid w-100 h-100 object-fit-cover" id="stages">
+                    <img src="../public/images/stages.webp" alt="Stages" class="img-fluid w-100 h-100 object-fit-cover" id="stages">
                     <p class="position-absolute top-50 start-50 translate-middle text-dark fw-bold fs-3 bg-primary p-1 rounded">Entreprises</p>
                 </a>
             {% endfor %}

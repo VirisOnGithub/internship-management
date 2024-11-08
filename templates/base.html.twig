@@ -6,12 +6,47 @@
     </head>
     <body>
         <header class="p-3">
-            <h1>Internship Management</h1>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand fs-2" href="">
+                        <img src="../public/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                        <u>Internship Management</u>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#burger-nav" aria-controls="burger-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="burger-nav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"><i class="me-2 fa-solid fa-house-chimney"></i>Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"><i class="me-2 fa-solid fa-building"></i>Entreprise</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"><i class="me-2 fa-solid fa-user-graduate"></i>Stagiaire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"><i class="me-2 fa-solid fa-handshake-angle"></i>Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"><i class="me-2 fa-solid fa-circle-question"></i>Aide</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"><i class="me-2 fa-solid fa-right-from-bracket"></i>Déconnexion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </header>
         {% block content %}{% endblock %}
         <footer class="footer fixed-bottom d-flex justify-content-center align-items-center bg-primary">
             <p class="my-1 text-dark">&copy; {{"now"|date("Y")}} - Clément RENIERS &amp; Simon PRIBYLSKI</p>
         </footer>
+        <script src="https://kit.fontawesome.com/2e65e19ba4.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

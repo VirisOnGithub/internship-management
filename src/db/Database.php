@@ -11,7 +11,7 @@ class Connection
 
 	private static string $host = "localhost";
 	private static string $user = "root";
-	private static string $password = "motdepasse";
+	private static string $password = "admin";
 
 	public function __construct()
 	{
