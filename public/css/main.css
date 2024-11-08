@@ -1,3 +1,9 @@
 img#stages {
     filter: blur(2px);
 }
+
+.hero:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
