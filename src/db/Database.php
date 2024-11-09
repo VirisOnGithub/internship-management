@@ -2,6 +2,8 @@
 
 namespace Database;
 
+require_once("src/Config.php");
+
 /**
  * Connection to a database which closes when this object is destroyed
  */
@@ -9,15 +11,16 @@ class Connection
 {
 	private \PDO $db;
 
-	private static string $host = "local_db";
-	private static string $user = "root";
-	private static string $password = "super_strong_password";
-
 	public function __construct()
 	{
 		try {
+			$config = getConfig();
+			$host = $config['db_host'];
+			$user = $config['db_user'];
+			$password = $config['db_password'];
+			$db_name = $config['db_name'];
 			// Connexion à la bdd
-			$this->db = new \PDO("mysql:host=" . Connection::$host . ";dbname=bdd_geststages", Connection::$user, Connection::$password);
+			$this->db = new \PDO("mysql:host=$host;dbname=$db_name", $user, $password);
 			$this->db->exec('SET NAMES "UTF8"');
 		} catch (\PDOException $e) {
 			echo 'Erreur : ' . $e->getMessage();
