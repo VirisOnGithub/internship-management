@@ -1,15 +1,30 @@
 <?php
 
-require_once '../vendor/autoload.php';
+set_include_path($_SERVER['DOCUMENT_ROOT']);
 
-if(isset($_GET['page'])){
-    $page = $_GET['page'];
-    // require_once '../src/'.$page.'.php';
-    $loader = new \Twig\Loader\FilesystemLoader('../templates');
-    $twig = new \Twig\Environment($loader);
-    echo $twig->render($page.'.html.twig', $data);
-} else {
-    $loader = new \Twig\Loader\FilesystemLoader('../templates');
-    $twig = new \Twig\Environment($loader);
-    echo $twig->render('index.html.twig');
+require_once 'vendor/autoload.php';
+
+// Default page is accueil
+if (!isset($_GET['page'])) {
+    header("Location: /public/index.php?page=accueil");
+    exit;
 }
+
+$page = $_GET['page'];
+
+$controlleur = $_SERVER['DOCUMENT_ROOT'] . '/src/controlleurs/' . $page . '.php';
+$vue = $page . '.html.twig';
+
+// If the controller or vue is not found, return 404
+if (!file_exists($controlleur) || !file_exists($_SERVER['DOCUMENT_ROOT'] . "/templates/" . $vue)) {
+    http_response_code(404);
+    // We could add a custom 404 page
+    header("Location: /public/index.php?page=accueil");
+    exit;
+}
+
+require_once $controlleur;
+
+$loader = new \Twig\Loader\FilesystemLoader('../templates');
+$twig = new \Twig\Environment($loader);
+echo $twig->render($vue, $data ?? []);
