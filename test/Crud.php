@@ -14,6 +14,14 @@ function testRead(): void
 	Crud\getProfesseurs();
 	Crud\getSpecialites();
 	Crud\getStages();
+
+	Crud\getClasseById(1);
+	Crud\getEntrepriseById(1);
+	Crud\getEtudiantById(1);
+	Crud\getMissionById(1);
+	Crud\getProfesseurById(1);
+	Crud\getSpecialiteById(1);
+	Crud\getStageById(1);
 }
 
 function testUpdate(): void
