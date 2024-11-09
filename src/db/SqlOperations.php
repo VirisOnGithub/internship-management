@@ -29,7 +29,7 @@ function insertLine(string $table, array $params): void
 
 	$query->execute();
 
-	\Logs\write("Executed SQL command : " . $sql_command);
+	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($params, true));
 }
 
 function getLines(string $table): array
@@ -42,7 +42,7 @@ function getLines(string $table): array
 
 	$query->execute();
 
-	\Logs\write("Executed SQL command : " . $sql_command);
+	\Logs\write("Executed SQL command : {" . $sql_command . "}");
 
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
@@ -59,7 +59,7 @@ function getLinesWhere(string $table, array $params): array
 
 	$query->execute();
 
-	\Logs\write("Executed SQL command : " . $sql_command);
+	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($params, true));
 
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
@@ -76,7 +76,7 @@ function deleteLinesWhere(string $table, array $params): void
 
 	$query->execute();
 
-	\Logs\write("Executed SQL command : " . $sql_command);
+	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($params, true));
 }
 
 function updateLinesWhere(string $table, array $update_params, array $where_params): void
@@ -92,5 +92,5 @@ function updateLinesWhere(string $table, array $update_params, array $where_para
 
 	$query->execute();
 
-	\Logs\write("Executed SQL command : " . $sql_command);
+	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($update_params, true));
 }
