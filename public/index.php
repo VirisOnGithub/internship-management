@@ -2,7 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
-if($_GET['page']){
+if(isset($_GET['page'])){
     $page = $_GET['page'];
     // require_once '../src/'.$page.'.php';
     $loader = new \Twig\Loader\FilesystemLoader('../templates');
