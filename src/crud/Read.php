@@ -127,4 +127,20 @@ function getStageById(int $id): ?\Stage
 	return \ModeleFactory\createStageFromTable($stage[0]);
 }
 
-//TODO: get Objects by ID + spec_entreprise + prof_classe
+function getEntrepriseSpecialites(\Entreprise $entreprise): array
+{
+	$specialites = [];
+	foreach (getLinesWhere("spec_entreprise JOIN specialite USING(num_spec)", ["num_entreprise" => $entreprise->getNumero()]) as $specialite_line) {
+		array_push($specialites, \ModeleFactory\createSpecialiteFromTable($specialite_line));
+	}
+	return $specialites;
+}
+
+function getProfesseurClasses(\Professeur $professeur): array
+{
+	$classes = [];
+	foreach (getLinesWhere("prof_classe JOIN classe USING(num_classe)", ["num_prof" => $professeur->getNumero()]) as $classe_line) {
+		array_push($classes, \ModeleFactory\createClasseFromTable($classe_line));
+	}
+	return $classes;
+}

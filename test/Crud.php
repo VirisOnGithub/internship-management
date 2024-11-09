@@ -22,6 +22,9 @@ function testRead(): void
 	Crud\getProfesseurById(1);
 	Crud\getSpecialiteById(1);
 	Crud\getStageById(1);
+
+	Crud\getEntrepriseSpecialites(Crud\getEntrepriseById(1));
+	Crud\getProfesseurClasses(Crud\getProfesseurById(1));
 }
 
 function testUpdate(): void
