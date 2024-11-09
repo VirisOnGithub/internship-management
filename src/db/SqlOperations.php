@@ -4,6 +4,7 @@ namespace SqlOperations;
 
 require_once('src/db/Database.php');
 require_once('src/db/SqlFactory.php');
+require_once('src/Logs.php');
 
 function bindValues($query, array $params): void
 {
@@ -20,20 +21,28 @@ function insertLine(string $table, array $params): void
 {
 	$lock = new \Database\Connection();
 
-	$query = $lock->getDB()->prepare(\SqlFactory\insert($table, $params));
+	$sql_command = \SqlFactory\insert($table, $params);
+
+	$query = $lock->getDB()->prepare($sql_command);
 
 	bindValues($query, $params);
 
 	$query->execute();
+
+	\Logs\write("Executed SQL command : " . $sql_command);
 }
 
 function getLines(string $table): array
 {
 	$lock = new \Database\Connection();
 
-	$query = $lock->getDB()->prepare("SELECT * FROM " . $table . ";");
+	$sql_command = "SELECT * FROM " . $table . ";";
+
+	$query = $lock->getDB()->prepare($sql_command);
 
 	$query->execute();
+
+	\Logs\write("Executed SQL command : " . $sql_command);
 
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
@@ -42,11 +51,15 @@ function getLinesWhere(string $table, array $params): array
 {
 	$lock = new \Database\Connection();
 
-	$query = $lock->getDB()->prepare(\SqlFactory\select($table, $params));
+	$sql_command = \SqlFactory\select($table, $params);
+
+	$query = $lock->getDB()->prepare($sql_command);
 
 	bindValues($query, $params);
 
 	$query->execute();
+
+	\Logs\write("Executed SQL command : " . $sql_command);
 
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
@@ -55,21 +68,29 @@ function deleteLinesWhere(string $table, array $params): void
 {
 	$lock = new \Database\Connection();
 
-	$query = $lock->getDB()->prepare(\SqlFactory\delete($table, $params));
+	$sql_command = \SqlFactory\delete($table, $params);
+
+	$query = $lock->getDB()->prepare($sql_command);
 
 	bindValues($query, $params);
 
 	$query->execute();
+
+	\Logs\write("Executed SQL command : " . $sql_command);
 }
 
 function updateLinesWhere(string $table, array $update_params, array $where_params): void
 {
 	$lock = new \Database\Connection();
 
-	$query = $lock->getDB()->prepare(\SqlFactory\update($table, $update_params, $where_params));
+	$sql_command = \SqlFactory\update($table, $update_params, $where_params);
+
+	$query = $lock->getDB()->prepare($sql_command);
 
 	bindValues($query, $update_params);
 	bindValues($query, $where_params);
 
 	$query->execute();
+
+	\Logs\write("Executed SQL command : " . $sql_command);
 }
