@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Entreprise{% endblock %}
+
+{% block content %}
+    <div>
+        <a>Rechercher une entreprise</a>
+        <a>Ajouter une entreprise</a>
+    </div>
+    <table class="table table-hover table-striped-columns table-bordered">
+        <thead>
+            {% set columns = ["Opération", "Entreprise", "Adresse", "Responsable", "Site Web", "Spécialité"] %}
+            <tr>
+                {% for column in columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entreprise in entreprises %}
+                <tr>
+                    <td class="text-center">
+                        <a href="index.php?page=entreprise&id={{ entreprise.id }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
+                        <a href="index.php?page=entreprise&id={{ entreprise.id }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
+                        <a href="index.php?page=entreprise&id={{ entreprise.id }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                    </td>
+                    <td>{{ entreprise.getRaisonSociale() }}</td>
+                    <td>{{ entreprise.getRue() }}</td>
+                    <td>{{ entreprise.getNomResponsable() }}</td>
+                    <td class="text-center"><a href={{ entreprise.getLienSite() }} target="_blank"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></a></td>
+                    <td>{{ specialites.getEntrepriseSpecialite(entreprise) }}</td> {# à fix #}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
