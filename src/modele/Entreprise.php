@@ -1,5 +1,7 @@
 <?php
 
+require_once('src/modele/Specialite.php');
+
 class Entreprise
 {
 	private int $numero;
@@ -16,6 +18,7 @@ class Entreprise
 	private ?string $lien_site;
 	private string $niveau_etude;
 	private bool $en_activite;
+	private array $specialtes;
 
 	public function __construct(
 		int $numero,
@@ -47,6 +50,7 @@ class Entreprise
 		$this->lien_site = $lien_site;
 		$this->niveau_etude = $niveau_etude;
 		$this->en_activite = $en_activite;
+		$this->specialtes = [];
 	}
 
 	/**
@@ -289,5 +293,21 @@ class Entreprise
 		$this->en_activite = $en_activite;
 
 		return $this;
+	}
+
+	/**
+	 * Get the value of specialites
+	 */
+	public function getSpecialites(): array
+	{
+		return $this->specialtes;
+	}
+
+	/**
+	 * Ajoute une spécialite
+	 */
+	public function ajouterSpecialite(\Specialite $specialite): void
+	{
+		array_push($this->specialtes, $specialite);
 	}
 }

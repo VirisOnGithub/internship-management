@@ -17,11 +17,22 @@ function getClasses(): array
 	return $classes;
 }
 
-function getEntreprises(): array
+function getEntreprises(bool $specialites = false): array
 {
 	$entreprises = [];
+	$spec_entreprises = getLines("spec_entreprise JOIN specialite USING(num_spec)");
 	foreach (getLines("entreprise") as $entreprise_line) {
-		array_push($entreprises, \ModeleFactory\createEntrepriseFromTable($entreprise_line));
+		$entreprise = \ModeleFactory\createEntrepriseFromTable($entreprise_line);
+		array_push($entreprises, $entreprise);
+
+		// on ajoute les spécialités aux entreprises
+		if ($specialites) {
+			foreach ($spec_entreprises as $spec_entreprise) {
+				if ($spec_entreprise['num_entreprise'] == $entreprise->getNumero()) {
+					$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
+				}
+			}
+		}
 	}
 	return $entreprises;
 }

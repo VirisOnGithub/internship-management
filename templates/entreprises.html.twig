@@ -9,7 +9,7 @@
     </div>
     <table class="table table-hover table-striped-columns table-bordered">
         <thead>
-            {% set columns = ["Opération", "Entreprise", "Adresse", "Responsable", "Site Web", "Spécialité"] %}
+            {% set columns = ["Opération", "Entreprise", "Adresse", "Responsable", "Site Web", "Spécialités"] %}
             <tr>
                 {% for column in columns %}
                     <th>{{ column }}</th>
@@ -28,9 +28,8 @@
                     <td>{{ entreprise.getRue() }}</td>
                     <td>{{ entreprise.getNomResponsable() }}</td>
                     <td class="text-center"><a href={{ entreprise.getLienSite() }} target="_blank"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></a></td>
-                    {% set spes = specialites.getEntrepriseSpecialites(entreprise)%}
                     <td>
-                        {% for spe in spes %}
+                        {% for spe in entreprise.getSpecialites() %}
                             {{ loop.last ? spe.getNom() : spe.getNom() ~ ", " }}
                         {% endfor %}
                     </td>
