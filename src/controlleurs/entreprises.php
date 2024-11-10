@@ -2,7 +2,7 @@
 
 require_once "src/crud/Read.php";
 class EntrepriseSpecialites{
-    function getEntrpriseSpecialites($entreprise){
+    function getEntrepriseSpecialites($entreprise){
         return Crud\getEntrepriseSpecialites($entreprise);
     }
 }
