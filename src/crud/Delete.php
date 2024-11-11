@@ -14,6 +14,7 @@ function deleteClasse(\Classe $classe): void
 
 function deleteEntreprise(\Entreprise $entreprise): void
 {
+	deleteLinesWhere("spec_entreprise", ["num_entreprise" => $entreprise->getNumero()]);
 	deleteLinesWhere("entreprise", ["num_entreprise" => $entreprise->getNumero()]);
 }
 

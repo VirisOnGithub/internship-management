@@ -7,6 +7,11 @@ require_once('src/db/ModeleFactory.php');
 
 use function SqlOperations\insertLine;
 
+/**
+ * Crée une classe dans la base de données
+ * @param \Classe $classe la classe à insérer
+ * @return int le numéro de la Classe créée
+ */
 function createClasse(\Classe $classe): int
 {
 	$params = \ModeleFactory\tableFromClasse($classe);
@@ -17,6 +22,11 @@ function createClasse(\Classe $classe): int
 	return (int) insertLine("classe", $params);
 }
 
+/**
+ * Crée une entreprise dans la base de données
+ * @param \Entreprise $entreprise l'entreprise à insérer
+ * @return int le numéro de l'Entreprise créée
+ */
 function createEntreprise(\Entreprise $entreprise): int
 {
 	$params = \ModeleFactory\tableFromEntreprise($entreprise);
@@ -37,31 +47,78 @@ function createEntreprise(\Entreprise $entreprise): int
 }
 
 /**
- * Password should be already hashed
+ * Crée un étudiant dans la base de données. Le mot de passe doit être hashé.
+ * @param \Etudiant $etudiant l'étudiant à insérer
+ * @return int le numéro de l'Etudiant créé
  */
-function createEtudiant(\Etudiant $etudiant): void
+function createEtudiant(\Etudiant $etudiant): int
 {
-	insertLine("etudiant", \ModeleFactory\tableFromEtudiant($etudiant));
+	$params = \ModeleFactory\tableFromEtudiant($etudiant);
+	// num_etudiant est un auto_increment
+	if ($etudiant->getNumero() == -1)
+		unset($params['num_etudiant']);
+
+	return (int) insertLine("etudiant", $params);
 }
 
-function createMission(\Mission $mission): void
+/**
+ * Crée une mission dans la base de données
+ * @param \Mission $mission la mission à insérer
+ * @return int le numéro de la Mission créée
+ */
+function createMission(\Mission $mission): int
 {
-	insertLine("mission", \ModeleFactory\tableFromMission($mission));
+	$params = \ModeleFactory\tableFromMission($mission);
+	// num_mission est un auto_increment
+	if ($mission->getNumero() == -1)
+		unset($params['num_mission']);
+
+	return (int) insertLine("mission", $params);
 }
 
-function createProfesseur(\Professeur $professeur): void
+/**
+ * Crée un professeur dans la base de données. Le mot de passe doit être hashé.
+ * @param \Professeur $professeur le professeur à insérer
+ * @return int le numéro du Professeur créé
+ */
+function createProfesseur(\Professeur $professeur): int
 {
-	insertLine("professeur", \ModeleFactory\tableFromProfesseur($professeur));
+	$params = \ModeleFactory\tableFromProfesseur($professeur);
+	// num_prof est un auto_increment
+	if ($professeur->getNumero() == -1)
+		unset($params['num_prof']);
+
+	return (int) insertLine("professeur", $params);
 }
 
-function createSpecialite(\Specialite $specialite): void
+/**
+ * Crée une specialite dans la base de données
+ * @param \Specialite $specialite la specialite à insérer
+ * @return int le numéro de la Specialite créée
+ */
+function createSpecialite(\Specialite $specialite): int
 {
-	insertLine("specialite", \ModeleFactory\tableFromSpecialite($specialite));
+	$params = \ModeleFactory\tableFromSpecialite($specialite);
+	// num_spec est un auto_increment
+	if ($specialite->getNumero() == -1)
+		unset($params['num_spec']);
+
+	return (int) insertLine("specialite", $params);
 }
 
-function createStage(\Stage $stage): void
+/**
+ * Crée un stage dans la base de données.
+ * @param \Stage $stage le stage à insérer
+ * @return int le numéro du Stage créé
+ */
+function createStage(\Stage $stage): int
 {
-	insertLine("stage", \ModeleFactory\tableFromStage($stage));
+	$params = \ModeleFactory\tableFromStage($stage);
+	// num_stage est un auto_increment
+	if ($stage->getNumero() == -1)
+		unset($params['num_stage']);
+
+	return (int) insertLine("stage", $params);
 }
 
 // TODO: prof_classe

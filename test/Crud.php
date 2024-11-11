@@ -44,26 +44,42 @@ function testUpdate(): void
 
 function testCreate(): void
 {
-	Crud\createClasse(new Classe(9999, "Test"));
-	// Crud\createEntreprise();
-	Crud\createEtudiant(new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.pre", password_hash("motdepasse", PASSWORD_BCRYPT), new Classe(9999, "Test"), true));
-	// Crud\createMission();
-	// Crud\createProfesseur();
-	// Crud\createSpecialite();
-	// Crud\createStage();
+	$classe = new Classe(9999, "Test");
+	$prof = new Professeur(9999, "prof", "esseur", "profess", "mdp", "m@f.h");
+	$etu = new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.pre", password_hash("motdepasse", PASSWORD_BCRYPT), $classe, true);
+	$entreprise = new Entreprise(9999, "raison", "nom_contact", null, "rue", 69210, "Lyon", "0656768696", "fax", "email@mail.mail", null, null, "BAC+40", false);
+	$stage = new Stage(9999, new DateTime(), new DateTime(), "type", "jsp", null, $etu, $prof, $entreprise);
+	$spec = new Specialite(9999, "Spec");
+	$mission = new Mission(9999, "hsp", $stage);
+
+	Crud\createClasse($classe);
+	Crud\createEntreprise($entreprise);
+	Crud\createEtudiant($etu);
+	Crud\createProfesseur($prof);
+	Crud\createSpecialite($spec);
+	Crud\createStage($stage);
+	Crud\createMission($mission);
 
 	echo "&emsp;Tested create<br/>";
 }
 
 function testDelete(): void
 {
-	Crud\deleteEtudiant(new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.prenom", "motdepasse", new Classe(9999, "Test"), true));
-	Crud\deleteClasse(new Classe(9999, "Test"));
-	// Crud\deleteEntreprise();
-	// Crud\deleteMission();
-	// Crud\deleteProfesseur();
-	// Crud\deleteSpecialite();
-	// Crud\deleteStage();
+	$classe = new Classe(9999, "Test");
+	$prof = new Professeur(9999, "prof", "esseur", "profess", "mdp", "m@f.h");
+	$etu = new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.pre", password_hash("motdepasse", PASSWORD_BCRYPT), $classe, true);
+	$entreprise = new Entreprise(9999, "raison", "nom_contact", null, "rue", 69210, "Lyon", "0656768696", "fax", "email@mail.mail", null, null, "BAC+40", false);
+	$stage = new Stage(9999, new DateTime(), new DateTime(), "type", "jsp", null, $etu, $prof, $entreprise);
+	$spec = new Specialite(9999, "Spec");
+	$mission = new Mission(9999, "hsp", $stage);
+
+	Crud\deleteMission($mission);
+	Crud\deleteStage($stage);
+	Crud\deleteSpecialite($spec);
+	Crud\deleteProfesseur($prof);
+	Crud\deleteEtudiant($etu);
+	Crud\deleteClasse($classe);
+	Crud\deleteEntreprise($entreprise);
 
 	echo "&emsp;Tested delete<br/>";
 }
