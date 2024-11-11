@@ -26,6 +26,8 @@ function testRead(): void
 	Crud\getEntrepriseSpecialites(Crud\getEntrepriseById(1));
 	Crud\getProfesseurClasses(Crud\getProfesseurById(1));
 
+	assert(sizeof(Crud\chercherEntreprise("ll")) == 7);
+
 	echo "&emsp;Tested read<br/>";
 }
 

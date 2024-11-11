@@ -7,6 +7,7 @@ require_once('src/db/ModeleFactory.php');
 
 use function SqlOperations\getLines;
 use function SqlOperations\getLinesWhere;
+use function SqlOperations\getLinesLike;
 
 function getClasses(): array
 {
@@ -17,7 +18,7 @@ function getClasses(): array
 	return $classes;
 }
 
-function getEntreprises(bool $specialites = false): array
+function getEntreprises(): array
 {
 	$entreprises = [];
 	$spec_entreprises = getLines("spec_entreprise JOIN specialite USING(num_spec)");
@@ -26,11 +27,9 @@ function getEntreprises(bool $specialites = false): array
 		array_push($entreprises, $entreprise);
 
 		// on ajoute les spécialités aux entreprises
-		if ($specialites) {
-			foreach ($spec_entreprises as $spec_entreprise) {
-				if ($spec_entreprise['num_entreprise'] == $entreprise->getNumero()) {
-					$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
-				}
+		foreach ($spec_entreprises as $spec_entreprise) {
+			if ($spec_entreprise['num_entreprise'] == $entreprise->getNumero()) {
+				$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
 			}
 		}
 	}
@@ -154,6 +153,24 @@ function getProfesseurClasses(\Professeur $professeur): array
 		array_push($classes, \ModeleFactory\createClasseFromTable($classe_line));
 	}
 	return $classes;
+}
+
+function chercherEntreprise(string $nom): array
+{
+	$entreprises = [];
+	$spec_entreprises = getLines("spec_entreprise JOIN specialite USING(num_spec)");
+	foreach (getLinesLike("entreprise", ["raison_sociale" => "%" . $nom . "%"]) as $entreprise_line) {
+		$entreprise = \ModeleFactory\createEntrepriseFromTable($entreprise_line);
+		array_push($entreprises, $entreprise);
+
+		// on ajoute les spécialités aux entreprises
+		foreach ($spec_entreprises as $spec_entreprise) {
+			if ($spec_entreprise['num_entreprise'] == $entreprise->getNumero()) {
+				$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
+			}
+		}
+	}
+	return $entreprises;
 }
 
 

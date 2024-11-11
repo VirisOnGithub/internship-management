@@ -23,12 +23,26 @@ function insert(string $table, array $params): string
 	return $sql;
 }
 
-function select(string $table, array $params): string
+function selectWhere(string $table, array $params): string
 {
 	$sql = "SELECT * FROM " . $table . " WHERE ";
 
 	foreach ($params as $key => $value) {
 		$sql .= "`" . $key . "` = :" . $key . " AND ";
+	}
+
+	$sql = rtrim($sql, "AND ");
+	$sql .= ";";
+
+	return $sql;
+}
+
+function selectLike(string $table, array $params): string
+{
+	$sql = "SELECT * FROM " . $table . " WHERE ";
+
+	foreach ($params as $key => $value) {
+		$sql .= "`" . $key . "` LIKE :" . $key . " AND ";
 	}
 
 	$sql = rtrim($sql, "AND ");

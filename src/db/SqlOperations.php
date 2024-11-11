@@ -57,7 +57,24 @@ function getLinesWhere(string $table, array $params): array
 {
 	$lock = new \Database\Connection();
 
-	$sql_command = \SqlFactory\select($table, $params);
+	$sql_command = \SqlFactory\selectWhere($table, $params);
+
+	$query = $lock->getDB()->prepare($sql_command);
+
+	bindValues($query, $params);
+
+	$query->execute();
+
+	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($params, true));
+
+	return $query->fetchAll(\PDO::FETCH_ASSOC);
+}
+
+function getLinesLike(string $table, array $params): array
+{
+	$lock = new \Database\Connection();
+
+	$sql_command = \SqlFactory\selectLike($table, $params);
 
 	$query = $lock->getDB()->prepare($sql_command);
 
