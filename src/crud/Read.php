@@ -100,7 +100,7 @@ function getEntrepriseById(int $id): ?\Entreprise
 
 function getEtudiantById(int $id): ?\Etudiant
 {
-	$etudiant = getLinesWhere("etudiant", ["num_etudiant" => $id]);
+	$etudiant = getLinesWhere("etudiant JOIN classe USING(num_classe)", ["num_etudiant" => $id]);
 	if (empty($etudiant))
 		return null;
 	return \ModeleFactory\createEtudiantFromTable($etudiant[0]);
@@ -154,4 +154,46 @@ function getProfesseurClasses(\Professeur $professeur): array
 		array_push($classes, \ModeleFactory\createClasseFromTable($classe_line));
 	}
 	return $classes;
+}
+
+
+
+
+
+
+enum CheckResult
+{
+	case NotFound;
+	case WrongPassword;
+	case Success;
+}
+
+/**
+ * Vérifie la validité du login et du mot de passe
+ * @return array{etudiant: Etudiant, result: CheckResult}
+ */
+function checkEtudiant(string $login, string $mdp): array
+{
+	$etu_ligne = getLinesWhere("etudiant JOIN classe USING(num_classe)", ["login_etudiant" => $login]);
+	if (empty($etu_ligne))
+		return ["etudiant" => null, "result" => CheckResult::NotFound];
+	$etu = \ModeleFactory\createEtudiantFromTable($etu_ligne[0]);
+	if (password_verify($mdp, $etu->getMdp()))
+		return ["etudiant" => $etu, "result" => CheckResult::Success];
+	return ["etudiant" => null, "result" => CheckResult::WrongPassword];
+}
+
+/**
+ * Vérifie la validité du login et du mot de passe
+ * @return array{professeur: Professeur, result: CheckResult}
+ */
+function checkProfesseur(string $login, string $mdp): array
+{
+	$prof_ligne = getLinesWhere("professeur", ["login_prof" => $login]);
+	if (empty($prof_ligne))
+		return ["professeur" => null, "result" => CheckResult::NotFound];
+	$prof = \ModeleFactory\createProfesseurFromTable($prof_ligne[0]);
+	if (password_verify($mdp, $prof->getMdp()))
+		return ["professeur" => $prof, "result" => CheckResult::Success];
+	return ["professeur" => null, "result" => CheckResult::WrongPassword];
 }

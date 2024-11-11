@@ -25,6 +25,8 @@ function testRead(): void
 
 	Crud\getEntrepriseSpecialites(Crud\getEntrepriseById(1));
 	Crud\getProfesseurClasses(Crud\getProfesseurById(1));
+
+	echo "&emsp;Tested read<br/>";
 }
 
 function testUpdate(): void
@@ -36,6 +38,8 @@ function testUpdate(): void
 	Crud\updateProfesseur(Crud\getProfesseurs()[0]);
 	Crud\updateSpecialite(Crud\getSpecialites()[0]);
 	Crud\updateStage(Crud\getStages()[0]);
+
+	echo "&emsp;Tested update<br/>";
 }
 
 function testCreate(): void

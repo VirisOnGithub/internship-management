@@ -136,7 +136,7 @@ class Etudiant
 	 */
 	public function setMdp(string $mdp): self
 	{
-		$this->mdp = $mdp;
+		$this->mdp = password_hash($mdp, PASSWORD_BCRYPT);
 
 		return $this;
 	}
