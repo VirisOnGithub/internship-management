@@ -170,7 +170,7 @@ enum CheckResult
 
 /**
  * Vérifie la validité du login et du mot de passe
- * @return array{etudiant: Etudiant, result: CheckResult}
+ * @return array{etudiant: \Etudiant, result: CheckResult}
  */
 function checkEtudiant(string $login, string $mdp): array
 {
@@ -185,7 +185,7 @@ function checkEtudiant(string $login, string $mdp): array
 
 /**
  * Vérifie la validité du login et du mot de passe
- * @return array{professeur: Professeur, result: CheckResult}
+ * @return array{professeur: \Professeur, result: CheckResult}
  */
 function checkProfesseur(string $login, string $mdp): array
 {
