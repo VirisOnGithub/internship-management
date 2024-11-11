@@ -22,16 +22,21 @@ function createClasseFromTable($raw_data): \Classe
 // résultat de SELECT * FROM Etudiant JOIN Classe;
 function createEtudiantFromTable($raw_data): \Etudiant
 {
-	return new \Etudiant(
+	$etudiant = new \Etudiant(
 		(int) $raw_data['num_etudiant'],
 		$raw_data['nom_etudiant'],
 		$raw_data['prenom_etudiant'],
-		(int) $raw_data['annee_obtention'],
+		new \DateTime($raw_data['annee_obtention'] ?? "now"),
 		$raw_data['login_etudiant'],
-		$raw_data['mdp_etudiant'],
+		$raw_data['mdp_etudiant'],	
 		createClasseFromTable($raw_data),
 		(bool) $raw_data['en_activite']
 	);
+
+	if (is_null($raw_data['annee_obtention']))
+		$etudiant->setAnneeObtention(null);
+
+	return $etudiant->setAnneeObtention(null);
 }
 
 // résultat de SELECT * FROM Entreprise;
@@ -180,8 +185,8 @@ function tableFromStage(\Stage $stage): array
 {
 	return [
 		"num_stage" => $stage->getNumero(),
-		"debut_stage" => $stage->getDebut()->format("Y-m-d H:i:s"),
-		"fin_stage" => $stage->getFin()->format("Y-m-d H:i:s"),
+		"debut_stage" => $stage->getDebut(),
+		"fin_stage" => $stage->getFin(),
 		"type_stage" => $stage->getType(),
 		"desc_projet" => $stage->getDescription(),
 		"observation_stage" => $stage->getObservation(),

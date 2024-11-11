@@ -2,6 +2,8 @@
 
 namespace SqlOperations;
 
+use DateTime;
+
 require_once('src/db/Database.php');
 require_once('src/db/SqlFactory.php');
 require_once('src/Logs.php');
@@ -11,6 +13,8 @@ function bindValues($query, array $params): void
 	foreach ($params as $key => $value) {
 		if (is_numeric($value) || is_bool($value)) {
 			$query->bindValue(":" . $key, $value, \PDO::PARAM_INT);
+		} else if ($value instanceof DateTime) {
+			$query->bindValue(":" . $key, $value->format("Y-m-d H:i:s"), \PDO::PARAM_STR);
 		} else {
 			$query->bindValue(":" . $key, $value, \PDO::PARAM_STR);
 		}

@@ -7,7 +7,7 @@ class Etudiant
 	private int $numero;
 	private string $nom;
 	private string $prenom;
-	private int $annee_obtention;
+	private ?DateTime $annee_obtention;
 	private string $login;
 	private string $mdp;
 	private Classe $classe;
@@ -17,7 +17,7 @@ class Etudiant
 		int $numero,
 		string $nom,
 		string $prenom,
-		int $annee_obtention,
+		?DateTime $annee_obtention,
 		string $login,
 		string $mdp,
 		Classe $classe,
@@ -90,7 +90,7 @@ class Etudiant
 	/**
 	 * Get the value of annee_obtention
 	 */
-	public function getAnneeObtention(): int
+	public function getAnneeObtention(): ?DateTime
 	{
 		return $this->annee_obtention;
 	}
@@ -98,7 +98,7 @@ class Etudiant
 	/**
 	 * Set the value of annee_obtention
 	 */
-	public function setAnneeObtention(int $annee_obtention): self
+	public function setAnneeObtention(?DateTime $annee_obtention): self
 	{
 		$this->annee_obtention = $annee_obtention;
 

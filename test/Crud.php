@@ -44,10 +44,26 @@ function testUpdate(): void
 
 function testCreate(): void
 {
-	// TODO
+	Crud\createClasse(new Classe(9999, "Test"));
+	// Crud\createEntreprise();
+	Crud\createEtudiant(new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.pre", password_hash("motdepasse", PASSWORD_BCRYPT), new Classe(9999, "Test"), true));
+	// Crud\createMission();
+	// Crud\createProfesseur();
+	// Crud\createSpecialite();
+	// Crud\createStage();
+
+	echo "&emsp;Tested create<br/>";
 }
 
 function testDelete(): void
 {
-	// TODO
+	Crud\deleteEtudiant(new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.prenom", "motdepasse", new Classe(9999, "Test"), true));
+	Crud\deleteClasse(new Classe(9999, "Test"));
+	// Crud\deleteEntreprise();
+	// Crud\deleteMission();
+	// Crud\deleteProfesseur();
+	// Crud\deleteSpecialite();
+	// Crud\deleteStage();
+
+	echo "&emsp;Tested delete<br/>";
 }

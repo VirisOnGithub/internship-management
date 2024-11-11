@@ -7,16 +7,38 @@ require_once('src/db/ModeleFactory.php');
 
 use function SqlOperations\insertLine;
 
-function createClasse(\Classe $classe): void
+function createClasse(\Classe $classe): int
 {
-	insertLine("classe", \ModeleFactory\tableFromClasse($classe));
+	$params = \ModeleFactory\tableFromClasse($classe);
+	// num_classe est un auto_increment
+	if ($classe->getNumero() == -1)
+		unset($params['num_classe']);
+
+	return (int) insertLine("classe", $params);
 }
 
-function createEntreprise(\Entreprise $entreprise): void
+function createEntreprise(\Entreprise $entreprise): int
 {
-	insertLine("entreprise", \ModeleFactory\tableFromEntreprise($entreprise));
+	$params = \ModeleFactory\tableFromEntreprise($entreprise);
+	// num_entreprise est un auto_increment
+	if ($entreprise->getNumero() == -1)
+		unset($params['num_entreprise']);
+
+	$entreprise_id = (int) insertLine("entreprise", $params);
+
+	foreach ($entreprise->getSpecialites() as $specialite) {
+		insertLine("spec_entreprise", [
+			"num_entreprise" => $entreprise_id,
+			"num_spec" => $specialite->getNumero()
+		]);
+	}
+
+	return $entreprise_id;
 }
 
+/**
+ * Password should be already hashed
+ */
 function createEtudiant(\Etudiant $etudiant): void
 {
 	insertLine("etudiant", \ModeleFactory\tableFromEtudiant($etudiant));
@@ -42,7 +64,4 @@ function createStage(\Stage $stage): void
 	insertLine("stage", \ModeleFactory\tableFromStage($stage));
 }
 
-function createSpecialiteEntreprise(int $num_entreprise, int $num_specialite): void
-{
-	insertLine("spec_entreprise", ["num_entreprise" => $num_entreprise, "num_spec" => $num_specialite]);
-}
+// TODO: prof_classe
