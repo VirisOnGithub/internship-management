@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "question": "Comment voir toutes les entreprises ?",
+        "answer": "Pour voir toutes les entreprises, il suffit de cliquer sur le bouton 'Voir toutes les entreprises' dans le menu de navigation."
+    },
+    {
+        "id": 2,
+        "question": "Comment voir les détails d'une entreprise ?",
+        "answer": "Pour voir les détails d'une entreprise, il suffit de cliquer sur le bouton 'Voir les détails' dans la liste des entreprises."
+    },
+    {
+        "id": 3,
+        "question": "Comment ajouter une entreprise ?",
+        "answer": "Pour ajouter une entreprise, il suffit de cliquer sur le bouton 'Ajouter une entreprise' dans le menu de navigation."
+    },
+    {
+        "id": 4,
+        "question": "Comment modifier une entreprise ?",
+        "answer": "Pour modifier une entreprise, il suffit de cliquer sur le bouton 'Modifier' dans la liste des entreprises."
+    },
+    {
+        "id": 5,
+        "question": "Comment supprimer une entreprise ?",
+        "answer": "Pour supprimer une entreprise, il suffit de cliquer sur le bouton 'Supprimer' dans la liste des entreprises."
+    }
+]

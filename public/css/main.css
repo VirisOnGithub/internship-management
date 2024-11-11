@@ -7,3 +7,13 @@ img#stages {
     transition: all 0.3s ease;
     z-index: 999;
 }
+
+.help-container{
+    width: 50%;
+}
+
+@media screen and (max-width: 992px) {
+    .help-container{
+        width: 100%;
+    }    
+}

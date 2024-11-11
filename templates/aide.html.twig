@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Aide
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center my-5">Aide</h1>
+    {% for subject in help %}
+        <div class="mb-2 mx-auto d-flex justify-content-center flex-column help-container">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse{{ subject.id }}" role="button" aria-expanded="false" aria-controls="collapse{{ subject.id }}">
+                {{ subject.question }}
+            </a>
+            <div class="collapse" id="collapse{{ subject.id }}">
+                <div class="card card-body">
+                    {{ subject.answer }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
