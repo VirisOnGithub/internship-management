@@ -100,7 +100,7 @@ function getEntrepriseById(int $id): ?\Entreprise
 
 function getEtudiantById(int $id): ?\Etudiant
 {
-	$etudiant = getLinesWhere("etudiant", ["num_etudiant" => $id]);
+	$etudiant = getLinesWhere("etudiant JOIN classe USING(num_classe)", ["num_etudiant" => $id]);
 	if (empty($etudiant))
 		return null;
 	return \ModeleFactory\createEtudiantFromTable($etudiant[0]);
@@ -196,11 +196,4 @@ function checkProfesseur(string $login, string $mdp): array
 	if (password_verify($mdp, $prof->getMdp()))
 		return ["professeur" => $prof, "result" => CheckResult::Success];
 	return ["professeur" => null, "result" => CheckResult::WrongPassword];
-}
-
-function getNextEntrepriseId(): int
-{
-	$entreprises = getLines("entreprise");
-	$last_entreprise = end($entreprises);
-	return $last_entreprise['num_entreprise'] + 1;
 }

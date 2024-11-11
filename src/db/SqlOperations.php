@@ -17,7 +17,7 @@ function bindValues($query, array $params): void
 	}
 }
 
-function insertLine(string $table, array $params): void
+function insertLine(string $table, array $params): string|false
 {
 	$lock = new \Database\Connection();
 
@@ -30,6 +30,8 @@ function insertLine(string $table, array $params): void
 	$query->execute();
 
 	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($params, true));
+
+	return $lock->getDB()->lastInsertId();
 }
 
 function getLines(string $table): array
