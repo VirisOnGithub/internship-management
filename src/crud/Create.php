@@ -41,3 +41,8 @@ function createStage(\Stage $stage): void
 {
 	insertLine("stage", \ModeleFactory\tableFromStage($stage));
 }
+
+function createSpecialiteEntreprise(int $num_entreprise, int $num_specialite): void
+{
+	insertLine("spec_entreprise", ["num_entreprise" => $num_entreprise, "num_spec" => $num_specialite]);
+}

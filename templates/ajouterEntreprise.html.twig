@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Ajouter une entreprise
+{% endblock %}
+
+{% block content %}
+    <form action="index.php?page=ajouterEntreprise" method="post">
+        <label for="raisonSociale">Raison sociale</label>
+        <input type="text" name="raisonSociale" id="raisonSociale" class="form-control" required>
+        <label for="rue">Rue</label>
+        <input type="text" name="rue" id="rue" class="form-control" required>
+        <label for="ville">Ville</label>
+        <input type="text" name="ville" id="ville" class="form-control" required>
+        <label for="codePostal">Code postal</label>
+        <input type="text" name="codePostal" id="codePostal" class="form-control" required>
+        <label for="nomResponsable">Nom du responsable</label>
+        <input type="text" name="nomResponsable" id="nomResponsable" class="form-control">
+        <label for="nomContact">Nom du contact</label>
+        <input type="text" name="nomContact" id="nomContact" class="form-control" required>
+        <label for="lienSite">Lien du site web</label>
+        <input type="text" name="lienSite" id="lienSite" class="form-control">
+        <label for="specialites">Spécialités (maintenir la touche <kbd>Ctrl</kbd> pour sélectionner plusieurs spécialités)</label>
+        <select name="specialites[]" id="specialites" class="form-control" multiple required>
+            {% for specialite in specialites %}
+                <option value="{{ specialite.getNumero() }}">{{ specialite.getNom() }}</option>
+            {% endfor %}
+        </select>
+        <label for="telephone">Téléphone</label>
+        <input type="text" name="telephone" id="telephone" class="form-control" required>
+        <label for="fax">Fax</label>
+        <input type="text" name="fax" id="fax" class="form-control" required>
+        <label for="email">Adresse e-mail</label>
+        <input type="email" name="email" id="email" class="form-control" required>
+        <label for="niveauEtude">Niveau d'étude</label>
+        <input type="text" name="niveauEtude" id="niveauEtude" class="form-control" required>
+        <label for="observation">Observation</label>
+        <textarea name="observation" id="observation" class="form-control"></textarea>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+
+    </form>
+{% endblock %}
