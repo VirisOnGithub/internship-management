@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Stagiaires
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Stagiaires</h1>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <a href="#" class="btn btn-primary w-100">Rechercher un stagiaire</a>
+            </div>
+            <div class="col-md-6">
+                <a href="#" class="btn btn-primary w-100">Ajouter un stagiaire</a>
+            </div>
+        </div>
+        <table class="table table-hover table-striped-columns table-bordered">
+            <thead>
+                {% set columns = ["Opération", "Étudiant", "Entreprise", "Professeur"] %}
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for stagiaire in stagiaires %}
+                    <tr>
+                        <td class="text-center">
+                            <a href="index.php?page=stagiaires&id={{ stagiaire.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
+                            <a href="index.php?page=stagiaires&id={{ stagiaire.getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
+                            <a href="index.php?page=stagiaires&id={{ stagiaire.getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                        </td>
+                        <td>{{ stagiaire.getPrenom() ~ " " ~ stagiaire.getNom() }}</td>
+                        <td></td> {# todo #}
+                        <td></td> {# todo #}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+    </div>
+{% endblock %}
