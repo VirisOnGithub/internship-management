@@ -196,7 +196,6 @@ function chercherEntreprisesParCritères(array $criteres): array
 		}
 
 		// SIMON METS LES SELECTIONS DE SPECIALITES DANS L'ENTREPRISE PLEASE
-
 	}
 	return $entreprises;
 }

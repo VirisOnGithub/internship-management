@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Visualisation de {{ entreprise.getRaisonSociale() }}{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">{{ entreprise.getRaisonSociale() }}</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Adresse :</strong> {{ entreprise.getRue() }}</p>
+            <p><strong>Code postal :</strong> {{ entreprise.getCodePostal() }}</p>
+            <p><strong>Ville :</strong> {{ entreprise.getVille() }}</p>
+            <p><strong>Téléphone :</strong> {{ entreprise.getTelephone() }}</p>
+            <p><strong>Email :</strong> {{ entreprise.getEmail() }}</p>
+            <p><strong>Activité :</strong> {{ entreprise.isEnActivite() }}</p>
+            <ul>
+                {% for specialite in entreprise.getSpecialites() %}
+                    <li>Spécialité : {{ specialite.getNom() }}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Observations : </strong> {{ entreprise.getObservations }}</p>
+        </div>
+        <div class="card-footer">
+            <a href="index.php?page=entreprises" class="btn btn-primary">Retour à la liste</a>
+            {% if entreprise.getLienSite() %}
+                <a href="{{ entreprise.getLienSite() }}" class="btn btn-primary">Site web </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
