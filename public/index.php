@@ -21,7 +21,7 @@ $vue = $page . '.html.twig';
 if (!file_exists($controlleur) || !file_exists($_SERVER['DOCUMENT_ROOT'] . "/templates/" . $vue)) {
     http_response_code(404);
     // We could add a custom 404 page
-    header("Location: /public/index.php?page=accueil");
+    header("Location: /public/index.php?page=404");
     exit;
 }
 

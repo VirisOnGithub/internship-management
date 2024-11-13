@@ -174,7 +174,32 @@ function chercherEntreprise(string $nom): array
 }
 
 
+function chercherEntreprisesParCritères(array $criteres): array
+{
+	// on rajoute les % pour la recherche
+	foreach ($criteres as $key => $value) {
+		$criteres[$key] = "%" . $value . "%";
+	}
 
+	/* faut rajouter la selection des specialites */
+	$entreprises = [];
+	$spec_entreprises = getLines("spec_entreprise JOIN specialite USING(num_spec)");
+	foreach (getLinesLike("entreprise", $criteres) as $entreprise_line) {
+		$entreprise = \ModeleFactory\createEntrepriseFromTable($entreprise_line);
+		array_push($entreprises, $entreprise);
+
+		// on ajoute les spécialités aux entreprises
+		foreach ($spec_entreprises as $spec_entreprise) {
+			if ($spec_entreprise['num_entreprise'] == $entreprise->getNumero()) {
+				$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
+			}
+		}
+
+		// SIMON METS LES SELECTIONS DE SPECIALITES DANS L'ENTREPRISE PLEASE
+
+	}
+	return $entreprises;
+}
 
 
 
