@@ -31,7 +31,7 @@ function testEtudiantsPasswords() {
 	echo "&emsp;Rehashed " . $rehash . " professeurs passwords<br/>";
 }
 
-function testPasswords() {
+function testPasswords(): void {
 	testEtudiantsPasswords();
 	testProfesseursPasswords();
 }
