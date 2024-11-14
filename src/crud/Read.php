@@ -180,9 +180,9 @@ function chercherEntreprisesParCritères(string $nom, string $ville, array $spec
 		return getEntreprises();
 
 	$criteres = [];
-	if (isset($nom))
+	if (!empty($nom))
 		$criteres['raison_sociale'] = $nom;
-	if (isset($ville))
+	if (!empty($ville))
 		$criteres['ville_entreprise'] = $ville;
 
 	// on rajoute les % pour la recherche
