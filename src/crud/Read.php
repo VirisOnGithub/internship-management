@@ -173,8 +173,8 @@ function chercherEntreprise(string $nom): array
 	return $entreprises;
 }
 
-
-function chercherEntreprisesParCritères(string $nom, string $ville, array $specialites = []): array
+// recherche par sépcialité permissive (au moins un élément)
+function chercherEntreprisesParCritères(string $nom, string $ville, array $specialites): array
 {
 	if (empty($nom) && empty($ville) && empty($specialites))
 		return getEntreprises();
@@ -190,21 +190,26 @@ function chercherEntreprisesParCritères(string $nom, string $ville, array $spec
 		$criteres[$key] = "%" . $value . "%";
 	}
 
-	/* faut rajouter la selection des specialites */
 	$entreprises = [];
 	$spec_entreprises = getLines("spec_entreprise JOIN specialite USING(num_spec)");
 	foreach (getLinesLike("entreprise", $criteres) as $entreprise_line) {
 		$entreprise = \ModeleFactory\createEntrepriseFromTable($entreprise_line);
-		array_push($entreprises, $entreprise);
+
+		$ajouter = false;
 
 		// on ajoute les spécialités aux entreprises
 		foreach ($spec_entreprises as $spec_entreprise) {
 			if ($spec_entreprise['num_entreprise'] == $entreprise->getNumero()) {
 				$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
+				// si dans la recherche, on ajoute également l'entreprise
+				if (in_array($spec_entreprise['num_spec'], $specialites, true))
+					$ajouter = true;
 			}
 		}
 
-		// TODO: SIMON METS LES SELECTIONS DE SPECIALITES DANS L'ENTREPRISE PLEASE
+		if (empty($specialites) || $ajouter) {
+			array_push($entreprises, $entreprise);
+		}
 	}
 	return $entreprises;
 }

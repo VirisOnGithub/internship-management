@@ -39,7 +39,7 @@ function selectWhere(string $table, array $params): string
 
 function selectLike(string $table, array $params): string
 {
-	$sql = "SELECT * FROM " . $table . " WHERE ";
+	$sql = "SELECT * FROM " . $table . (empty($params) ? "" : " WHERE ");
 
 	foreach ($params as $key => $value) {
 		$sql .= "`" . $key . "` LIKE :" . $key . " AND ";

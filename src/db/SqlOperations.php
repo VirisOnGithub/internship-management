@@ -78,7 +78,8 @@ function getLinesLike(string $table, array $params): array
 
 	$query = $lock->getDB()->prepare($sql_command);
 
-	bindValues($query, $params);
+	if (!empty($params))
+		bindValues($query, $params);
 
 	$query->execute();
 
