@@ -174,8 +174,17 @@ function chercherEntreprise(string $nom): array
 }
 
 
-function chercherEntreprisesParCritères(array $criteres): array
+function chercherEntreprisesParCritères(string $nom, string $ville, array $specialites = []): array
 {
+	if (empty($nom) && empty($ville) && empty($specialites))
+		return getEntreprises();
+
+	$criteres = [];
+	if (isset($nom))
+		$criteres['raison_sociale'] = $nom;
+	if (isset($ville))
+		$criteres['ville_entreprise'] = $ville;
+
 	// on rajoute les % pour la recherche
 	foreach ($criteres as $key => $value) {
 		$criteres[$key] = "%" . $value . "%";
@@ -195,7 +204,7 @@ function chercherEntreprisesParCritères(array $criteres): array
 			}
 		}
 
-		// SIMON METS LES SELECTIONS DE SPECIALITES DANS L'ENTREPRISE PLEASE
+		// TODO: SIMON METS LES SELECTIONS DE SPECIALITES DANS L'ENTREPRISE PLEASE
 	}
 	return $entreprises;
 }
