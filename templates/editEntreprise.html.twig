@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification de l'entreprise : {{ entreprise.getRaisonSociale() }}{% endblock %}
+
+{% block content %}
+    <h1>Modification de l'entreprise : {{ entreprise.getRaisonSociale() }}</h1>
+
+    <form class="form" method="post">
+        <label class="form-label" for="raisonSociale">Raison Sociale</label>
+        <input type="text" class="form-control" id="raisonSociale" name="raisonSociale" value="{{ entreprise.getRaisonSociale() }}" required>
+        <label class="form-label" for="adresse">Adresse</label>
+        <input type="text" class="form-control" id="rue" name="rue" value="{{ entreprise.getRue() }}" required>
+        <div>
+            <label class="form-label" for="codePostal">Code postal</label>
+            <input type="text" class="form-control" id="codePostal" name="codePostal" value="{{ entreprise.getCodePostal() }}" required>
+            <label class="form-label" for="ville">Ville</label>
+            <input type="text" class="form-control" id="ville" name="ville" value="{{ entreprise.getVille }}" required>
+        </div>
+        <label class="form-label" for="telephone">Téléphone</label>
+        <input type="text" class="form-control" id="telephone" name="telephone" value="{{ entreprise.getTelephone() }}" required>
+        <label class="form-label" for="fax">Fax</label>
+        <input type="text" class="form-control" id="fax" name="fax" value="{{ entreprise.getFax() }}">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ entreprise.GetEmail() }}" required>
+        <label class="form-label" for="lienSite">Site web</label>
+        <input type="text" class="form-control" id="lienSite" name="lienSite" value="{{ entreprise.getLienSite() }}">
+        <label class="form-label" for="niveau">Niveau</label>
+        <select id="niveauEtude" name="niveauEtude[]" multiple required>
+            {% for i in 1..5 %}
+                <option value="BAC+{{ i }}" {% if i in niveauEtude %}selected{% endif %}>BAC+{{ i }}</option>
+            {% endfor %}
+        </select>
+        <label class="form-check-label" for="activite">En activité</label>
+        <input type="checkbox" class="form-check-input" id="activite" name="activite" {% if entreprise.isEnActivite() %}checked{% endif %}>
+        <label class="form-label" for="specialites">Spécialités</label>
+        <select class="form-control" id="specialites" name="specialites[]" multiple required>
+            {% for specialite in specialites %}
+                <option value="{{ specialite.getId() }}" {% if entreprise.hasSpecialite(specialite) %}selected{% endif %}>{{ specialite.getNom() }}</option>
+            {% endfor %}
+        </select>
+        <label class="form-label" for="nomContact">Nom du contact</label>
+        <input type="text" class="form-control" id="nomContact" name="nomContact" value="{{ entreprise.getNomContact() }}" required>
+        <label class="form-label" for="nomResponsable">Nom du responsable</label>
+        <input type="text" class="form-control" id="nomResponsable" name="nomResponsable" value="{{ entreprise.getNomResponsable() }}">
+        <label class="form-label" for="observations">Observations</label>
+        <textarea class="form-control" id="observations" name="observations">{{ entreprise.getObservations() }}</textarea>
+        <button type="submit">Modifier</button>
+
+        <input type="hidden" name="id" value="{{ entreprise.getNumero() }}">
+    </form>
+{% endblock %}
