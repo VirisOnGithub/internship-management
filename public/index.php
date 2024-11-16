@@ -1,8 +1,12 @@
 <?php
 
-session_start();
-
 set_include_path($_SERVER['DOCUMENT_ROOT']);
+
+// on a besoin de ces includes pour correctement démarrer la session
+require_once 'src/modele/Etudiant.php';
+require_once 'src/modele/Professeur.php';
+
+session_start();
 
 require_once 'vendor/autoload.php';
 
