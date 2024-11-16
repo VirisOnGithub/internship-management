@@ -21,3 +21,9 @@ img.card {
         width: 100%;
     }    
 }
+
+input[type="submit"].form-control:hover {
+    background-color: var(--bs-secondary);
+    color: white;
+    transition: all 0.3s ease;
+}

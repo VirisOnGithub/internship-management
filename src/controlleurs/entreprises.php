@@ -1,5 +1,5 @@
 <?php
-
+require_once "src/check_login.php";
 require_once "src/crud/Read.php";
 
 $nom = $_GET['nom'] ?? "";

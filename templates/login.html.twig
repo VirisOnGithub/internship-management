@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authentification{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <form class="form bg-primary col-6 offset-3 rounded" method="post" id="form-student">
+            <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" id="is_student" name="is_student" value="1" checked>
+                <label class="form-label" for="is_student">Étudiant ?</label>
+            </div>
+            <label class="form-label" for="username">Nom d'utilisateur</label>
+            <input class="form-control" type="text" id="username" name="username" required>
+            <label class="form-label" for="password">Mot de passe</label>
+            <input class="form-control" type="password" id="password" name="password" required>
+            <input class="form-control my-3" type="submit" value="Connexion">
+        </form>
+    </div>
+
+    {% if not_connected %}
+        {% include 'toasts.twig' with {'message': 'Vous n\'êtes pas connecté.<br>Veuillez vous connecter.', 'color': 'primary'} only %}
+    {% endif %}
+{% endblock %}
