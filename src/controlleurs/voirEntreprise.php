@@ -2,7 +2,7 @@
 require_once 'src/crud/Read.php';
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $entreprise = Crud\getEntrepriseById($id);
+    $entreprise = Crud\getEntrepriseByIdWithSpecialites($id);
     $data = [
         'entreprise' => $entreprise
     ];

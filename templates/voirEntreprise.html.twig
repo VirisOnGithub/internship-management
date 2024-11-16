@@ -14,11 +14,6 @@
             <p><strong>Téléphone :</strong> {{ entreprise.getTelephone() }}</p>
             <p><strong>Email :</strong> {{ entreprise.getEmail() }}</p>
             <p><strong>Activité :</strong> {{ entreprise.isEnActivite() }}</p>
-            <ul>
-                {% for specialite in entreprise.getSpecialites() %}
-                    <li>Spécialité : {{ specialite.getNom() }}</li>
-                {% endfor %}
-            </ul>
             {% if entreprise.getObservations() %}
                 <p><strong>Observations : </strong> {{ entreprise.getObservations() }}</p>
             {% endif %}
@@ -26,6 +21,18 @@
             {% if entreprise.getNomResponsable() %}
                 <p><strong>Nom du responsable :</strong> {{ entreprise.getNomResponsable() }}</p>
             {% endif %}
+            <p class="mb-0"><strong>Spécialités :</strong></p>
+            <ul>
+                {% for specialite in entreprise.getSpecialites() %}
+                    <li>{{ specialite.getNom() }}</li>
+                {% endfor %}
+            </ul>
+            <p class="mb-0"><strong>Niveau recherché :</strong></p>
+            <ul>
+                {% for niveau in  entreprise.getNiveauEtude()|split('/')%}
+                    <li>{{ niveau }}</li>
+                {% endfor %}
+            </ul>
         </div>
         <div class="card-footer">
             <a href="index.php?page=entreprises" class="btn btn-primary">Retour à la liste</a>
