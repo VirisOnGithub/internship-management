@@ -5,11 +5,7 @@ require_once 'src/crud/Update.php';
 
 if(isset($_POST['raisonSociale'])){
     $niveauEtudeTab = $_POST['niveauEtude'];
-    $niveauEtude = '';
-    foreach($niveauEtudeTab as $niveau){
-        $niveauEtude .= $niveau . '/';
-    }
-    $niveauEtude = rtrim($niveauEtude, '/'); // remove last '/'
+    $niveauEtude = implode('/', $niveauEtudeTab);
 
     $entreprise = new Entreprise(
         $_POST['id'],
@@ -30,12 +26,15 @@ if(isset($_POST['raisonSociale'])){
 
     Crud\updateEntreprise($entreprise);
 
-    header('Location: index.php?action=entreprises?update=success');
+    header('Location: index.php?page=entreprises&update=success');
+    exit();
 } elseif (isset($_GET['id'])){
     $id = $_GET['id'];
-    $entreprise = Crud\getEntrepriseById($id);
+    $entreprise = Crud\getEntrepriseByIdWithSpecialites($id);
+    $niveauEtudeTab = explode('/', $entreprise->getNiveauEtude());
     $data = [
         'entreprise' => $entreprise,
-        'specialites' => Crud\getSpecialites()
+        'specialites' => Crud\getSpecialites(),
+        'niveauEtude' => $niveauEtudeTab
     ];
 }

@@ -97,6 +97,19 @@ function getEntrepriseById(int $id): ?\Entreprise
 	return \ModeleFactory\createEntrepriseFromTable($entreprise[0]);
 }
 
+function getEntrepriseByIdWithSpecialites(int $id): ?\Entreprise
+{
+	$entreprise = getLinesWhere("entreprise", ["num_entreprise" => $id]);
+	if (empty($entreprise))
+		return null;
+	$entreprise = \ModeleFactory\createEntrepriseFromTable($entreprise[0]);
+
+	// on ajoute les spécialités aux entreprises
+	foreach (getLinesWhere("spec_entreprise JOIN specialite USING(num_spec)", ["num_entreprise" => $entreprise->getNumero()]) as $spec_entreprise) {
+		$entreprise->ajouterSpecialite(\ModeleFactory\createSpecialiteFromTable($spec_entreprise));
+	}
+	return $entreprise;
+}
 function getEtudiantById(int $id): ?\Etudiant
 {
 	$etudiant = getLinesWhere("etudiant JOIN classe USING(num_classe)", ["num_etudiant" => $id]);

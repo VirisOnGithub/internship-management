@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Modification de l'entreprise : {{ entreprise.getRaisonSociale() }}</h1>
 
-    <form class="form" method="post">
+    <form class="form" method="post" action="index.php?page=editEntreprise">
         <label class="form-label" for="raisonSociale">Raison Sociale</label>
         <input type="text" class="form-control" id="raisonSociale" name="raisonSociale" value="{{ entreprise.getRaisonSociale() }}" required>
         <label class="form-label" for="adresse">Adresse</label>
@@ -25,9 +25,9 @@
         <label class="form-label" for="lienSite">Site web</label>
         <input type="text" class="form-control" id="lienSite" name="lienSite" value="{{ entreprise.getLienSite() }}">
         <label class="form-label" for="niveau">Niveau</label>
-        <select id="niveauEtude" name="niveauEtude[]" multiple required>
-            {% for i in 1..5 %}
-                <option value="BAC+{{ i }}" {% if i in niveauEtude %}selected{% endif %}>BAC+{{ i }}</option>
+        <select class="form-control" id="niveauEtude" name="niveauEtude[]" multiple required>
+            {% for i in ["BAC+1", "BAC+2", "BAC+3", "BAC+4", "BAC+5"] %}
+                <option value="{{ i }}" {% if i in niveauEtude %}selected{% endif %}>{{ i }}</option>
             {% endfor %}
         </select>
         <label class="form-check-label" for="activite">En activité</label>
@@ -35,7 +35,7 @@
         <label class="form-label" for="specialites">Spécialités</label>
         <select class="form-control" id="specialites" name="specialites[]" multiple required>
             {% for specialite in specialites %}
-                <option value="{{ specialite.getId() }}" {% if entreprise.hasSpecialite(specialite) %}selected{% endif %}>{{ specialite.getNom() }}</option>
+                <option value="{{ specialite.getId() }}" {% if specialite.getNom() in entreprise.getSpecialites()|map(s => s.getNom()) %}selected{% endif %}>{{ specialite.getNom() }}</option>
             {% endfor %}
         </select>
         <label class="form-label" for="nomContact">Nom du contact</label>
