@@ -19,7 +19,13 @@
                     <li>Spécialité : {{ specialite.getNom() }}</li>
                 {% endfor %}
             </ul>
-            <p><strong>Observations : </strong> {{ entreprise.getObservations }}</p>
+            {% if entreprise.getObservations() %}
+                <p><strong>Observations : </strong> {{ entreprise.getObservations() }}</p>
+            {% endif %}
+            <p><strong>Nom du contact :</strong> {{ entreprise.getNomContact() }}</p>
+            {% if entreprise.getNomResponsable() %}
+                <p><strong>Nom du responsable :</strong> {{ entreprise.getNomResponsable() }}</p>
+            {% endif %}
         </div>
         <div class="card-footer">
             <a href="index.php?page=entreprises" class="btn btn-primary">Retour à la liste</a>
