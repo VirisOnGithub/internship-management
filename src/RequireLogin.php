@@ -1,4 +1,7 @@
 <?php
+
+// Fichier à inclure si la page a besoin d'authentification
+
 require_once 'src/Login.php';
 
 if (!Login\isUserConnected()) {
