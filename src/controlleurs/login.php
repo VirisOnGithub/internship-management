@@ -1,6 +1,6 @@
 <?php
 
-$data = [];
+$data = ["username" => ""];
 $data['redirect'] = $_GET['redirect'] ?? ($_POST['redirect'] ?? null);
 
 $page_redirect = isset($_GET['redirect']) ? "index.php?page=" . $_GET['redirect'] : "index.php";
