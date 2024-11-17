@@ -36,7 +36,11 @@
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.php?page=logout"><i class="me-2 fa-solid fa-right-from-bracket"></i>Déconnexion</a>
+                                {% if isUserConnected() %}
+                                    <a class="nav-link" aria-current="page" href="index.php?page=logout"><i class="me-2 fa-solid fa-right-from-bracket"></i>Déconnexion</a>
+                                {% else %}
+                                    <a class="nav-link" aria-current="page" href="index.php?page=login"><i class="me-2 fa-solid fa-right-from-bracket"></i>Connexion</a>
+                                {% endif %}
                             </li>
                         </ul>
                     </div>

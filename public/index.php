@@ -8,6 +8,7 @@ require_once 'src/modele/Professeur.php';
 
 session_start();
 
+require_once 'src/Login.php';
 require_once 'vendor/autoload.php';
 
 // Default page is accueil
@@ -33,4 +34,5 @@ require_once $controlleur;
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
+$twig->addFunction(new \Twig\TwigFunction('isUserConnected', 'Login\isUserConnected'));
 echo $twig->render($vue, $data ?? []);
