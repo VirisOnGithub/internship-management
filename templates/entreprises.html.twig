@@ -31,7 +31,11 @@
                     <td>{{ entreprise.getRaisonSociale() }}</td>
                     <td>{{ entreprise.getRue() }}</td>
                     <td>{{ entreprise.getNomResponsable() }}</td>
-                    <td class="text-center"><a href={{ entreprise.getLienSite() }} target="_blank"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></a></td>
+                    <td class="text-center">
+                    {% if entreprise.getLienSite() %}
+                        <a href={{ entreprise.getLienSite() }} target="_blank"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></a>
+                    {% endif %}
+                    </td>
                     <td>
                         {% for spe in entreprise.getSpecialites() %}
                             {{ loop.last ? spe.getNom() : spe.getNom() ~ ", " }}
