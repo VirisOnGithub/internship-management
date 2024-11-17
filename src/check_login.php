@@ -2,6 +2,10 @@
 require_once 'src/Login.php';
 
 if(!Login\isUserConnected()) {
-    header("Location: index.php?page=login&not_connected=1");
+    if(isset($_GET['page'])){
+        header("Location: index.php?page=login&not_connected=1&callback=".$_GET['page']);
+    } else {
+        header("Location: index.php?page=login&not_connected=1");
+    }
     exit();
 }

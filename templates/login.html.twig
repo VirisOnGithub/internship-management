@@ -14,10 +14,16 @@
             <label class="form-label" for="password">Mot de passe</label>
             <input class="form-control" type="password" id="password" name="password" required>
             <input class="form-control my-3" type="submit" value="Connexion">
+            {% if callback is defined %}
+                <input type="hidden" name="callback" value="{{ callback }}">
+            {% endif %}
         </form>
     </div>
 
-    {% if not_connected %}
+    {% if not_connected is defined %}
         {% include 'toasts.twig' with {'message': 'Vous n\'êtes pas connecté.<br>Veuillez vous connecter.', 'color': 'primary'} only %}
+    {% endif %}
+    {% if error is defined %}
+        {% include 'toasts.twig' with {'message': 'Nom d\'utilisateur ou mot de passe incorrect. Veuillez réessayer', 'color': 'danger'} only %}
     {% endif %}
 {% endblock %}
