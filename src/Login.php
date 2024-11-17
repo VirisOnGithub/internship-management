@@ -19,6 +19,17 @@ function isUserConnected(): bool
 	return !is_null(getConnectedUser());
 }
 
+function getFirstLetters(): string
+{
+	$user = getConnectedUser();
+	if (is_null($user)) {
+		return '';
+	}
+	$first_name = $user->getPrenom();
+	$last_name = $user->getNom();
+	return strtoupper($first_name[0] . $last_name[0]);
+}
+
 function connectEtudiant(string $login, string $mdp): \Crud\CheckResult
 {
 	$check = \Crud\checkEtudiant($login, $mdp);

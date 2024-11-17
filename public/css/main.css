@@ -27,3 +27,11 @@ input[type="submit"].form-control:hover {
     color: white;
     transition: all 0.3s ease;
 }
+
+#connexion:hover {
+    background-color: var(--bs-primary);
+    &> i {
+        padding-right: 10px;
+        transition: all 0.3s ease;
+    }
+}
