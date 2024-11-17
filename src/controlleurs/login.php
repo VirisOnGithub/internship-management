@@ -20,5 +20,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $data['username'] = $username;
     }
 } else {
-    $data['not_connected'] = true;
+    if (isset($_GET['redirect']))
+        $data['not_connected'] = true;
 }
