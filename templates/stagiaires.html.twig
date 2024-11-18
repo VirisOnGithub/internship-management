@@ -45,4 +45,9 @@
         </table>
             
     </div>
+
+    {% if delete is defined %}
+        {% set message = delete == 'success' ? 'L\'étudiant a bien été supprimé.' : 'Erreur pendant la suppression. Veuillez réessayer' %}
+        {% include 'toasts.twig' with {'message': message, 'color': delete == 'success' ? 'success' : 'danger'} only %}
+    {% endif %}
 {% endblock %}
