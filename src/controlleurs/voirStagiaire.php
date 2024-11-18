@@ -3,8 +3,10 @@
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         $stagiaire = Crud\getEtudiantById($id);
+        $annee = $stagiaire->getAnneeObtention() ? date_format($stagiaire->getAnneeObtention(), 'Y') : null;
         $data = [
-            'stagiaire' => $stagiaire
+            'stagiaire' => $stagiaire,
+            'annee' => $annee
         ];
     } else {
         header('Location: index.php');

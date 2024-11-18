@@ -9,8 +9,8 @@
         </div>
         <div class="card-body">
             <p><strong>Login :</strong> {{ stagiaire.getLogin() }}</p>
-            {% if stagiaire.getAnneeObtention() %}
-                <p><strong>Année d'obtention du diplôme :</strong> {{ stagiaire.getAnneeObtention() }}</p>
+            {% if annee %}
+                <p><strong>Année d'obtention du diplôme :</strong> {{ annee }}</p>
             {% endif %}
             <p><strong>Activité :</strong> {{ stagiaire.isActivite() }}</p>
             <p><strong>Classe :</strong> {{ stagiaire.getClasse().getNom() }}</p>
