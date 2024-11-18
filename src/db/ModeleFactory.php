@@ -26,7 +26,7 @@ function createEtudiantFromTable($raw_data): \Etudiant
 		(int) $raw_data['num_etudiant'],
 		$raw_data['nom_etudiant'],
 		$raw_data['prenom_etudiant'],
-		new \DateTime($raw_data['annee_obtention'] ?? "now"),
+		new \DateTime($raw_data['annee_obtention']."-01-01" ?? "now"),
 		$raw_data['login_etudiant'],
 		$raw_data['mdp_etudiant'],	
 		createClasseFromTable($raw_data),
