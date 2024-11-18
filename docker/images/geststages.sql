@@ -138,7 +138,7 @@ CREATE TABLE `etudiant` (
   `num_etudiant` int(32) NOT NULL AUTO_INCREMENT,
   `nom_etudiant` varchar(64) NOT NULL,
   `prenom_etudiant` varchar(64) NOT NULL,
-  `annee_obtention` date DEFAULT NULL,
+  `annee_obtention` year(4) DEFAULT NULL,
   `login_etudiant` varchar(8) NOT NULL,
   `mdp_etudiant` varchar(60) NOT NULL,
   `num_classe` int(32) NOT NULL,

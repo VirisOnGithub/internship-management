@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajout d'un nouvel étudiant{% endblock %}
+
+{% block content %}
+    <form method="post" class="form">
+        <label class="form-label" for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" name="prenom" required>
+        <label class="form-label" for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" required>
+        <label class="form-label" for="login">Login</label>
+        <input type="text" class="form-control" id="login" name="login" required>
+        <label class="form-label" for="nom">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+        <label class="form-label" for="anneeObtention">Année d'obtention du diplôme</label>
+        <input class="form-control" type="number" min="2024" max="2099" step="1" value="2016" id="anneeObtention" name="anneeObtention">
+        <label class="form-label" for="classe">Classe</label>
+        <select class="form-control" name="classe" id="classe">
+            {% for classe in classes %}
+                <option value="{{ classe.getNumero() }}">{{ classe.getNom() }}</option>
+            {% endfor %}
+        </select>
+        <label class="form-check-label" for="isActivite">En Activité ?</label>
+        <input type="checkbox" class="form-check-input" id="isActivite" name="isActivite">
+        <input type="submit" value="Ajouter">
+    </form>
+{% endblock %}
