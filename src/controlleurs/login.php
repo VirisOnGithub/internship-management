@@ -10,9 +10,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $result = Login\connectEtudiant($username, $password);
+    $etu = Login\connectEtudiant($username, $password);
+    $prof = Login\connectProfesseur($username, $password);
 
-    if ($result == \Crud\CheckResult::Success) {
+    if ($etu == \Crud\CheckResult::Success || $prof == \Crud\CheckResult::Success) {
         header("Location: " . $page_redirect);
         exit;
     } else {
