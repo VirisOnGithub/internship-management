@@ -6,6 +6,10 @@ require_once('src/modele/Etudiant.php');
 require_once('src/modele/Professeur.php');
 require_once('src/crud/Read.php');
 
+/**
+ * Retourne l'utilisateur connecté
+ * @return \Etudiant|\Professeur|null null si l'utilisateur n'est pas connecté
+ */
 function getConnectedUser(): \Etudiant|\Professeur|null
 {
 	if (!isset($_SESSION['connected_user'])) {
@@ -14,11 +18,19 @@ function getConnectedUser(): \Etudiant|\Professeur|null
 	return $_SESSION['connected_user'];
 }
 
+/**
+ * Vérifie si l'utilisateur est connecté
+ * @return bool true si c'est le cas
+ */
 function isUserConnected(): bool
 {
 	return !is_null(getConnectedUser());
 }
 
+/**
+ * Retourne les initiales de l'utilisateur connecté
+ * @return string une chaine de caractères vide si l'utilisateur n'est pas connecté
+ */
 function getFirstLetters(): string
 {
 	$user = getConnectedUser();
@@ -30,6 +42,12 @@ function getFirstLetters(): string
 	return strtoupper($first_name[0] . $last_name[0]);
 }
 
+/**
+ * Essaie de connecter un étudiant à partir de ses identifiants
+ * @param string $login le login de l'étudiant
+ * @param string $mdp le mot de passe de l'étudiant
+ * @return \Crud\CheckResult le résultat de l'essai
+ */
 function connectEtudiant(string $login, string $mdp): \Crud\CheckResult
 {
 	$check = \Crud\checkEtudiant($login, $mdp);
@@ -40,6 +58,12 @@ function connectEtudiant(string $login, string $mdp): \Crud\CheckResult
 	return $result;
 }
 
+/**
+ * Essaie de connecter un professeur à partir de ses identifiants
+ * @param string $login le login du professeur
+ * @param string $mdp le mot de passe du professeur
+ * @return \Crud\CheckResult le résultat de l'essai
+ */
 function connectProfesseur(string $login, string $mdp): \Crud\CheckResult
 {
 	$check = \Crud\checkProfesseur($login, $mdp);
@@ -50,6 +74,11 @@ function connectProfesseur(string $login, string $mdp): \Crud\CheckResult
 	return $result;
 }
 
+/**
+ * Déconnecte l'utilisateur.
+ * Ne fais rien si l'utilisateur n'est pas connecté
+ * @return void
+ */
 function logOut(): void
 {
 	$_SESSION['connected_user'] = null;
