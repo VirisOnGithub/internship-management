@@ -2,5 +2,5 @@
 
 function getConfig(): array
 {
-	return parse_ini_file("config.ini");
+	return parse_ini_file("assets/config.ini");
 }
