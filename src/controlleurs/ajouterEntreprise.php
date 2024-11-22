@@ -1,6 +1,7 @@
 <?php
 
-if (isset($_POST['raisonSociale'])
+if (
+    isset($_POST['raisonSociale'])
     && isset($_POST['nomContact'])
     && isset($_POST['nomResponsable'])
     && isset($_POST['rue'])
@@ -12,7 +13,7 @@ if (isset($_POST['raisonSociale'])
     && isset($_POST['observation'])
     && isset($_POST['lienSite'])
     && isset($_POST['niveauEtude'])
-    ) {
+) {
     require_once "src/crud/Create.php";
     $niveauEtude = implode('/', $_POST['niveauEtude']);
     // le numéro va être déterminé automatiquement

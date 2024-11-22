@@ -3,7 +3,7 @@
 require_once 'src/crud/Read.php';
 require_once 'src/crud/Update.php';
 
-if(isset($_POST['raisonSociale'])){
+if (isset($_POST['raisonSociale'])) {
     $niveauEtudeTab = $_POST['niveauEtude'];
     $niveauEtude = implode('/', $niveauEtudeTab);
 
@@ -28,7 +28,7 @@ if(isset($_POST['raisonSociale'])){
 
     header('Location: index.php?page=entreprises&update=success');
     exit();
-} elseif (isset($_GET['id'])){
+} elseif (isset($_GET['id'])) {
     $id = $_GET['id'];
     $entreprise = Crud\getEntrepriseByIdWithSpecialites($id);
     $niveauEtudeTab = explode('/', $entreprise->getNiveauEtude());
