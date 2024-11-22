@@ -2,3 +2,4 @@ Maquettes-Ecran/*
 node_modules/*
 logs.txt
 config.ini
+*.lock
