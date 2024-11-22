@@ -14,7 +14,7 @@
             $_POST['isActivite'] ?? false
         );
         Crud\createEtudiant($etudiant);
-        header("Location: index.php?page=stagiaires&success=1");
+        header("Location: index.php?page=stagiaires&add=success");
     } else {
         require_once "src/crud/Read.php";
         $data = array("classes" => Crud\getClasses());

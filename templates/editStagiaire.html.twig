@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification de l'étudiant {{ stagiaire.getNom() }}{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Modification de l'étudiant {{ stagiaire.getPrenom() ~ ' ' ~ stagiaire.getNom() }}</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" id="nom" name="nom" value="{{ stagiaire.getNom() }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" id="prenom" name="prenom" value="{{ stagiaire.getPrenom() }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="login" class="form-label">Login</label>
+            <input type="text" id="login" name="login" value="{{ stagiaire.getLogin() }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="classe" class="form-label">Classe</label>
+            <select id="classe" name="classe" class="form-select" required>
+            {% for classe in classes %}
+                <option value="{{ classe.getNumero() }}" {% if classe.getId() == stagiaire.getClasse().getId() %}selected{% endif %}>{{ classe.getNom() }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="anneeObtention" class="form-label">Année d'obtention</label>
+            <input type="text" id="anneeObtention" name="anneeObtention" value="{{ annee }}" class="form-control">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" id="isActive" name="isActive" class="form-check-input" {% if stagiaire.isActivite() %}checked{% endif %}>
+            <label for="isActive" class="form-check-label">Actif</label>
+        </div>
+        <input type="hidden" name="id" value="{{ stagiaire.getNumero() }}">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+{% endblock %}

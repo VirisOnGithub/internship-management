@@ -18,6 +18,8 @@ $data = [
     "etudiants_non_stagiaires" => $etudiants_non_stagiaires
 ];
 
-if (isset($_GET['delete'])) {
-    $data['delete'] = $_GET['delete'];
+foreach(["delete", "update"] as $message){
+    if (isset($_GET[$message])) {
+        $data[$message] = $_GET[$message];
+    }
 }
