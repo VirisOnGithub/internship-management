@@ -176,17 +176,4 @@ class Etudiant
 
 		return $this;
 	}
-
-	public function getStages(): array
-	{
-		require_once('src/crud/Read.php');
-		$stages = Crud\getStages();
-		$etudiant_stages = [];
-		foreach ($stages as $stage) {
-			if ($stage->getStagiaire()->getNumero() == $this->numero) {
-				array_push($etudiant_stages, $stage);
-			}
-		}
-		return $etudiant_stages;
-	}
 }

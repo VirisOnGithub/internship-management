@@ -2,12 +2,22 @@
 
 require_once "src/crud/Read.php";
 
-$data = array(
-    "stagiaires" => Crud\getEtudiants()
-);
-if(isset($_GET['delete'])){
-    $data['delete'] = $_GET['delete'];
+$stages = Crud\getStages();
+$etudiants_non_stagiaires = Crud\getEtudiants();
+
+foreach ($stages as $stage) {
+    $stagiaire = $stage->getStagiaire();
+    $key = array_search($stagiaire, $etudiants_non_stagiaires);
+    if ($key !== false) {
+        unset($etudiants_non_stagiaires[$key]);
+    }
 }
 
+$data = [
+    "stages" => $stages,
+    "etudiants_non_stagiaires" => $etudiants_non_stagiaires
+];
 
-$twig->addFunction(new \Twig\TwigFunction('getProfesseurById', 'Crud\getProfesseurById'));
+if (isset($_GET['delete'])) {
+    $data['delete'] = $_GET['delete'];
+}
