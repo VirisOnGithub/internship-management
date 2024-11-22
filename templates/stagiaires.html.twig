@@ -46,7 +46,8 @@
                         </td>
                         <td>
                             {% if stagiaire.getStages() is not null %}
-                                {{ stagiaire.getStages()[0].getProfesseur().getNom() }}
+                                {% set prof = stagiaire.getStages()[0].getProfesseur() %}
+                                {{ prof.getPrenom() ~ " " ~ prof.getNom() }}
                             {% else %}
                                 Aucune entreprise
                             {% endif %}
