@@ -29,24 +29,32 @@
                 </tr>
             </thead>
             <tbody>
+                {% set precId = -1 %}
                 {% for stage in stages %}
-                    <tr>
-                        <td class="text-center">
-                            <a href="index.php?page=voirStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
-                            <a href="index.php?page=stagiaires&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
-                            <a href="index.php?page=stagiaires&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
-                        </td>
-                        <td>
-                            {{ stage.getStagiaire().getPrenom() ~ " " ~ stage.getStagiaire().getNom() }}
-                        </td>
+                    {% if precId != stage.getStagiaire().getNumero() %}
+                        <tr>
+                            <td class="text-center">
+                                <a href="index.php?page=voirStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
+                                <a href="index.php?page=stagiaires&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
+                                <a href="index.php?page=stagiaires&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                            </td>
+                            <td>
+                                {{ stage.getStagiaire().getPrenom() ~ " " ~ stage.getStagiaire().getNom() }}
+                            </td>
+                    {% else %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        
+                    {% endif %}
                         <td>
                             {{ stage.getEntreprise().getRaisonSociale() }}
                         </td>
                         <td>
-                            {% set prof = stage.getProfesseur() %}
-                            {{ prof.getPrenom() ~ " " ~ prof.getNom() }}
+                            {{ stage.getProfesseur().getPrenom() ~ " " ~ stage.getProfesseur().getNom() }}
                         </td>
                     </tr>
+                    {% set precId = stage.getStagiaire().getNumero() %}
                 {% endfor %}
 
 				{% for etudiant in etudiants_non_stagiaires %}
