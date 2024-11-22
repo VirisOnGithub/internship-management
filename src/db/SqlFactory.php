@@ -2,6 +2,12 @@
 
 namespace SqlFactory;
 
+/**
+ * Crée une requête d'insertion SQL à partir de paramètres
+ * @param string $table la table dans laquelle insérer
+ * @param array $params le tableau associatif des attributs
+ * @return string la requête
+ */
 function insert(string $table, array $params): string
 {
 	$sql = "INSERT INTO `" . $table . "` (";
@@ -23,6 +29,12 @@ function insert(string $table, array $params): string
 	return $sql;
 }
 
+/**
+ * Crée une requête de sélection SQL avec condition de recherche stricte à partir de paramètres.
+ * @param string $table la table dans laquelle chercher
+ * @param array $params le tableau associatif des attributs à chercher
+ * @return string la requête
+ */
 function selectWhere(string $table, array $params): string
 {
 	$sql = "SELECT * FROM " . $table . " WHERE ";
@@ -37,6 +49,12 @@ function selectWhere(string $table, array $params): string
 	return $sql;
 }
 
+/**
+ * Crée une requête de sélection SQL avec condition de recherche souple à partir de paramètres.
+ * @param string $table la table dans laquelle chercher
+ * @param array $params le tableau associatif des attributs à chercher
+ * @return string la requête
+ */
 function selectLike(string $table, array $params): string
 {
 	$sql = "SELECT * FROM " . $table . (empty($params) ? "" : " WHERE ");
@@ -51,7 +69,13 @@ function selectLike(string $table, array $params): string
 	return $sql;
 }
 
-function delete(string $table, array $params)
+/**
+ * Crée une requête de suppression SQL avec condition de recherche stricte à partir de paramètres.
+ * @param string $table la table dans laquelle supprimer
+ * @param array $params le tableau associatif des attributs à chercher
+ * @return string la requête
+ */
+function delete(string $table, array $params): string
 {
 	$sql = "DELETE FROM `" . $table . "` WHERE ";
 
@@ -65,6 +89,13 @@ function delete(string $table, array $params)
 	return $sql;
 }
 
+/**
+ * Crée une requête de mise à jour de ligne SQL avec condition de recherche stricte à partir de paramètres.
+ * @param string $table la table à mettre à jour
+ * @param array $update_params le tableau associatif des attributs à modifier
+ * @param array $where_params le tableau associatif des lignes qui contiennent les attributs
+ * @return string la requête
+ */
 function update(string $table, array $update_params, array $where_params): string
 {
 	$sql = "UPDATE `" . $table . "` SET ";

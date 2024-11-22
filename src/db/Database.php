@@ -5,7 +5,7 @@ namespace Database;
 require_once("src/Config.php");
 
 /**
- * Connection to a database which closes when this object is destroyed
+ * Réprésente la connexion à la base de données
  */
 class Connection
 {

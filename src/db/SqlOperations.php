@@ -8,6 +8,12 @@ require_once('src/db/Database.php');
 require_once('src/db/SqlFactory.php');
 require_once('src/Logs.php');
 
+/**
+ * Applique les valeurs d'une requête SQL avec paramètres
+ * @param mixed $query la requête à paramètres
+ * @param array $params les paramètres à appliquer
+ * @return void
+ */
 function bindValues($query, array $params): void
 {
 	foreach ($params as $key => $value) {
@@ -21,6 +27,12 @@ function bindValues($query, array $params): void
 	}
 }
 
+/**
+ * Insére une ligne dans la base de donnée
+ * @param string $table la table à modifier
+ * @param array $params les paramètres de l'insertion
+ * @return string|false false si la requête échoue
+ */
 function insertLine(string $table, array $params): string|false
 {
 	$lock = new \Database\Connection();
@@ -38,6 +50,11 @@ function insertLine(string $table, array $params): string|false
 	return $lock->getDB()->lastInsertId();
 }
 
+/**
+ * Récupère des lignes dans la base de donnée
+ * @param string $table la table à lire
+ * @return array le tableau associatif des lignes
+ */
 function getLines(string $table): array
 {
 	$lock = new \Database\Connection();
@@ -53,6 +70,12 @@ function getLines(string $table): array
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
 
+/**
+ * Récupère des lignes dans la base de donnée avec une condition de sélection stricte
+ * @param string $table la table à lire
+ * @param array $params les paramètres de la sélection
+ * @return array le tableau associatif des lignes
+ */
 function getLinesWhere(string $table, array $params): array
 {
 	$lock = new \Database\Connection();
@@ -70,6 +93,12 @@ function getLinesWhere(string $table, array $params): array
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
 
+/**
+ * Récupère des lignes dans la base de donnée avec une condition de sélection souple
+ * @param string $table la table à lire
+ * @param array $params les paramètres de la sélection
+ * @return array le tableau associatif des lignes
+ */
 function getLinesLike(string $table, array $params): array
 {
 	$lock = new \Database\Connection();
@@ -88,6 +117,12 @@ function getLinesLike(string $table, array $params): array
 	return $query->fetchAll(\PDO::FETCH_ASSOC);
 }
 
+/**
+ * Supprime des lignes dans la base de donnée avec une condition de recherche stricte
+ * @param string $table la table à supprimer
+ * @param array $params les paramètres de la suppression
+ * @return void
+ */
 function deleteLinesWhere(string $table, array $params): void
 {
 	$lock = new \Database\Connection();
@@ -103,6 +138,12 @@ function deleteLinesWhere(string $table, array $params): void
 	\Logs\write("Executed SQL command : {" . $sql_command . "} \nwith parameters : " . var_export($params, true));
 }
 
+/**
+ * Mets à jour des lignes dans la base de donnée avec une condition de recherche stricte
+ * @param string $table la table à mettre à jour
+ * @param array $params les paramètres de la mise à jour
+ * @return void
+ */
 function updateLinesWhere(string $table, array $update_params, array $where_params): void
 {
 	$lock = new \Database\Connection();

@@ -10,7 +10,11 @@ require_once('src/modele/Professeur.php');
 require_once('src/modele/Specialite.php');
 require_once('src/modele/Stage.php');
 
-// résultat de SELECT * FROM Classe;
+/**
+ * Crée une Classe à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Classe la nouvelle Classe
+ */
 function createClasseFromTable($raw_data): \Classe
 {
 	return new \Classe(
@@ -19,16 +23,20 @@ function createClasseFromTable($raw_data): \Classe
 	);
 }
 
-// résultat de SELECT * FROM Etudiant JOIN Classe;
+/**
+ * Crée un Etudiant à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Etudiant le nouvel Etudiant
+ */
 function createEtudiantFromTable($raw_data): \Etudiant
 {
 	$etudiant = new \Etudiant(
 		(int) $raw_data['num_etudiant'],
 		$raw_data['nom_etudiant'],
 		$raw_data['prenom_etudiant'],
-		new \DateTime($raw_data['annee_obtention']."-01-01") ?? "now",
+		new \DateTime($raw_data['annee_obtention'] . "-01-01") ?? "now",
 		$raw_data['login_etudiant'],
-		$raw_data['mdp_etudiant'],	
+		$raw_data['mdp_etudiant'],
 		createClasseFromTable($raw_data),
 		(bool) $raw_data['en_activite']
 	);
@@ -39,7 +47,11 @@ function createEtudiantFromTable($raw_data): \Etudiant
 	return $etudiant;
 }
 
-// résultat de SELECT * FROM Entreprise;
+/**
+ * Crée une Entreprise à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Entreprise la nouvelle Entreprise
+ */
 function createEntrepriseFromTable($raw_data): \Entreprise
 {
 	return new \Entreprise(
@@ -60,7 +72,11 @@ function createEntrepriseFromTable($raw_data): \Entreprise
 	);
 }
 
-// résultat de SELECT * FROM Mission JOIN Stage;
+/**
+ * Crée une Mission à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Mission la nouvelle Mission
+ */
 function createMissionFromTable($raw_data): \Mission
 {
 	return new \Mission(
@@ -70,7 +86,11 @@ function createMissionFromTable($raw_data): \Mission
 	);
 }
 
-// résultat de SELECT * FROM Professeur;
+/**
+ * Crée un Professeur à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Professeur le nouveau Professeur
+ */
 function createProfesseurFromTable($raw_data): \Professeur
 {
 	return new \Professeur(
@@ -83,7 +103,11 @@ function createProfesseurFromTable($raw_data): \Professeur
 	);
 }
 
-// résultat de SELECT * FROM Specialite;
+/**
+ * Crée une Specialite à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Specialite la nouvelle Specialite
+ */
 function createSpecialiteFromTable($raw_data): \Specialite
 {
 	return new \Specialite(
@@ -92,7 +116,11 @@ function createSpecialiteFromTable($raw_data): \Specialite
 	);
 }
 
-// résultat de SELECT * FROM Stage JOIN Etudiant JOIN Professeur JOIN Entreprise;
+/**
+ * Crée un Stage à partir d'un tableau associatif
+ * @param mixed $raw_data le tableau associatif contenant les informations
+ * @return \Stage le nouveau Stage
+ */
 function createStageFromTable($raw_data): \Stage
 {
 	return new \Stage(
@@ -108,8 +136,15 @@ function createStageFromTable($raw_data): \Stage
 	);
 }
 
-//TODO: prof_classe spec_entreprise
 
+
+
+
+/**
+ * Sérialise une Classe en tableau associatif
+ * @param \Classe $classe la Classe à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromClasse(\Classe $classe): array
 {
 	return [
@@ -118,6 +153,11 @@ function tableFromClasse(\Classe $classe): array
 	];
 }
 
+/**
+ * Sérialise un Etudiant en tableau associatif
+ * @param \Etudiant $etudiant l'Etudiant à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromEtudiant(\Etudiant $etudiant): array
 {
 	return [
@@ -132,6 +172,11 @@ function tableFromEtudiant(\Etudiant $etudiant): array
 	];
 }
 
+/**
+ * Sérialise une Entreprise en tableau associatif
+ * @param \Entreprise $entreprise l'Entreprise à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromEntreprise(\Entreprise $entreprise): array
 {
 	return [
@@ -152,6 +197,11 @@ function tableFromEntreprise(\Entreprise $entreprise): array
 	];
 }
 
+/**
+ * Sérialise une Mission en tableau associatif
+ * @param \Mission $mission la Mission à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromMission(\Mission $mission): array
 {
 	return [
@@ -161,6 +211,11 @@ function tableFromMission(\Mission $mission): array
 	];
 }
 
+/**
+ * Sérialise un Professeur en tableau associatif
+ * @param \Professeur $professeur le Professeur à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromProfesseur(\Professeur $professeur): array
 {
 	return [
@@ -173,6 +228,11 @@ function tableFromProfesseur(\Professeur $professeur): array
 	];
 }
 
+/**
+ * Sérialise une Specialite en tableau associatif
+ * @param \Specialite $specialite la Specialite à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromSpecialite(\Specialite $specialite): array
 {
 	return [
@@ -181,6 +241,11 @@ function tableFromSpecialite(\Specialite $specialite): array
 	];
 }
 
+/**
+ * Sérialise un Stage en tableau associatif
+ * @param \Stage $stage le Stage à sérialiser
+ * @return array le tableau associatif contenant les attributs
+ */
 function tableFromStage(\Stage $stage): array
 {
 	return [
