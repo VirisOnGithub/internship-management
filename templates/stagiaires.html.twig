@@ -37,8 +37,20 @@
                             <a href="index.php?page=stagiaires&id={{ stagiaire.getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
                         </td>
                         <td>{{ stagiaire.getPrenom() ~ " " ~ stagiaire.getNom() }}</td>
-                        <td></td> {# todo #}
-                        <td></td> {# todo #}
+                        <td>
+                            {% if stagiaire.getStages() is not null %}
+                                {{ stagiaire.getStages()[0].getEntreprise().getRaisonSociale() }}
+                            {% else %}
+                                Aucune entreprise
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if stagiaire.getStages() is not null %}
+                                {{ stagiaire.getStages()[0].getProfesseur().getNom() }}
+                            {% else %}
+                                Aucune entreprise
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -30,10 +30,9 @@ if (!file_exists($controlleur) || !file_exists($_SERVER['DOCUMENT_ROOT'] . "/tem
     exit;
 }
 
-require_once $controlleur;
-
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addFunction(new \Twig\TwigFunction('isUserConnected', 'Login\isUserConnected'));
 $twig->addFunction(new \Twig\TwigFunction('getFirstLetters', 'Login\getFirstLetters'));
+require_once $controlleur;
 echo $twig->render($vue, $data ?? []);
