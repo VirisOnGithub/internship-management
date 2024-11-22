@@ -4,7 +4,10 @@ namespace Permissions;
 
 require_once 'src/Login.php';
 
-// Retourne vrai si l'utilisateur a les permissions de professeur
+/**
+ * Vérifie si l'utilisateur a les permissions de professeur
+ * @return bool true si c'est le cas
+ */
 function hasAutorisationProfesseur(): bool
 {
 	$user = Login\getConnectedUser();
@@ -13,7 +16,11 @@ function hasAutorisationProfesseur(): bool
 	return $user instanceof \Professeur;
 }
 
-// Retourne vrai si l'utilisateur a au moins les permissions d'un étudiant spécifique
+/**
+ * Vérifie si l'utilisateur a au moins les permissions d'un étudiant spécifique
+ * @param int $numero_etudiant le numéro à vérifier
+ * @return bool true si c'est le cas ou que l'utilisateur est un professeur
+ */
 function hasAutorisationEtudiant(int $numero_etudiant): bool
 {
 	$user = Login\getConnectedUser();
