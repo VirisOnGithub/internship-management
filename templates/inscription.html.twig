@@ -3,19 +3,46 @@
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
-    <form class="form">
-        <h2>Inscription</h2>
+    <h2 class="text-center">Inscription</h2>
+    <form class="form" method="post" action="index.php?page=inscription">
+        <label for="eleve" class="form-label">Elève</label>
         {% if prof is defined %}
-            <label for="eleve" class="form-label">Elève</label>
             <select name="eleve" id="eleve" class="form-select">
                 {% for eleve in eleves %}
-                    <option value="{{ eleve.id }}">{{ eleve.nom }} {{ eleve.prenom }}</option>
+                    <option value="{{ eleve.getNumero() }}">{{ eleve.getNom() }} {{ eleve.getPrenom() }}</option>
                 {% endfor %}
             </select>
+        {% else %}
+            <input type="text" name="eleveNom" id="eleveNom" class="form-control" value="{{ eleve.getNom() }} {{ eleve.getPrenom() }}" disabled>
         {% endif %}
-        
+        <label for="dateDebut" class="form-label">Date de début</label>
+        <input type="date" name="dateDebut" id="dateDebut" class="form-control">
+        <label for="dateFin" class="form-label">Date de fin</label>
+        <input type="date" name="dateFin" id="dateFin" class="form-control">
+        <label for="type" class="form-label">Type</label>
+        <select name="type" id="type" class="form-select">
+            <option value="stage">Stage</option>
+            <option value="alternance">Alternance</option>
+        </select>
+        <label for="entreprise" class="form-label">Entreprise</label>
+        <select name="entreprise" id="entreprise" class="form-select">
+            {% for entreprise in entreprises %}
+                <option value="{{ entreprise.getNumero() }}">{{ entreprise.getRaisonSociale() }}</option>
+            {% endfor %}
+        </select>
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" id="description" class="form-control"></textarea>
+        <label for="observations" class="form-label">Observations</label>
+        <textarea name="observations" id="observations" class="form-control"></textarea>
+        <label for="professeur" class="form-label">Professeur</label>
+        <select name="professeur" id="professeur" class="form-select">
+            {% for professeur in professeurs %}
+                <option value="{{ professeur.getNumero() }}">{{ professeur.getPrenom() }} {{ professeur.getNom() }}</option>
+            {% endfor %}
+        </select>
         {% if redirect is defined %}
             <input type="hidden" name="redirect" value="{{ redirect }}">
         {% endif %}
+        <button type="submit" class="btn btn-primary">Valider</button>
     </form>
 {% endblock %}
