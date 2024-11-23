@@ -10,7 +10,7 @@ require_once 'src/Login.php';
  */
 function hasAutorisationProfesseur(): bool
 {
-	$user = Login\getConnectedUser();
+	$user = \Login\getConnectedUser();
 	if (is_null($user))
 		return false;
 	return $user instanceof \Professeur;
@@ -23,7 +23,7 @@ function hasAutorisationProfesseur(): bool
  */
 function hasAutorisationEtudiant(int $numero_etudiant): bool
 {
-	$user = Login\getConnectedUser();
+	$user = \Login\getConnectedUser();
 	if (is_null($user))
 		return false;
 	if ($user instanceof \Professeur)
