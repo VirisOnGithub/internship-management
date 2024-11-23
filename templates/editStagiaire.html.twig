@@ -24,7 +24,7 @@
         <div class="mb-3">
             <label for="classe" class="form-label">Classe</label>
             <select id="classe" name="classe" class="form-select" required>
-            {% for classe in classes %}
+            {% for classe in classes|sort((a, b) => a.getNom() <=> b.getNom()) %}
                 <option value="{{ classe.getNumero() }}" {% if classe.getId() == stagiaire.getClasse().getId() %}selected{% endif %}>{{ classe.getNom() }}</option>
             {% endfor %}
             </select>

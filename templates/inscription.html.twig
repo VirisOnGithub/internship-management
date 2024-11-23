@@ -8,7 +8,7 @@
         <label for="eleve" class="form-label">Elève</label>
         {% if prof is defined %}
             <select name="eleve" id="eleve" class="form-select">
-                {% for eleve in eleves %}
+                {% for eleve in eleves|sort((a, b) => a.getNom() <=> b.getNom()) %}
                     <option value="{{ eleve.getNumero() }}">{{ eleve.getNom() }} {{ eleve.getPrenom() }}</option>
                 {% endfor %}
             </select>
@@ -29,7 +29,7 @@
             <input type="text" name="entreprise" id="entreprise" class="form-control" value="{{ idEntreprise.getRaisonSociale() }}" disabled>
         {% else %}
             <select name="entreprise" id="entreprise" class="form-select">
-                {% for entreprise in entreprises %}
+                {% for entreprise in entreprises|sort((a, b) => a.getRaisonSociale() <=> b.getRaisonSociale()) %}
                     <option value="{{ entreprise.getNumero() }}">{{ entreprise.getRaisonSociale() }}</option>
                 {% endfor %}
             </select>
@@ -40,7 +40,7 @@
         <textarea name="observations" id="observations" class="form-control"></textarea>
         <label for="professeur" class="form-label">Professeur</label>
         <select name="professeur" id="professeur" class="form-select">
-            {% for professeur in professeurs %}
+            {% for professeur in professeurs|sort((a, b) => a.getNom() <=> b.getNom()) %}
                 <option value="{{ professeur.getNumero() }}">{{ professeur.getPrenom() }} {{ professeur.getNom() }}</option>
             {% endfor %}
         </select>

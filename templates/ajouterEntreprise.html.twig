@@ -22,7 +22,7 @@
         <input type="text" name="lienSite" id="lienSite" class="form-control">
         <label for="specialites">Spécialités (maintenir la touche <kbd>Ctrl</kbd> pour sélectionner plusieurs spécialités)</label>
         <select name="specialites[]" id="specialites" class="form-control" multiple required>
-            {% for specialite in specialites %}
+            {% for specialite in specialites|sort((a, b) => a.getNom() <=> b.getNom()) %}
                 <option value="{{ specialite.getNumero() }}">{{ specialite.getNom() }}</option>
             {% endfor %}
         </select>

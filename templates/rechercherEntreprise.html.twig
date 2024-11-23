@@ -10,7 +10,7 @@
         <label for="ville">Ville</label>
         <input type="text" name="ville">
         {# <select name="specialites[]" id="specialites" class="form-control" multiple required>
-            {% for specialite in specialites %}
+            {% for specialite in specialites|sort((a, b) => a.getNom() <=> b.getNom()) %}
                 <option value="{{ specialite.getNumero() }}">{{ specialite.getNom() }}</option>
             {% endfor %}
         </select> #}

@@ -16,7 +16,7 @@
         <input class="form-control" type="number" min="2024" max="2099" step="1" value="2016" id="anneeObtention" name="anneeObtention">
         <label class="form-label" for="classe">Classe</label>
         <select class="form-control" name="classe" id="classe">
-            {% for classe in classes %}
+            {% for classe in classes|sort((a, b) => a.getNom() <=> b.getNom()) %}
                 <option value="{{ classe.getNumero() }}">{{ classe.getNom() }}</option>
             {% endfor %}
         </select>
