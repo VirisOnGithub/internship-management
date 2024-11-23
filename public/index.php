@@ -34,5 +34,6 @@ $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addFunction(new \Twig\TwigFunction('isUserConnected', 'Login\isUserConnected'));
 $twig->addFunction(new \Twig\TwigFunction('getFirstLetters', 'Login\getFirstLetters'));
+$twig->addFunction(new \Twig\TwigFunction('getConnectedUser', 'Login\getConnectedUser'));
 require_once $controlleur;
 echo $twig->render($vue, $data ?? []);

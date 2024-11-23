@@ -38,7 +38,7 @@
                             <li class="nav-item">
                                 {% if isUserConnected() %}
                                     <div class="d-flex">
-                                        <a class="nav-link me-3 me-lg-0" aria-current="page" href="#">
+                                        <a class="nav-link me-3 me-lg-0" aria-current="page" href="index.php?page=voirStagiaire&id={{ getConnectedUser().getNumero }}">
                                             <span class="bg-primary p-2 rounded-circle">{{ getFirstLetters() }}</span>
                                         </a>
                                         <a class="nav-link rounded" id="connexion" aria-current="page" href="index.php?page=logout">
