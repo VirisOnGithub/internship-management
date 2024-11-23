@@ -24,7 +24,7 @@
         <input type="email" class="form-control" id="email" name="email" value="{{ entreprise.GetEmail() }}" required>
         <label class="form-label" for="lienSite">Site web</label>
         <input type="text" class="form-control" id="lienSite" name="lienSite" value="{{ entreprise.getLienSite() }}">
-        <label class="form-label" for="niveau">Niveau</label>
+        <label class="form-label" for="niveauEtude">Niveau</label>
         <select class="form-control" id="niveauEtude" name="niveauEtude[]" multiple required>
             {% for i in ["BAC+1", "BAC+2", "BAC+3", "BAC+4", "BAC+5"] %}
                 <option value="{{ i }}" {% if i in niveauEtude %}selected{% endif %}>{{ i }}</option>
@@ -34,7 +34,7 @@
         <input type="checkbox" class="form-check-input" id="activite" name="activite" {% if entreprise.isEnActivite() %}checked{% endif %}>
         <label class="form-label" for="specialites">Spécialités</label>
         <select class="form-control" id="specialites" name="specialites[]" multiple required>
-            {% for specialite in specialites|sort((a, b) => a.getNom() <=> b.getNom()) %}
+            {% for specialite in specialites %}
                 <option value="{{ specialite.getId() }}" {% if specialite.getNom() in entreprise.getSpecialites()|map(s => s.getNom()) %}selected{% endif %}>{{ specialite.getNom() }}</option>
             {% endfor %}
         </select>

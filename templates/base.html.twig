@@ -2,8 +2,13 @@
 <html>
     <head>
         <title>{% block title %}Internship Management{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../public/css/index.css">
         <link rel="stylesheet" href="../public/css/main.css">
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     </head>
     <body>
         <header class="p-3">
@@ -57,7 +62,7 @@
             </nav>
         </header>
         {% block content %}{% endblock %}
-        <div style="height: 1.5rem"></div>
+        <div style="height: 5rem"></div>
         <footer class="footer fixed-bottom d-flex justify-content-center align-items-center bg-primary">
             <p class="my-1 text-dark">&copy; {{"now"|date("Y")}} - Clément RENIERS &amp; Simon PRIBYLSKI</p>
         </footer>

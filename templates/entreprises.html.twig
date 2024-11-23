@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             {% for entreprise in entreprises %}
-                <tr>
+                <tr data-aos="fade-up">
                     <td class="text-center">
                         <a href="index.php?page=voirEntreprise&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                         <a href="index.php?page=inscription&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-handshake fa-2xl"></i></a>
@@ -46,4 +46,8 @@
             {% endfor %}
         </tbody>
     </table>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 {% endblock %}

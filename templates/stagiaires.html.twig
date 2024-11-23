@@ -32,7 +32,7 @@
                 {% set precId = -1 %}
                 {% for stage in stages %}
                     {% if precId != stage.getStagiaire().getNumero() %}
-                        <tr>
+                        <tr data-aos="fade-up">
                             <td class="text-center">
                                 <a href="index.php?page=voirStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                                 <a href="index.php?page=editStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
@@ -42,7 +42,7 @@
                                 {{ stage.getStagiaire().getPrenom() ~ " " ~ stage.getStagiaire().getNom() }}
                             </td>
                     {% else %}
-                        <tr>
+                        <tr data-aos="fade-up">
                             <td></td>
                             <td></td>
                         
@@ -58,7 +58,7 @@
                 {% endfor %}
 
 				{% for etudiant in etudiants_non_stagiaires %}
-                    <tr>
+                    <tr data-aos="fade-up">
                         <td class="text-center">
                             <a href="index.php?page=voirStagiaire&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                             <a href="index.php?page=editStagiaire&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
@@ -92,4 +92,8 @@
         {% set message = add == 'success' ? 'L\'étudiant a bien été ajouté.' : 'Erreur pendant l\'ajout. Veuillez réessayer' %}
         {% include 'toasts.twig' with {'message': message, 'color': add == 'success' ? 'success' : 'danger'} only %}
     {% endif %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 {% endblock %}
