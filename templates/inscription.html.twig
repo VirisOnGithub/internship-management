@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+    <form class="form">
+        <h2>Inscription</h2>
+        {% if prof is defined %}
+            <label for="eleve" class="form-label">Elève</label>
+            <select name="eleve" id="eleve" class="form-select">
+                {% for eleve in eleves %}
+                    <option value="{{ eleve.id }}">{{ eleve.nom }} {{ eleve.prenom }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+        
+        {% if redirect is defined %}
+            <input type="hidden" name="redirect" value="{{ redirect }}">
+        {% endif %}
+    </form>
+{% endblock %}
