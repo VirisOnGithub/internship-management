@@ -25,11 +25,15 @@
             <option value="alternance">Alternance</option>
         </select>
         <label for="entreprise" class="form-label">Entreprise</label>
-        <select name="entreprise" id="entreprise" class="form-select">
-            {% for entreprise in entreprises %}
-                <option value="{{ entreprise.getNumero() }}">{{ entreprise.getRaisonSociale() }}</option>
-            {% endfor %}
-        </select>
+        {% if idEntreprise is defined %}
+            <input type="text" name="entreprise" id="entreprise" class="form-control" value="{{ idEntreprise.getRaisonSociale() }}" disabled>
+        {% else %}
+            <select name="entreprise" id="entreprise" class="form-select">
+                {% for entreprise in entreprises %}
+                    <option value="{{ entreprise.getNumero() }}">{{ entreprise.getRaisonSociale() }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
         <label for="description" class="form-label">Description</label>
         <textarea name="description" id="description" class="form-control"></textarea>
         <label for="observations" class="form-label">Observations</label>

@@ -49,8 +49,13 @@
         $data = [];
     
         $data['eleves'] = Crud\getEtudiants();
-        $data['entreprises'] = Crud\getEntreprises();
         $data['professeurs'] = Crud\getProfesseurs();
+
+        if(isset($_GET['id'])){
+            $data['idEntreprise'] = Crud\getEntrepriseById($_GET['id']);
+        } else {
+            $data['entreprises'] = Crud\getEntreprises();
+        }
     
         if($user instanceof \Professeur){
             $data['prof'] = $user->getNom() . " " . $user->getPrenom();
