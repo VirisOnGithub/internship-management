@@ -18,7 +18,8 @@ $data = [
     "etudiants_non_stagiaires" => $etudiants_non_stagiaires
 ];
 
-foreach (["delete", "update"] as $message) {
+// handle toast messages
+foreach (["delete", "update", "add", "registered"] as $message) {
     if (isset($_GET[$message])) {
         $data[$message] = $_GET[$message];
     }

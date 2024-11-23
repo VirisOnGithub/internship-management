@@ -42,7 +42,7 @@
 
         $result = Crud\createStage($stage);
 
-        header("Location: index.php?page=stagiaires");
+        header("Location: index.php?page=stagiaires&registered=" . ($result ? "success" : "error"));
     } else {
         require_once "src/crud/Read.php";
 

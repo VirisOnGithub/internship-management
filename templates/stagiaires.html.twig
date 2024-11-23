@@ -92,6 +92,10 @@
         {% set message = add == 'success' ? 'L\'étudiant a bien été ajouté.' : 'Erreur pendant l\'ajout. Veuillez réessayer' %}
         {% include 'toasts.twig' with {'message': message, 'color': add == 'success' ? 'success' : 'danger'} only %}
     {% endif %}
+    {% if registered is defined %}
+        {% set message = registered == 'success' ? 'L\'étudiant a bien été inscrit.' : 'Erreur pendant l\'inscription. Veuillez réessayer' %}
+        {% include 'toasts.twig' with {'message': message, 'color': registered == 'success' ? 'success' : 'danger'} only %}
+    {% endif %}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
