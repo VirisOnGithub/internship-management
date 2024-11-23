@@ -4,7 +4,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $professeur = Crud\getProfesseurById($id);
     $data = [
-        'stagiaire' => $stagiaire
+        'professeur' => $professeur
     ];
 } else {
     header('Location: index.php');
