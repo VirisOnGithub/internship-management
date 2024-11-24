@@ -5,11 +5,6 @@
 
     $user = Login\getConnectedUser();
 
-    if(!Permissions\hasAutorisationEtudiant($user->getNumero())){
-        header("Location: index.php?page=401");
-        exit();
-    }
-
     if(
         isset($_POST['dateDebut']) && !empty($_POST['dateDebut']) &&
         isset($_POST['dateFin']) && !empty($_POST['dateFin']) &&
