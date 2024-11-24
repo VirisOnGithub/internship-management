@@ -3,6 +3,7 @@
 require_once 'src/crud/Read.php';
 require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
+require_once 'src/HttpResponses.php';
 
 if(Permissions\hasAutorisationProfesseur()){
     if (
@@ -42,8 +43,8 @@ if(Permissions\hasAutorisationProfesseur()){
             "annee" => $annee
         ];
     } else {
-        header('Location: index.php?pag=401.php');
+        redirect401();
     }
 } else {
-    header('Location: index.php?page=401');
+    redirect401();
 }

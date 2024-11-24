@@ -4,12 +4,7 @@ require_once 'src/crud/Read.php';
 require_once 'src/crud/Update.php';
 require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
-
-function redirect()
-{
-    header('Location: index.php?page=entreprises');
-    exit();
-}
+require_once 'src/HttpResponses.php';
 
 if(Permissions\hasAutorisationProfesseur())
 {
@@ -54,8 +49,8 @@ if(Permissions\hasAutorisationProfesseur())
         ];
     } else {
         // Qu'est-ce que tu fais là ?
-        redirect();
+        redirect401();
     }
 } else {
-    redirect();
+    redirect401();
 }

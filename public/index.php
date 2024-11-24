@@ -24,9 +24,8 @@ $vue = $page . '.html.twig';
 
 // If the controller or vue is not found, return 404
 if (!file_exists($controlleur) || !file_exists($_SERVER['DOCUMENT_ROOT'] . "/templates/" . $vue)) {
-    http_response_code(404);
-    header("Location: /public/index.php?page=404");
-    exit;
+    require_once 'src/HttpResponses.php';
+    redirect404();
 }
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
