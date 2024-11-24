@@ -1,6 +1,8 @@
 <?php
 
 require_once "src/crud/Read.php";
+require_once "src/RequireLogin.php";
+require_once "src/Permissions.php";
 
 $stages = Crud\getStages();
 $etudiants_non_stagiaires = Crud\getEtudiants();
@@ -15,7 +17,8 @@ foreach ($stages as $stage) {
 
 $data = [
     "stages" => $stages,
-    "etudiants_non_stagiaires" => $etudiants_non_stagiaires
+    "etudiants_non_stagiaires" => $etudiants_non_stagiaires,
+    "prof" => Permissions\hasAutorisationProfesseur(),
 ];
 
 // handle toast messages

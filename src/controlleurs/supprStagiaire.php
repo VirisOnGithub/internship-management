@@ -2,8 +2,10 @@
 
 require_once 'src/crud/Read.php';
 require_once 'src/crud/Delete.php';
+require_once 'src/RequireLogin.php';
+require_once 'src/Permissions.php';
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && Permissions\hasAutorisationProfesseur()) {
     $id = $_GET['id'];
     $stagiaire = Crud\getEtudiantById($id);
     if ($stagiaire) {
