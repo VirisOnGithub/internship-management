@@ -1,6 +1,7 @@
 <?php
 require_once "src/RequireLogin.php";
 require_once "src/crud/Read.php";
+require_once "src/Permissions.php";
 
 $nom = $_GET['nom'] ?? "";
 $ville = $_GET['ville'] ?? "";
@@ -16,4 +17,7 @@ if (empty($specs)) {
 	}
 }
 
-$data = ["entreprises" => Crud\chercherEntreprisesParCritères($nom, $ville, $specs)];
+$data = [
+	"entreprises" => Crud\chercherEntreprisesParCritères($nom, $ville, $specs),
+	"prof" => Permissions\hasAutorisationProfesseur()
+];

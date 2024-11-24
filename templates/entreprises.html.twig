@@ -26,8 +26,10 @@
                     <td class="text-center">
                         <a href="index.php?page=voirEntreprise&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                         <a href="index.php?page=inscription&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-handshake fa-2xl"></i></a>
-                        <a href="index.php?page=editEntreprise&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
-                        <a href="index.php?page=supprEntreprise&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                        {% if prof %}
+                            <a href="index.php?page=editEntreprise&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
+                            <a href="index.php?page=supprEntreprise&id={{ entreprise.getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                        {% endif %}
                     </td>
                     <td>{{ entreprise.getRaisonSociale() }}</td>
                     <td>{{ entreprise.getRue() }}</td>
