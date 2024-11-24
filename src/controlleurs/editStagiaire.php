@@ -38,5 +38,5 @@ if (
         "annee" => $annee
     ];
 } else {
-    header('Location: index.php?pag=404.php');
+    header('Location: index.php?page=400.php');
 }
