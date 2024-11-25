@@ -24,7 +24,7 @@ function testRead(): void
 	Crud\getStageById(1);
 
 	Crud\getEntrepriseSpecialites(Crud\getEntrepriseById(1));
-	Crud\getProfesseurClasses(Crud\getProfesseurById(1));
+	Crud\getProfesseurClasses(Crud\getProfesseurById(1)->getNumero());
 
 	assert(sizeof(Crud\chercherEntreprise("ll")) == 7);
 

@@ -4,6 +4,7 @@ namespace Crud;
 
 require_once('src/db/SqlOperations.php');
 require_once('src/db/ModeleFactory.php');
+require_once('src/modele/ClassesProf.php');
 
 use function SqlOperations\getLines;
 use function SqlOperations\getLinesWhere;
@@ -159,13 +160,19 @@ function getEntrepriseSpecialites(\Entreprise $entreprise): array
 	return $specialites;
 }
 
-function getProfesseurClasses(\Professeur $professeur): array
+function getProfesseurClasses(int $prof_id): \ClassesProf
 {
 	$classes = [];
-	foreach (getLinesWhere("prof_classe JOIN classe USING(num_classe)", ["num_prof" => $professeur->getNumero()]) as $classe_line) {
-		array_push($classes, \ModeleFactory\createClasseFromTable($classe_line));
+	$classe_principale = null;
+	foreach (getLinesWhere("prof_classe JOIN classe USING(num_classe)", ["num_prof" => $prof_id]) as $classe_line) {
+		$nouvelle_classe = \ModeleFactory\createClasseFromTable($classe_line);
+		if ((int) $classe_line['est_prof_principal'] == 1) {
+			$classe_principale = $nouvelle_classe;
+		} else {
+			array_push($classes, $nouvelle_classe);
+		}
 	}
-	return $classes;
+	return new \ClassesProf(getProfesseurById($prof_id), $classe_principale, $classes);
 }
 
 function chercherEntreprise(string $nom): array
