@@ -40,19 +40,27 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0">
-                            <li class="nav-item">
+                            <li class="nav-item dropdown">
                                 {% if isUserConnected() %}
                                     {% set isProf = (getConnectedUser().getEmail() is defined) %}
-                                    <div class="d-flex">
-                                        <a class="nav-link me-3 me-lg-0 position-relative" aria-current="page" href="index.php?page=voir{{ isProf ? 'Professeur' : 'Stagiaire' }}&id={{ getConnectedUser().getNumero() }}">
-                                            <span class="bg-primary p-2 rounded-circle {% if isProf %}bg-success{% endif %}">{{ getFirstLetters() }}</span>
-                                            <div class="position-absolute top-100 start-100 bg-dark rounded-circle  d-flex justify-content-center align-items-center" style="transform: translate(-100%, -100%); width: 20px; height: 20px;"><i class="fa-solid fa-{{ isProf ? "user-tie" : "graduation-cap" }} fa-sm text-white"></i></div>
-                                        </a>
-                                        <a class="nav-link rounded" id="connexion" aria-current="page" href="index.php?page=logout">
-                                            <i class="me-2 fa-solid fa-right-from-bracket"></i>
-                                            Déconnexion
-                                        </a>
-                                    </div
+                                    <a class="nav-link me-3 me-lg-0 position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                                        <span class="bg-primary p-2 rounded-circle h4 {% if isProf %}bg-success{% endif %}">{{ getFirstLetters() }}</span>
+                                        <div class="position-absolute top-100 start-50 bg-dark rounded-circle  d-flex justify-content-center align-items-center" style="transform: translate(-200%, -100%); width: 20px; height: 20px;"><i class="fa-solid fa-{{ isProf ? "user-tie" : "graduation-cap" }} fa-sm text-white"></i></div>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <a class="nav-link dropdown-item" href="index.php?page=voir{{ isProf ? 'Professeur' : 'Stagiaire' }}&id={{ getConnectedUser().getNumero() }}">
+                                                <i class="me-2 fa-solid fa-eye"></i>
+                                                Profil
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link dropdown-item" id="connexion" aria-current="page" href="index.php?page=logout">
+                                                <i class="me-2 fa-solid fa-right-from-bracket"></i>
+                                                Déconnexion
+                                            </a>
+                                        </li>
+                                    </ul>
                                 {% else %}
                                     <a class="nav-link rounded" id="connexion" aria-current="page" href="index.php?page=login"><i class="me-2 fa-solid fa-right-from-bracket"></i>Connexion</a>
                                 {% endif %}
