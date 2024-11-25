@@ -28,7 +28,7 @@ input[type="submit"].form-control:hover {
     transition: all 0.3s ease;
 }
 
-#connexion:hover {
+#connexion:hover, #seeProfile:hover {
     background-color: var(--bs-primary);
     &> i {
         padding-right: 10px;
