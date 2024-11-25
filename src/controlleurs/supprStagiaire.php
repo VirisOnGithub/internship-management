@@ -6,7 +6,7 @@ require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
 require_once 'src/HttpResponses.php';
 
-if(Permissions\hasAutorisationProfesseur()){
+if (Permissions\hasAutorisationProfesseur()) {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $stagiaire = Crud\getEtudiantById($id);
@@ -17,8 +17,8 @@ if(Permissions\hasAutorisationProfesseur()){
         }
         header('Location: index.php?page=stagiaires&delete=success');
     } else {
-        redirect404();
+        redirectError(404);
     }
 } else {
-    redirect401();
+    redirectError(401);
 }

@@ -6,9 +6,8 @@ require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
 require_once 'src/HttpResponses.php';
 
-if(Permissions\hasAutorisationProfesseur())
-{
-    if(isset($_GET['id'])){
+if (Permissions\hasAutorisationProfesseur()) {
+    if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $entreprise = Crud\getEntrepriseById($id);
         if ($entreprise) {
@@ -19,8 +18,8 @@ if(Permissions\hasAutorisationProfesseur())
         header('Location: index.php?page=entreprises&delete=success');
     } else {
         // si quelqu'un arrive ici, quelqu'un essaie de truander
-        redirect404();
+        redirectError(404);
     }
 } else {
-    redirect401();
+    redirectError(401);
 }

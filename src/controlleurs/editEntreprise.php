@@ -6,12 +6,11 @@ require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
 require_once 'src/HttpResponses.php';
 
-if(Permissions\hasAutorisationProfesseur())
-{
+if (Permissions\hasAutorisationProfesseur()) {
     if (isset($_POST['raisonSociale'])) {
         $niveauEtudeTab = $_POST['niveauEtude'];
         $niveauEtude = implode('/', $niveauEtudeTab);
-    
+
         $entreprise = new Entreprise(
             $_POST['id'],
             $_POST['raisonSociale'],
@@ -28,14 +27,14 @@ if(Permissions\hasAutorisationProfesseur())
             $niveauEtude,
             $_POST['activite']
         );
-    
+
         try {
             Crud\updateEntreprise($entreprise);
         } catch (Exception $e) {
             header('Location: index.php?page=entreprises&update=error');
             exit();
         }
-    
+
         header('Location: index.php?page=entreprises&update=success');
         exit();
     } elseif (isset($_GET['id'])) {
@@ -49,8 +48,8 @@ if(Permissions\hasAutorisationProfesseur())
         ];
     } else {
         // Qu'est-ce que tu fais là ?
-        redirect401();
+        redirectError(401);
     }
 } else {
-    redirect401();
+    redirectError(401);
 }

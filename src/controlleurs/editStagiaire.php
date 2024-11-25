@@ -5,7 +5,7 @@ require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
 require_once 'src/HttpResponses.php';
 
-if(Permissions\hasAutorisationProfesseur()){
+if (Permissions\hasAutorisationProfesseur()) {
     if (
         isset($_POST['id']) &&
         isset($_POST['nom']) &&
@@ -43,8 +43,8 @@ if(Permissions\hasAutorisationProfesseur()){
             "annee" => $annee
         ];
     } else {
-        redirect401();
+        redirectError(401);
     }
 } else {
-    redirect401();
+    redirectError(401);
 }

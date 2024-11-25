@@ -3,7 +3,7 @@ require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
 require_once 'src/HttpResponses.php';
 
-if(Permissions\hasAutorisationProfesseur()){
+if (Permissions\hasAutorisationProfesseur()) {
     if (isset($_POST['nom'])) {
         require_once "src/crud/Create.php";
         require_once "src/crud/Read.php";
@@ -25,5 +25,5 @@ if(Permissions\hasAutorisationProfesseur()){
         $data = array("classes" => Crud\getClasses());
     }
 } else {
-    redirect401();
+    redirectError(401);
 }

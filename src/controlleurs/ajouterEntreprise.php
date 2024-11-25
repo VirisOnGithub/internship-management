@@ -3,7 +3,7 @@ require_once 'src/RequireLogin.php';
 require_once 'src/Permissions.php';
 require_once 'src/HttpResponses.php';
 
-if(Permissions\hasAutorisationProfesseur()){
+if (Permissions\hasAutorisationProfesseur()) {
     if (
         isset($_POST['raisonSociale'])
         && isset($_POST['nomContact'])
@@ -37,18 +37,18 @@ if(Permissions\hasAutorisationProfesseur()){
             $niveauEtude,
             true
         );
-    
+
         foreach ($_POST['specialites'] as $specialite) {
             $entreprise->ajouterSpecialite(new Specialite(intval($specialite), "non_utilisé"));
         }
-    
+
         Crud\createEntreprise($entreprise);
-    
+
         header("Location: index.php?page=entreprises");
     } else {
         require_once "src/crud/Read.php";
         $data = array("specialites" => Crud\getSpecialites());
     }
 } else {
-    redirect401();
+    redirectError(401);
 }
