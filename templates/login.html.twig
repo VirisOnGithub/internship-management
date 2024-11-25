@@ -5,10 +5,6 @@
 {% block content %}
     <div class="row">
         <form class="form bg-primary col-6 offset-3 rounded" method="post" id="form-student">
-            <div class="form-check d-flex justify-content-center">
-                <input class="form-check-input" type="checkbox" id="is_student" name="is_student" value="1" checked>
-                <label class="form-label" for="is_student">Étudiant ?</label>
-            </div>
             <label class="form-label" for="username">Nom d'utilisateur</label>
             <input class="form-control" type="text" id="username" name="username" value="{{ username }}" required>
             <label class="form-label" for="password">Mot de passe</label>
