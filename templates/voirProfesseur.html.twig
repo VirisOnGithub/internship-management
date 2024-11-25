@@ -11,5 +11,14 @@
             <p><strong>Login :</strong> {{ professeur.getLogin() }}</p>
             <p><strong>Email</strong> {{ professeur.getEmail() }}</p>
         </div>
+        <div class="card-footer">
+            <p><strong>Classe principale : </strong>{{ classes.getClassePrincipale().getNom() }}</p>
+            <p><strong>Classes :</strong></p>
+            <ul>
+                {% for classe in classes.getClasses() %}
+                    <li>{{ classe.getNom() }}</li>
+                {% endfor %}
+            </ul> 
+        </div>
     </div>
 {% endblock %}
