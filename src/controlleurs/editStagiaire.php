@@ -30,6 +30,7 @@ if (Permissions\hasAutorisationProfesseur()) {
         try {
             Crud\updateEtudiant($data["stagiaire"]);
         } catch (Exception $e) {
+            Logs\write($e);
             setNextToast(ToastType::Error, "Erreur pendant la modification. Veuillez réessayer");
         }
         setNextToast(ToastType::Success, "L'étudiant a bien été modifié.");

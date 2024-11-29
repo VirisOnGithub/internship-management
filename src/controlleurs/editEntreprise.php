@@ -31,6 +31,7 @@ if (Permissions\hasAutorisationProfesseur()) {
         try {
             Crud\updateEntreprise($entreprise);
         } catch (Exception $e) {
+            Logs\write($e);
             header('Location: index.php?page=entreprises&update=error');
             exit();
         }

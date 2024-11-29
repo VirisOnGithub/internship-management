@@ -23,7 +23,7 @@ class Connection
 			$this->db = new \PDO("mysql:host=$host;dbname=$db_name", $user, $password);
 			$this->db->exec('SET NAMES "UTF8"');
 		} catch (\PDOException $e) {
-			echo 'Erreur : ' . $e->getMessage();
+			\Logs\write($e);
 			die();
 		}
 	}

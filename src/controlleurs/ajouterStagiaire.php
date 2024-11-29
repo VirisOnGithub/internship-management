@@ -22,6 +22,7 @@ if (Permissions\hasAutorisationProfesseur()) {
             Crud\createEtudiant($etudiant);
             setNextToast(ToastType::Success, "L'étudiant a bien été ajouté.");
         } catch (Exception $e) {
+            Logs\write($e);
             setNextToast(ToastType::Error, "Erreur pendant l'ajout. Veuillez réessayer");
         }
         header("Location: index.php?page=stagiaires");
