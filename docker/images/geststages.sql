@@ -139,7 +139,7 @@ CREATE TABLE `etudiant` (
   `nom_etudiant` varchar(64) NOT NULL,
   `prenom_etudiant` varchar(64) NOT NULL,
   `annee_obtention` year(4) DEFAULT NULL,
-  `login_etudiant` varchar(8) NOT NULL,
+  `login_etudiant` varchar(8) NOT NULL UNIQUE,
   `mdp_etudiant` varchar(60) NOT NULL,
   `num_classe` int(32) NOT NULL,
   `en_activite` tinyint(1) NOT NULL DEFAULT 1,
@@ -287,9 +287,9 @@ CREATE TABLE `professeur` (
   `num_prof` int(32) NOT NULL AUTO_INCREMENT,
   `nom_prof` varchar(64) NOT NULL,
   `prenom_prof` varchar(64) NOT NULL,
-  `login_prof` varchar(8) NOT NULL,
+  `login_prof` varchar(8) NOT NULL UNIQUE,
   `mdp_prof` varchar(60) NOT NULL,
-  `email_prof` varchar(100) NOT NULL,
+  `email_prof` varchar(100) NOT NULL UNIQUE,
   PRIMARY KEY (`num_prof`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
