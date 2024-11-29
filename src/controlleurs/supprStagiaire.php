@@ -13,9 +13,9 @@ if (Permissions\hasAutorisationProfesseur()) {
         if ($stagiaire) {
             Crud\deleteEtudiant($stagiaire);
         } else {
-            setNextToast("danger", "Erreur pendant la suppression. Veuillez réessayer");
+            setNextToast(ToastType::Error, "Erreur pendant la suppression. Veuillez réessayer");
         }
-        setNextToast("success", "L\'étudiant a bien été supprimé.");
+        setNextToast(ToastType::Success, "L\'étudiant a bien été supprimé.");
         header('Location: index.php?page=stagiaires');
     } else {
         redirectError(404);

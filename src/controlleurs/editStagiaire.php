@@ -30,9 +30,9 @@ if (Permissions\hasAutorisationProfesseur()) {
         try {
             Crud\updateEtudiant($data["stagiaire"]);
         } catch (Exception $e) {
-            setNextToast("danger", "Erreur pendant la modification. Veuillez réessayer");
+            setNextToast(ToastType::Error, "Erreur pendant la modification. Veuillez réessayer");
         }
-        setNextToast("success", "L'étudiant a bien été modifié.");
+        setNextToast(ToastType::Success, "L'étudiant a bien été modifié.");
         header('Location: index.php?page=stagiaires');
     } elseif (isset($_GET['id'])) {
         $id = $_GET['id'];

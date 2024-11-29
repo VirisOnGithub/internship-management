@@ -17,9 +17,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         header("Location: " . $page_redirect);
         exit;
     } else {
-        setToast("danger", "Nom d'utilisateur ou mot de passe incorrect. Veuillez réessayer.");
+        setToast(ToastType::Error, "Nom d'utilisateur ou mot de passe incorrect. Veuillez réessayer.");
     }
 } else {
     if (isset($_GET['redirect']))
-        setToast("primary", "Vous n'êtes pas connecté.<br/>Veuillez vous connecter.");
+        setToast(ToastType::Info, "Vous n'êtes pas connecté.<br/>Veuillez vous connecter.");
 }

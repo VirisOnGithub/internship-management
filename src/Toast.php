@@ -2,20 +2,42 @@
 
 require_once 'src/Logs.php';
 
-function setToast(string $type, string $message): void
+enum ToastType
+{
+	case Error;
+	case Success;
+	case Info;
+}
+
+function toString(ToastType $type): string
+{
+	switch ($type) {
+		case ToastType::Error:
+			return "danger";
+
+		case ToastType::Success:
+			return "success";
+
+		case ToastType::Info:
+			return "primary";
+	}
+	return "none";
+}
+
+function setToast(ToastType $toastType, string $message): void
 {
 	global $toast_data;
 
 	$toast_data["toast"] = [
-		"type" => $type,
+		"type" => toString($toastType),
 		"message" => $message
 	];
 }
 
-function setNextToast(string $type, string $message): void
+function setNextToast(ToastType $toastType, string $message): void
 {
 	$_SESSION["last_toast"] = [
-		"type" => $type,
+		"type" => toString($toastType),
 		"message" => $message
 	];
 }
