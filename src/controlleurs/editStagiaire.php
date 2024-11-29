@@ -17,7 +17,7 @@ if (Permissions\hasAutorisationProfesseur()) {
     ) {
         require_once 'src/crud/Update.php';
         $mdp = empty($_POST['password']) ? Crud\getEtudiantById($_POST['id'])->getMdp() : password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $data = new Etudiant(
+        $data["stagiaire"] = new Etudiant(
             $_POST['id'],
             $_POST['nom'],
             $_POST['prenom'],
@@ -28,11 +28,12 @@ if (Permissions\hasAutorisationProfesseur()) {
             $_POST['isActive']
         );
         try {
-            Crud\updateEtudiant($data);
+            Crud\updateEtudiant($data["stagiaire"]);
         } catch (Exception $e) {
-            header('Location: index.php?page=stagiaires&update=error');
+            setNextToast("danger", "Erreur pendant la modification. Veuillez réessayer");
         }
-        header('Location: index.php?page=stagiaires&update=success');
+        setNextToast("success", "L'étudiant a bien été modifié.");
+        header('Location: index.php?page=stagiaires');
     } elseif (isset($_GET['id'])) {
         $id = $_GET['id'];
         $stagiaire = Crud\getEtudiantById($id);

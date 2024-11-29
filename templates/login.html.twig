@@ -15,11 +15,4 @@
             {% endif %}
         </form>
     </div>
-
-    {% if not_connected is defined %}
-        {% include 'toasts.twig' with {'message': 'Vous n\'êtes pas connecté.<br>Veuillez vous connecter.', 'color': 'primary'} only %}
-    {% endif %}
-    {% if login_error is defined %}
-        {% include 'toasts.twig' with {'message': 'Nom d\'utilisateur ou mot de passe incorrect. Veuillez réessayer', 'color': 'danger'} only %}
-    {% endif %}
 {% endblock %}

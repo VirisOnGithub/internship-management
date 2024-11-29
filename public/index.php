@@ -11,11 +11,15 @@ session_start();
 require_once 'src/Login.php';
 require_once 'vendor/autoload.php';
 
+require_once 'src/Toast.php';
+
 // Default page is accueil
 if (!isset($_GET['page'])) {
     header("Location: /public/index.php?page=accueil");
     exit;
 }
+
+$data = [];
 
 $page = $_GET['page'];
 
@@ -33,5 +37,11 @@ $twig = new \Twig\Environment($loader);
 $twig->addFunction(new \Twig\TwigFunction('isUserConnected', 'Login\isUserConnected'));
 $twig->addFunction(new \Twig\TwigFunction('getFirstLetters', 'Login\getFirstLetters'));
 $twig->addFunction(new \Twig\TwigFunction('getConnectedUser', 'Login\getConnectedUser'));
+
+restoreLastToast();
+
 require_once $controlleur;
-echo $twig->render($vue, $data ?? []);
+
+$data = array_merge($data, $toast_data ?? []);
+
+echo $twig->render($vue, $data);

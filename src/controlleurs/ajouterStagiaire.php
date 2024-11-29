@@ -18,8 +18,13 @@ if (Permissions\hasAutorisationProfesseur()) {
             $classe,
             $_POST['isActivite'] ?? false
         );
-        Crud\createEtudiant($etudiant);
-        header("Location: index.php?page=stagiaires&add=success");
+        try {
+            Crud\createEtudiant($etudiant);
+            setNextToast("success", "L'étudiant a bien été ajouté.");
+        } catch (Exception $e) {
+            setNextToast("danger", "Erreur pendant l'ajout. Veuillez réessayer");
+        }
+        header("Location: index.php?page=stagiaires");
     } else {
         require_once "src/crud/Read.php";
         $data = array("classes" => Crud\getClasses());

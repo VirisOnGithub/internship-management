@@ -83,21 +83,4 @@
         </table>
             
     </div>
-
-    {% if delete is defined %}
-        {% set message = delete == 'success' ? 'L\'étudiant a bien été supprimé.' : 'Erreur pendant la suppression. Veuillez réessayer' %}
-        {% include 'toasts.twig' with {'message': message, 'color': delete == 'success' ? 'success' : 'danger'} only %}
-    {% endif %}
-    {% if update is defined %}
-        {% set message = update == 'success' ? 'L\'étudiant a bien été modifié.' : 'Erreur pendant la modification. Veuillez réessayer' %}
-        {% include 'toasts.twig' with {'message': message, 'color': update == 'success' ? 'success' : 'danger'} only %}
-    {% endif %}
-    {% if add is defined %}
-        {% set message = add == 'success' ? 'L\'étudiant a bien été ajouté.' : 'Erreur pendant l\'ajout. Veuillez réessayer' %}
-        {% include 'toasts.twig' with {'message': message, 'color': add == 'success' ? 'success' : 'danger'} only %}
-    {% endif %}
-    {% if registered is defined %}
-        {% set message = registered == 'success' ? 'L\'étudiant a bien été inscrit.' : 'Erreur pendant l\'inscription. Veuillez réessayer' %}
-        {% include 'toasts.twig' with {'message': message, 'color': registered == 'success' ? 'success' : 'danger'} only %}
-    {% endif %}
 {% endblock %}

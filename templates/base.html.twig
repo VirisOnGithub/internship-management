@@ -81,5 +81,8 @@
         <script>
             AOS.init();
         </script>
+        {% if toast is defined %}
+            {% include 'toasts.twig' with {'message': toast.message, 'color': toast.type} only %}
+        {% endif %}
     </body>
 </html>
