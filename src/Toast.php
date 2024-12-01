@@ -2,8 +2,6 @@
 
 require_once 'src/Logs.php';
 
-//TODO: remove all redirects with status
-
 enum ToastType
 {
 	case Error;
