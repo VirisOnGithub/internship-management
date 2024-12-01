@@ -10,12 +10,19 @@ if (Permissions\hasAutorisationProfesseur()) {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $stagiaire = Crud\getEtudiantById($id);
+
         if ($stagiaire) {
-            Crud\deleteEtudiant($stagiaire);
+            try {
+                Crud\deleteEtudiant($stagiaire);
+                setNextToast(ToastType::Success, "L'étudiant a bien été supprimé.");
+            } catch (Exception $e) {
+                Logs\write($e);
+                setNextToast(ToastType::Error, "Erreur pendant la suppression. Veuillez réessayer");
+            }
         } else {
-            setNextToast(ToastType::Error, "Erreur pendant la suppression. Veuillez réessayer");
+            setNextToast(ToastType::Error, "Le stagiare n'existe pas.");
         }
-        setNextToast(ToastType::Success, "L\'étudiant a bien été supprimé.");
+
         header('Location: index.php?page=stagiaires');
     } else {
         redirectError(404);

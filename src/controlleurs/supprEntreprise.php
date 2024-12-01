@@ -10,13 +10,19 @@ if (Permissions\hasAutorisationProfesseur()) {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $entreprise = Crud\getEntrepriseById($id);
+
         if ($entreprise) {
-            Crud\deleteEntreprise($entreprise);
+            try {
+                Crud\deleteEntreprise($entreprise);
+                setNextToast(ToastType::Success, "L'entreprise a été supprimée avec succès.");
+            } catch (Exception $e) {
+                Logs\write($e);
+                setNextToast(ToastType::Error, "Erreur pendant la suppression. Veuillez réessayer");
+            }
         } else {
             setNextToast(ToastType::Error, "L'entreprise n'existe pas.");
-            header('Location: index.php?page=entreprises');
         }
-        setNextToast(ToastType::Success, "L'entreprise a été supprimée avec succès.");
+
         header('Location: index.php?page=entreprises');
     } else {
         // si quelqu'un arrive ici, quelqu'un essaie de truander

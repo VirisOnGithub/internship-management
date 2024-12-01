@@ -34,12 +34,9 @@ if (Permissions\hasAutorisationProfesseur()) {
         } catch (Exception $e) {
             Logs\write($e);
             setNextToast(ToastType::Error, "Une erreur est survenue lors de la modification de l'entreprise.");
-            header('Location: index.php?page=entreprises');
-            exit();
         }
 
         header('Location: index.php?page=entreprises');
-        exit();
     } elseif (isset($_GET['id'])) {
         $id = $_GET['id'];
         $entreprise = Crud\getEntrepriseByIdWithSpecialites($id);

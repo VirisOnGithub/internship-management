@@ -42,7 +42,13 @@ if (Permissions\hasAutorisationProfesseur()) {
             $entreprise->ajouterSpecialite(new Specialite(intval($specialite), "non_utilisé"));
         }
 
-        Crud\createEntreprise($entreprise);
+        try {
+            Crud\createEntreprise($entreprise);
+            setNextToast(ToastType::Success, "L'entreprise a bien été ajoutée.");
+        } catch (Exception $e) {
+            Logs\write($e);
+            setNextToast(ToastType::Error, "Erreur pendant l'ajout. Veuillez réessayer");
+        }
 
         header("Location: index.php?page=entreprises");
     } else {
