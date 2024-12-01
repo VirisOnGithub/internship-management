@@ -13,9 +13,11 @@ if (Permissions\hasAutorisationProfesseur()) {
         if ($entreprise) {
             Crud\deleteEntreprise($entreprise);
         } else {
-            header('Location: index.php?page=entreprises&delete=error');
+            setNextToast(ToastType::Error, "L'entreprise n'existe pas.");
+            header('Location: index.php?page=entreprises');
         }
-        header('Location: index.php?page=entreprises&delete=success');
+        setNextToast(ToastType::Success, "L'entreprise a été supprimée avec succès.");
+        header('Location: index.php?page=entreprises');
     } else {
         // si quelqu'un arrive ici, quelqu'un essaie de truander
         redirectError(404);

@@ -30,13 +30,15 @@ if (Permissions\hasAutorisationProfesseur()) {
 
         try {
             Crud\updateEntreprise($entreprise);
+            setNextToast(ToastType::Success, "L'entreprise a été modifiée avec succès.");
         } catch (Exception $e) {
             Logs\write($e);
-            header('Location: index.php?page=entreprises&update=error');
+            setNextToast(ToastType::Error, "Une erreur est survenue lors de la modification de l'entreprise.");
+            header('Location: index.php?page=entreprises');
             exit();
         }
 
-        header('Location: index.php?page=entreprises&update=success');
+        header('Location: index.php?page=entreprises');
         exit();
     } elseif (isset($_GET['id'])) {
         $id = $_GET['id'];
