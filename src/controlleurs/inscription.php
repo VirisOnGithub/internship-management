@@ -23,6 +23,10 @@ if (
     $observations = $_POST['observations'] ?? null;
     $eleve = $user instanceof \Etudiant ? $user : Crud\getEtudiantById($_POST['eleve']);
 
+    if (!Permissions\hasAutorisationEtudiant($eleve->getNumero())) {
+        redirectError(401);
+    }
+
     $stage = new \Stage(
         -1,
         $dateDebut,
