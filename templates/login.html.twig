@@ -4,11 +4,18 @@
 
 {% block content %}
     <div class="row">
-        <form class="form bg-primary col-6 offset-3 rounded" method="post" id="form-student">
-            <label class="form-label" for="username">Nom d'utilisateur</label>
-            <input class="form-control" type="text" id="username" name="username" value="{{ username }}" required>
-            <label class="form-label" for="password">Mot de passe</label>
-            <input class="form-control" type="password" id="password" name="password" required>
+        <form class="form bg-primary col-4 rounded position-absolute top-50 start-50 translate-middle" method="post" id="form-student">
+            <h2 class="text-center pt-3">Authentification</h2>
+            <label class="form-label" for="username"></label>
+            <div class="d-flex justify-content-center bg-secondary rounded p-1">
+                <i class="fa-solid fa-at fa-xl mx-1" style="transform: translateY(50%);"></i>
+                <input class="form-control bg-secondary border-0" type="text" id="username" name="username" placeholder="Nom d'utilisateur" style="width: 85%;" required>
+            </div>
+            <label class="form-label" for="password"></label>
+            <div class="d-flex justify-content-center bg-secondary rounded p-1">
+                <i class="fa-solid fa-lock fa-xl mx-1" style="transform: translateY(50%);"></i>
+                <input class="form-control bg-secondary border-0" type="password" id="password" name="password" placeholder="Mot de passe" style="width: 85%;" required>
+            </div>
             <input class="form-control my-3" type="submit" value="Connexion">
             {% if redirect is defined %}
                 <input type="hidden" name="redirect" value="{{ redirect }}">

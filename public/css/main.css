@@ -35,3 +35,7 @@ input[type="submit"].form-control:hover {
         transition: all 0.3s ease;
     }
 }
+
+input:focus {
+    box-shadow: none !important;
+}
