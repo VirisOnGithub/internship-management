@@ -1,14 +1,20 @@
 <?php
 
-require_once 'src/Logs.php';
-
+/**
+ * Réprésente la couleur d'un toast
+ */
 enum ToastType
 {
-	case Error;
-	case Success;
-	case Info;
+	case Error; 	//< Rouge 
+	case Success; 	//<	Vert
+	case Info; 		//< Gris
 }
 
+/**
+ * Convertit une couleur de toast en type compréhensible par Bootstrap
+ * @param ToastType $type la couleur du toast
+ * @return string
+ */
 function toString(ToastType $type): string
 {
 	switch ($type) {
@@ -24,6 +30,12 @@ function toString(ToastType $type): string
 	return "none";
 }
 
+/**
+ * Affiche un toast sur la page actuelle
+ * @param ToastType $toastType la couleur du toast
+ * @param string $message le texte affiché dans le toast
+ * @return void
+ */
 function setToast(ToastType $toastType, string $message): void
 {
 	global $toast_data;
@@ -34,6 +46,12 @@ function setToast(ToastType $toastType, string $message): void
 	];
 }
 
+/**
+ * Affiche un toast sur la prochaine page (après une redirection par exemple)
+ * @param ToastType $toastType la couleur du toast
+ * @param string $message le texte affiché dans le toast
+ * @return void
+ */
 function setNextToast(ToastType $toastType, string $message): void
 {
 	$_SESSION["last_toast"] = [
@@ -42,6 +60,10 @@ function setNextToast(ToastType $toastType, string $message): void
 	];
 }
 
+/**
+ * Récupère le toast précédent (s'il existe) et l'affiche sur la page actuelle
+ * @return void
+ */
 function restoreLastToast(): void
 {
 	global $toast_data;
