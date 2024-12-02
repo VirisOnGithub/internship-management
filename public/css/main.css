@@ -39,3 +39,7 @@ input[type="submit"].form-control:hover {
 input:focus {
     box-shadow: none !important;
 }
+
+textarea {
+    resize: none !important;
+}
