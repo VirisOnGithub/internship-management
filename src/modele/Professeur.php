@@ -42,31 +42,11 @@ class Professeur
 	}
 
 	/**
-	 * Set the value of nom
-	 */
-	public function setNom(string $nom): self
-	{
-		$this->nom = $nom;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of prenom
 	 */
 	public function getPrenom(): string
 	{
 		return $this->prenom;
-	}
-
-	/**
-	 * Set the value of prenom
-	 */
-	public function setPrenom(string $prenom): self
-	{
-		$this->prenom = $prenom;
-
-		return $this;
 	}
 
 	/**
@@ -78,16 +58,6 @@ class Professeur
 	}
 
 	/**
-	 * Set the value of login
-	 */
-	public function setLogin(string $login): self
-	{
-		$this->login = $login;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of mdp
 	 */
 	public function getMdp(): string
@@ -96,30 +66,10 @@ class Professeur
 	}
 
 	/**
-	 * Set the value of mdp
-	 */
-	public function setMdp(string $mdp): self
-	{
-		$this->mdp = password_hash($mdp, PASSWORD_BCRYPT);
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of email
 	 */
 	public function getEmail(): string
 	{
 		return $this->email;
-	}
-
-	/**
-	 * Set the value of email
-	 */
-	public function setEmail(string $email): self
-	{
-		$this->email = $email;
-
-		return $this;
 	}
 }

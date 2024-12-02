@@ -26,14 +26,4 @@ class Classe
 	{
 		return $this->nom;
 	}
-
-	/**
-	 * Set the value of nom
-	 */
-	public function setNom(string $nom): self
-	{
-		$this->nom = $nom;
-
-		return $this;
-	}
 }

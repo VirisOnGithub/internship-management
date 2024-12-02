@@ -70,31 +70,11 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of raison_sociale
-	 */
-	public function setRaisonSociale(string $raison_sociale): self
-	{
-		$this->raison_sociale = $raison_sociale;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of nom_contact
 	 */
 	public function getNomContact(): string
 	{
 		return $this->nom_contact;
-	}
-
-	/**
-	 * Set the value of nom_contact
-	 */
-	public function setNomContact(string $nom_contact): self
-	{
-		$this->nom_contact = $nom_contact;
-
-		return $this;
 	}
 
 	/**
@@ -106,31 +86,11 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of nom_responsable
-	 */
-	public function setNomResponsable(?string $nom_responsable): self
-	{
-		$this->nom_responsable = $nom_responsable;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of rue
 	 */
 	public function getRue(): string
 	{
 		return $this->rue;
-	}
-
-	/**
-	 * Set the value of rue
-	 */
-	public function setRue(string $rue): self
-	{
-		$this->rue = $rue;
-
-		return $this;
 	}
 
 	/**
@@ -142,31 +102,11 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of code_postal
-	 */
-	public function setCodePostal(int $code_postal): self
-	{
-		$this->code_postal = $code_postal;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of ville
 	 */
 	public function getVille(): string
 	{
 		return $this->ville;
-	}
-
-	/**
-	 * Set the value of ville
-	 */
-	public function setVille(string $ville): self
-	{
-		$this->ville = $ville;
-
-		return $this;
 	}
 
 	/**
@@ -178,31 +118,11 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of telephone
-	 */
-	public function setTelephone(string $telephone): self
-	{
-		$this->telephone = $telephone;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of fax
 	 */
 	public function getFax(): string
 	{
 		return $this->fax;
-	}
-
-	/**
-	 * Set the value of fax
-	 */
-	public function setFax(string $fax): self
-	{
-		$this->fax = $fax;
-
-		return $this;
 	}
 
 	/**
@@ -214,31 +134,11 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of email
-	 */
-	public function setEmail(string $email): self
-	{
-		$this->email = $email;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of observations
 	 */
 	public function getObservations(): ?string
 	{
 		return $this->observations;
-	}
-
-	/**
-	 * Set the value of observations
-	 */
-	public function setObservations(?string $observations): self
-	{
-		$this->observations = $observations;
-
-		return $this;
 	}
 
 	/**
@@ -250,16 +150,6 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of lien_site
-	 */
-	public function setLienSite(?string $lien_site): self
-	{
-		$this->lien_site = $lien_site;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of niveau
 	 */
 	public function getNiveauEtude(): string
@@ -268,31 +158,11 @@ class Entreprise
 	}
 
 	/**
-	 * Set the value of niveau
-	 */
-	public function setNiveauEtude(string $niveau_etude): self
-	{
-		$this->niveau_etude = $niveau_etude;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of niveau
 	 */
 	public function isEnActivite(): bool
 	{
 		return $this->en_activite;
-	}
-
-	/**
-	 * Set the value of niveau
-	 */
-	public function setEnActivite(bool $en_activite): self
-	{
-		$this->en_activite = $en_activite;
-
-		return $this;
 	}
 
 	/**

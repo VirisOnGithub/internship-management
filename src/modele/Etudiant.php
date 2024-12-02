@@ -42,31 +42,11 @@ class Etudiant
 	}
 
 	/**
-	 * Set the value of numero
-	 */
-	public function setNumero(int $numero): self
-	{
-		$this->numero = $numero;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of nom
 	 */
 	public function getNom(): string
 	{
 		return $this->nom;
-	}
-
-	/**
-	 * Set the value of nom
-	 */
-	public function setNom(string $nom): self
-	{
-		$this->nom = $nom;
-
-		return $this;
 	}
 
 	/**
@@ -78,31 +58,11 @@ class Etudiant
 	}
 
 	/**
-	 * Set the value of prenom
-	 */
-	public function setPrenom(string $prenom): self
-	{
-		$this->prenom = $prenom;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of annee_obtention
 	 */
 	public function getAnneeObtention(): ?DateTime
 	{
 		return $this->annee_obtention;
-	}
-
-	/**
-	 * Set the value of annee_obtention
-	 */
-	public function setAnneeObtention(?DateTime $annee_obtention): self
-	{
-		$this->annee_obtention = $annee_obtention;
-
-		return $this;
 	}
 
 	/**
@@ -114,31 +74,11 @@ class Etudiant
 	}
 
 	/**
-	 * Set the value of login
-	 */
-	public function setLogin(string $login): self
-	{
-		$this->login = $login;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of mdp
 	 */
 	public function getMdp(): string
 	{
 		return $this->mdp;
-	}
-
-	/**
-	 * Set the value of mdp
-	 */
-	public function setMdp(string $mdp): self
-	{
-		$this->mdp = password_hash($mdp, PASSWORD_BCRYPT);
-
-		return $this;
 	}
 
 	/**
@@ -150,30 +90,10 @@ class Etudiant
 	}
 
 	/**
-	 * Set the value of classe
-	 */
-	public function setClasse(Classe $classe): self
-	{
-		$this->classe = $classe;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of activite
 	 */
 	public function isActivite(): bool
 	{
 		return $this->activite;
-	}
-
-	/**
-	 * Set the value of activite
-	 */
-	public function setActivite(bool $activite): self
-	{
-		$this->activite = $activite;
-
-		return $this;
 	}
 }

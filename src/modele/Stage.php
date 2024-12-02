@@ -55,31 +55,11 @@ class Stage
 	}
 
 	/**
-	 * Set the value of debut
-	 */
-	public function setDebut(DateTime $debut): self
-	{
-		$this->debut = $debut;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of fin
 	 */
 	public function getFin(): DateTime
 	{
 		return $this->fin;
-	}
-
-	/**
-	 * Set the value of fin
-	 */
-	public function setFin(DateTime $fin): self
-	{
-		$this->fin = $fin;
-
-		return $this;
 	}
 
 	/**
@@ -91,31 +71,11 @@ class Stage
 	}
 
 	/**
-	 * Set the value of type
-	 */
-	public function setType(string $type): self
-	{
-		$this->type = $type;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of description
 	 */
 	public function getDescription(): string
 	{
 		return $this->description;
-	}
-
-	/**
-	 * Set the value of description
-	 */
-	public function setDescription(string $description): self
-	{
-		$this->description = $description;
-
-		return $this;
 	}
 
 	/**
@@ -127,31 +87,11 @@ class Stage
 	}
 
 	/**
-	 * Set the value of observation
-	 */
-	public function setObservation(?string $observation): self
-	{
-		$this->observation = $observation;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of stagiaire
 	 */
 	public function getStagiaire(): Etudiant
 	{
 		return $this->stagiaire;
-	}
-
-	/**
-	 * Set the value of stagiaire
-	 */
-	public function setStagiaire(Etudiant $stagiaire): self
-	{
-		$this->stagiaire = $stagiaire;
-
-		return $this;
 	}
 
 	/**
@@ -163,30 +103,10 @@ class Stage
 	}
 
 	/**
-	 * Set the value of professeur
-	 */
-	public function setProfesseur(Professeur $professeur): self
-	{
-		$this->professeur = $professeur;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of entreprise
 	 */
 	public function getEntreprise(): Entreprise
 	{
 		return $this->entreprise;
-	}
-
-	/**
-	 * Set the value of entreprise
-	 */
-	public function setEntreprise(Entreprise $entreprise): self
-	{
-		$this->entreprise = $entreprise;
-
-		return $this;
 	}
 }

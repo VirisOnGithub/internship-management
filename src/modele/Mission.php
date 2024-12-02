@@ -32,30 +32,10 @@ class Mission
 	}
 
 	/**
-	 * Set the value of description
-	 */
-	public function setDescription(string $description): self
-	{
-		$this->description = $description;
-
-		return $this;
-	}
-
-	/**
 	 * Get the value of stage
 	 */
 	public function getStage(): Stage
 	{
 		return $this->stage;
-	}
-
-	/**
-	 * Set the value of stage
-	 */
-	public function setStage(Stage $stage): self
-	{
-		$this->stage = $stage;
-
-		return $this;
 	}
 }
