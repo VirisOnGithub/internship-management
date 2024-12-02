@@ -164,7 +164,7 @@ function tableFromEtudiant(\Etudiant $etudiant): array
 		"num_etudiant" => $etudiant->getNumero(),
 		"nom_etudiant" => $etudiant->getNom(),
 		"prenom_etudiant" => $etudiant->getPrenom(),
-		"annee_obtention" => $etudiant->getAnneeObtention()->format('Y'),
+		"annee_obtention" => $etudiant-> getAnneeObtention() ? $etudiant->getAnneeObtention()->format('Y'): null,
 		"login_etudiant" => $etudiant->getLogin(),
 		"mdp_etudiant" => $etudiant->getMdp(),
 		"num_classe" => $etudiant->getClasse()->getNumero(),
