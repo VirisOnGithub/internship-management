@@ -30,19 +30,21 @@ function createClasseFromTable($raw_data): \Classe
  */
 function createEtudiantFromTable($raw_data): \Etudiant
 {
+	$date = new \DateTime($raw_data['annee_obtention'] . "-01-01") ?? "now";
+
+	if (is_null($raw_data['annee_obtention']))
+		$date = null;
+
 	$etudiant = new \Etudiant(
 		(int) $raw_data['num_etudiant'],
 		$raw_data['nom_etudiant'],
 		$raw_data['prenom_etudiant'],
-		new \DateTime($raw_data['annee_obtention'] . "-01-01") ?? "now",
+		$date,
 		$raw_data['login_etudiant'],
 		$raw_data['mdp_etudiant'],
 		createClasseFromTable($raw_data),
 		(bool) $raw_data['en_activite']
 	);
-
-	if (is_null($raw_data['annee_obtention']))
-		$etudiant->setAnneeObtention(null);
 
 	return $etudiant;
 }
