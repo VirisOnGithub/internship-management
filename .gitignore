@@ -3,3 +3,5 @@ node_modules/*
 logs.txt
 config.ini
 *.lock
+doxygen-awesome-css/*
+doc/*
