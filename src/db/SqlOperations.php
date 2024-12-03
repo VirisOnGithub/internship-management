@@ -2,6 +2,11 @@
 
 namespace SqlOperations;
 
+/**
+ * @file SqlOperations.php
+ * Execution des requêtes SQL
+ */
+
 use DateTime;
 
 require_once('src/db/Database.php');

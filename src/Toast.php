@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file Toast.php
+ * Gestion des toast (petite fenêtre temporaire en haut de l'écran)
+ */
+
+/**
  * Réprésente la couleur d'un toast
  */
 enum ToastType

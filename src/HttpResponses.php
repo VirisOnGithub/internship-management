@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file HttpResponses.php
+ * Redirection après une erreur
+ */
+
+/**
  * Redirige le client sur une page correspondant au code http souhaité
  * @param int $code le code http
  * @return never l'exécution se termine à la fin de la fonction

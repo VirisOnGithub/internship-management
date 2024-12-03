@@ -2,6 +2,11 @@
 
 namespace Login;
 
+/**
+ * @file Login.php
+ * Gestion de l'utilisateur actuel
+ */
+
 require_once('src/modele/Etudiant.php');
 require_once('src/modele/Professeur.php');
 require_once('src/crud/Read.php');

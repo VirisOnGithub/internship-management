@@ -2,6 +2,11 @@
 
 namespace Permissions;
 
+/**
+ * @file Permissions.php
+ * Gestion des permissions des pages
+ */
+
 require_once 'src/Login.php';
 
 /**

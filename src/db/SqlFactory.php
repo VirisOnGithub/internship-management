@@ -3,6 +3,11 @@
 namespace SqlFactory;
 
 /**
+ * @file SqlFactory.php
+ * Construction des requêtes SQL
+ */
+
+/**
  * Crée une requête d'insertion SQL à partir de paramètres
  * @param string $table la table dans laquelle insérer
  * @param array $params le tableau associatif des attributs

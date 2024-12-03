@@ -2,6 +2,11 @@
 
 namespace ModeleFactory;
 
+/**
+ * @file ModeleFactory.php
+ * Interface entre les objets PHP et les tables de la base de données
+ */
+
 require_once('src/modele/Classe.php');
 require_once('src/modele/Etudiant.php');
 require_once('src/modele/Entreprise.php');

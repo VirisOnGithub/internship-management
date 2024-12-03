@@ -2,6 +2,11 @@
 
 namespace Database;
 
+/**
+ * @file Database.php
+ * Gestion de la connexion à la base de données
+ */
+
 require_once("src/Config.php");
 
 /**

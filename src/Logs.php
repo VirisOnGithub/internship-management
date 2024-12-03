@@ -2,6 +2,11 @@
 
 namespace Logs;
 
+/**
+ * @file Logs.php
+ * Logs du serveur
+ */
+
 require_once('src/Config.php');
 
 /**
