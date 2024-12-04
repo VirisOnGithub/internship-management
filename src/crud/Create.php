@@ -2,6 +2,11 @@
 
 namespace Crud;
 
+/**
+ * @file Create.php
+ * Opérations de créations sur la base de données
+ */
+
 require_once('src/db/SqlOperations.php');
 require_once('src/db/ModeleFactory.php');
 
@@ -57,7 +62,7 @@ function createEtudiant(\Etudiant $etudiant): int
 	// num_etudiant est un auto_increment
 	if ($etudiant->getNumero() == -1)
 		unset($params['num_etudiant']);
-	if($etudiant->getAnneeObtention() instanceof \DateTime)
+	if ($etudiant->getAnneeObtention() instanceof \DateTime)
 		$params['annee_obtention'] = $etudiant->getAnneeObtention()->format('Y');
 
 	return (int) insertLine("etudiant", $params);
