@@ -1,10 +1,20 @@
 <?php
 
+/**
+ * @file Specialite.php
+ * Contient la classe Specialite
+ */
+
 class Specialite
 {
 	private int $numero;
 	private string $nom;
 
+	/**
+	 * Constructeur par défaut
+	 * @param int $numero le numéro de la spécialité (-1 si inconnu)
+	 * @param string $nom le nom de la spécialité
+	 */
 	public function __construct(int $numero, string $nom)
 	{
 		$this->numero = $numero;
@@ -12,7 +22,7 @@ class Specialite
 	}
 
 	/**
-	 * Get the value of numero
+	 * @return int le numéro de la spécialité
 	 */
 	public function getNumero(): int
 	{
@@ -20,7 +30,7 @@ class Specialite
 	}
 
 	/**
-	 * Get the value of nom
+	 * @return string le nom de la spécialité
 	 */
 	public function getNom(): string
 	{

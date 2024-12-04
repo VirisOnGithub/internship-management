@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file Etudiant.php
+ * Contient la classe Etudiant
+ */
+
 require_once('Classe.php');
 
 class Etudiant
@@ -13,6 +18,17 @@ class Etudiant
 	private Classe $classe;
 	private bool $activite;
 
+	/**
+	 * Constructeur oar défaut
+	 * @param int $numero le numéro de l'étudiant (-1 si inconnu)
+	 * @param string $nom le nom de l'étudiant
+	 * @param string $prenom le prénom de l'étudiant
+	 * @param ?DateTime $annee_obtention l'année d'obtention du diplôme visé
+	 * @param string $login le login de l'étudiant
+	 * @param string $mdp le mot de passe de l'étudiant (hashé)
+	 * @param Classe $classe la classe de l'étudiant
+	 * @param bool $activite l'activité de l'étudiant
+	 */
 	public function __construct(
 		int $numero,
 		string $nom,
@@ -34,7 +50,7 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of numero
+	 * @return int le numéro de l'étudiant
 	 */
 	public function getNumero(): int
 	{
@@ -42,7 +58,7 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of nom
+	 * @return string le nom (de famille) de l'étudiant
 	 */
 	public function getNom(): string
 	{
@@ -50,7 +66,7 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of prenom
+	 * @return string le prénom de l'étudiant
 	 */
 	public function getPrenom(): string
 	{
@@ -58,15 +74,16 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of annee_obtention
+	 * @return DateTime|null l'année d'obtention du diplôme visé
 	 */
 	public function getAnneeObtention(): ?DateTime
 	{
 		return $this->annee_obtention;
 	}
 
+
 	/**
-	 * Get the value of login
+	 * @return string le login de l'étudiant
 	 */
 	public function getLogin(): string
 	{
@@ -74,7 +91,7 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of mdp
+	 * @return string le mot de passe de l'étudiant (hashé)
 	 */
 	public function getMdp(): string
 	{
@@ -82,7 +99,7 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of classe
+	 * @return Classe la classe de l'étudiant
 	 */
 	public function getClasse(): Classe
 	{
@@ -90,7 +107,7 @@ class Etudiant
 	}
 
 	/**
-	 * Get the value of activite
+	 * @return bool true si l'étudiant est en activité
 	 */
 	public function isActivite(): bool
 	{

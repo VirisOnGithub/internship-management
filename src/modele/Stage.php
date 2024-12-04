@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file Stage.php
+ */
+
 require_once('Etudiant.php');
 require_once('Professeur.php');
 require_once('Entreprise.php');
@@ -16,6 +20,18 @@ class Stage
 	private Professeur $professeur;
 	private Entreprise $entreprise;
 
+	/**
+	 * Constructeur par défaut
+	 * @param int $numero le numéro du stage
+	 * @param DateTime $debut la date de début
+	 * @param DateTime $fin la date de fin
+	 * @param string $type le type de stage
+	 * @param string $description la description du stage
+	 * @param ?string $observation les observations (éventuelles) du stage
+	 * @param Etudiant $stagiaire le stagiaire
+	 * @param Professeur $professeur le professeur du stage
+	 * @param Entreprise $entreprise l'entreprise du stage
+	 */
 	public function __construct(
 		int $numero,
 		DateTime $debut,
@@ -39,7 +55,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of numero
+	 * @return int le numéro du stage
 	 */
 	public function getNumero(): int
 	{
@@ -47,7 +63,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of debut
+	 * @return DateTime le début du stage
 	 */
 	public function getDebut(): DateTime
 	{
@@ -55,7 +71,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of fin
+	 * @return DateTime la fin du stage
 	 */
 	public function getFin(): DateTime
 	{
@@ -63,7 +79,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of type
+	 * @return string le type du stage
 	 */
 	public function getType(): string
 	{
@@ -71,7 +87,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of description
+	 * @return string la description du stage
 	 */
 	public function getDescription(): string
 	{
@@ -79,7 +95,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of observation
+	 * @return string|null les observations éventuelles
 	 */
 	public function getObservation(): ?string
 	{
@@ -87,7 +103,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of stagiaire
+	 * @return Etudiant le stagiaire
 	 */
 	public function getStagiaire(): Etudiant
 	{
@@ -95,7 +111,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of professeur
+	 * @return Professeur le professeur
 	 */
 	public function getProfesseur(): Professeur
 	{
@@ -103,7 +119,7 @@ class Stage
 	}
 
 	/**
-	 * Get the value of entreprise
+	 * @return Entreprise l'entreprise
 	 */
 	public function getEntreprise(): Entreprise
 	{

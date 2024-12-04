@@ -1,15 +1,29 @@
 <?php
 
+/**
+ * @file ClassesProf.php
+ * Contient la classe ClassesProf
+ */
+
 require_once 'src/modele/Professeur.php';
 require_once 'src/modele/Classe.php';
 
+/**
+ * @class ClassesProf
+ * Les classes d'un professeur
+ */
 class ClassesProf
 {
 	private Professeur $professeur;
 	private ?Classe $classe_principale;
-
 	private array $classes;
 
+	/**
+	 * Constructeur par défaut
+	 * @param Professeur $professeur le professeur
+	 * @param Classe $classe_principale la classe principale
+	 * @param array $classes les classes
+	 */
 	public function __construct(
 		Professeur $professeur,
 		Classe $classe_principale,
@@ -20,8 +34,9 @@ class ClassesProf
 		$this->classes = $classes;
 	}
 
+
 	/**
-	 * Get the value of professeur
+	 * @return Professeur le professeur
 	 */
 	public function getProfesseur(): Professeur
 	{
@@ -29,7 +44,7 @@ class ClassesProf
 	}
 
 	/**
-	 * Get the value of classe_principale
+	 * @return Classe|null la classe principale (si elle existe)
 	 */
 	public function getClassePrincipale(): ?Classe
 	{
@@ -37,7 +52,7 @@ class ClassesProf
 	}
 
 	/**
-	 * Get the value of classes
+	 * @return Classe [ ] les classes du professeur (sans compter la classe principale)
 	 */
 	public function getClasses(): array
 	{

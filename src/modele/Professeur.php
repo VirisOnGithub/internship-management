@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file Professeur.php
+ * Contient la classe Professeur
+ */
+
 class Professeur
 {
 	private int $numero;
@@ -9,6 +14,15 @@ class Professeur
 	private string $mdp;
 	private string $email;
 
+	/**
+	 * Constructeur par défaut
+	 * @param int $numero le numéro du professeur
+	 * @param string $nom le nom du professeur
+	 * @param string $prenom le prénom du professeur
+	 * @param string $login le login du professeur
+	 * @param string $mdp le mot de passe du professeur
+	 * @param string $email l'email du professeur
+	 */
 	public function __construct(
 		int $numero,
 		string $nom,
@@ -26,7 +40,7 @@ class Professeur
 	}
 
 	/**
-	 * Get the value of numero
+	 * @return int le numéro du professeur
 	 */
 	public function getNumero(): int
 	{
@@ -34,7 +48,7 @@ class Professeur
 	}
 
 	/**
-	 * Get the value of nom
+	 * @return string le nom (de famille) du professeur
 	 */
 	public function getNom(): string
 	{
@@ -42,7 +56,7 @@ class Professeur
 	}
 
 	/**
-	 * Get the value of prenom
+	 * @return string le prénom du professeur
 	 */
 	public function getPrenom(): string
 	{
@@ -50,7 +64,7 @@ class Professeur
 	}
 
 	/**
-	 * Get the value of login
+	 * @return string le login du professeur
 	 */
 	public function getLogin(): string
 	{
@@ -58,7 +72,7 @@ class Professeur
 	}
 
 	/**
-	 * Get the value of mdp
+	 * @return string le mot de passe du professeur
 	 */
 	public function getMdp(): string
 	{
@@ -66,7 +80,7 @@ class Professeur
 	}
 
 	/**
-	 * Get the value of email
+	 * @return string l'email du professeur
 	 */
 	public function getEmail(): string
 	{
