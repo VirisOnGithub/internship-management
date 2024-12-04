@@ -5,6 +5,10 @@
  * Contient la classe Specialite
  */
 
+/**
+ * @class Specialite
+ * Une spécialité d'entreprise
+ */
 class Specialite
 {
 	private int $numero;

@@ -7,6 +7,10 @@
 
 require_once('src/modele/Specialite.php');
 
+/**
+ * @class Entreprise
+ * Une entreprise
+ */
 class Entreprise
 {
 	private int $numero;

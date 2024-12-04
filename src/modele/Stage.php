@@ -8,6 +8,10 @@ require_once('Etudiant.php');
 require_once('Professeur.php');
 require_once('Entreprise.php');
 
+/**
+ * @class Stage
+ * Un stage dans une entreprise
+ */
 class Stage
 {
 	private int $numero;

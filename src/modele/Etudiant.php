@@ -7,6 +7,10 @@
 
 require_once('Classe.php');
 
+/**
+ * @class Etudiant
+ * Un étudiant
+ */
 class Etudiant
 {
 	private int $numero;

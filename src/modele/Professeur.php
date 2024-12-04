@@ -5,6 +5,10 @@
  * Contient la classe Professeur
  */
 
+/**
+ * @class Professeur
+ * Un professeur
+ */
 class Professeur
 {
 	private int $numero;
