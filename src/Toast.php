@@ -7,32 +7,18 @@
 
 /**
  * Réprésente la couleur d'un toast
+ * --------------------
+ * |  Toast  | Couleur |
+ * |---------|---------|
+ * | Error 	 |  Rouge  |
+ * | Success |  Vert   |
+ * | Info 	 |  Gris   |
  */
-enum ToastType
+enum ToastType: string
 {
-	case Error; 	//< Rouge 
-	case Success; 	//<	Vert
-	case Info; 		//< Gris
-}
-
-/**
- * Convertit une couleur de toast en type compréhensible par Bootstrap
- * @param ToastType $type la couleur du toast
- * @return string
- */
-function toString(ToastType $type): string
-{
-	switch ($type) {
-		case ToastType::Error:
-			return "danger";
-
-		case ToastType::Success:
-			return "success";
-
-		case ToastType::Info:
-			return "primary";
-	}
-	return "none";
+	case Error = "danger";
+	case Success = "success";
+	case Info = "primary";
 }
 
 /**
@@ -46,7 +32,7 @@ function setToast(ToastType $toastType, string $message): void
 	global $toast_data;
 
 	$toast_data["toast"] = [
-		"type" => toString($toastType),
+		"type" => $toastType->value,
 		"message" => $message
 	];
 }
@@ -60,7 +46,7 @@ function setToast(ToastType $toastType, string $message): void
 function setNextToast(ToastType $toastType, string $message): void
 {
 	$_SESSION["last_toast"] = [
-		"type" => toString($toastType),
+		"type" => $toastType->value,
 		"message" => $message
 	];
 }
