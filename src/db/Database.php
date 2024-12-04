@@ -10,12 +10,17 @@ namespace Database;
 require_once("src/Config.php");
 
 /**
+ * @class Connection
  * Réprésente la connexion à la base de données
  */
 class Connection
 {
 	private \PDO $db;
 
+	/**
+	 * Constructeur par défaut.
+	 * Se connecte à la base de données
+	 */
 	public function __construct()
 	{
 		try {
@@ -33,6 +38,9 @@ class Connection
 		}
 	}
 
+	/**
+	 * @return \PDO le driver de la base de données
+	 */
 	public function getDB(): \PDO
 	{
 		return $this->db;
