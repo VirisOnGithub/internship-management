@@ -16,10 +16,17 @@ img.card {
     width: 50%;
 }
 
+.home-card {
+    height: 40vh;
+}
+
 @media screen and (max-width: 992px) {
     .help-container{
         width: 100%;
-    }    
+    }
+    .home-card {
+        height: 20vh;
+    }
 }
 
 input[type="submit"].form-control:hover {
