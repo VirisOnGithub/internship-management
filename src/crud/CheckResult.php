@@ -1,5 +1,7 @@
 <?php
 
+namespace Crud;
+
 /**
  * @file CheckResult.php
  * Contient l'énumération CheckResult

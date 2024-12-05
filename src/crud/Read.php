@@ -302,11 +302,11 @@ function checkEtudiant(string $login, string $mdp): array
 {
 	$etu_ligne = getLinesWhere("etudiant JOIN classe USING(num_classe)", ["login_etudiant" => $login]);
 	if (empty($etu_ligne))
-		return ["etudiant" => null, "result" => \CheckResult::NotFound];
+		return ["etudiant" => null, "result" => CheckResult::NotFound];
 	$etu = \ModeleFactory\createEtudiantFromTable($etu_ligne[0]);
 	if (password_verify($mdp, $etu->getMdp()))
-		return ["etudiant" => $etu, "result" => \CheckResult::Success];
-	return ["etudiant" => null, "result" => \CheckResult::WrongPassword];
+		return ["etudiant" => $etu, "result" => CheckResult::Success];
+	return ["etudiant" => null, "result" => CheckResult::WrongPassword];
 }
 
 /**
@@ -317,9 +317,9 @@ function checkProfesseur(string $login, string $mdp): array
 {
 	$prof_ligne = getLinesWhere("professeur", ["login_prof" => $login]);
 	if (empty($prof_ligne))
-		return ["professeur" => null, "result" => \CheckResult::NotFound];
+		return ["professeur" => null, "result" => CheckResult::NotFound];
 	$prof = \ModeleFactory\createProfesseurFromTable($prof_ligne[0]);
 	if (password_verify($mdp, $prof->getMdp()))
-		return ["professeur" => $prof, "result" => \CheckResult::Success];
-	return ["professeur" => null, "result" => \CheckResult::WrongPassword];
+		return ["professeur" => $prof, "result" => CheckResult::Success];
+	return ["professeur" => null, "result" => CheckResult::WrongPassword];
 }

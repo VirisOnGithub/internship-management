@@ -10,6 +10,7 @@ namespace Login;
 require_once('src/modele/Etudiant.php');
 require_once('src/modele/Professeur.php');
 require_once('src/crud/Read.php');
+require_once('src/crud/CheckResult.php');
 
 /**
  * Retourne l'utilisateur connecté
@@ -53,11 +54,11 @@ function getFirstLetters(): string
  * @param string $mdp le mot de passe de l'étudiant
  * @return \CheckResult le résultat de l'essai
  */
-function connectEtudiant(string $login, string $mdp): \CheckResult
+function connectEtudiant(string $login, string $mdp): \Crud\CheckResult
 {
 	$check = \Crud\checkEtudiant($login, $mdp);
 	$result = $check['result'];
-	if ($result == \CheckResult::Success) {
+	if ($result == \Crud\CheckResult::Success) {
 		$_SESSION['connected_user'] = $check['etudiant'];
 	}
 	return $result;
@@ -69,11 +70,11 @@ function connectEtudiant(string $login, string $mdp): \CheckResult
  * @param string $mdp le mot de passe du professeur
  * @return \CheckResult le résultat de l'essai
  */
-function connectProfesseur(string $login, string $mdp): \CheckResult
+function connectProfesseur(string $login, string $mdp): \Crud\CheckResult
 {
 	$check = \Crud\checkProfesseur($login, $mdp);
 	$result = $check['result'];
-	if ($result == \CheckResult::Success) {
+	if ($result == \Crud\CheckResult::Success) {
 		$_SESSION['connected_user'] = $check['professeur'];
 	}
 	return $result;
