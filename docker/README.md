@@ -1,15 +1,25 @@
-# Setup
+# Prérequis
 
-In the `docker` folder :
+- [docker](https://docs.docker.com/install/)
+- [docker-compose](https://docs.docker.com/compose/install/)
+
+Dans le dossier `docker`:
 
 ```bash
 docker-compose up
 ```
-# Usage
+
+ou
+
+```bash
+docker-compose up -d
+```
+pour lancer le serveur en arrière-plan
+# Utilisation
 
 ## Web
 
-The website is accessible at this url : http://localhost:8080
-## Database
+Le site web est désormais accessible au lien suivant : http://localhost:8080
+## Base de données
 
-The database is also accessible via the 3306 port for debugging purposes
+La base de données est également accessible à des fins de débogage à cette adresse : `localhost:3306`
