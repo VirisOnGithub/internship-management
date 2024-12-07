@@ -146,7 +146,8 @@ function deleteLinesWhere(string $table, array $params): void
 /**
  * Mets à jour des lignes dans la base de donnée avec une condition de recherche stricte
  * @param string $table la table à mettre à jour
- * @param array $params les paramètres de la mise à jour
+ * @param array $update_params les paramètres de la mise à jour
+ * @param array $where_params les paramètres de la recherche
  * @return void
  */
 function updateLinesWhere(string $table, array $update_params, array $where_params): void

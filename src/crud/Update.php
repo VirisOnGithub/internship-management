@@ -4,6 +4,7 @@ namespace Crud;
 
 /**
  * @file Update.php
+ * @brief Ce fichier définit les fonctions de mise à jour des données dans la base de données.
  */
 
 require_once('src/db/SqlOperations.php');
@@ -11,6 +12,11 @@ require_once('src/db/ModeleFactory.php');
 
 use function SqlOperations\updateLinesWhere;
 
+/**
+ * Met à jour une classe d'étudiants dans la base de données.
+ * @param \Classe $classe la classe à mettre à jour
+ * @return void
+ */
 function updateClasse(\Classe $classe): void
 {
 	updateLinesWhere(
@@ -20,6 +26,11 @@ function updateClasse(\Classe $classe): void
 	);
 }
 
+/**
+ * Met à jour une entreprise dans la base de données.
+ * @param \Entreprise $entreprise l'entreprise à mettre à jour
+ * @return void
+ */
 function updateEntreprise(\Entreprise $entreprise): void
 {
 	updateLinesWhere(
@@ -29,6 +40,11 @@ function updateEntreprise(\Entreprise $entreprise): void
 	);
 }
 
+/**
+ * Met à jour un étudiant dans la base de données.
+ * @param \Etudiant $etudiant l'étudiant à mettre à jour
+ * @return void
+ */
 function updateEtudiant(\Etudiant $etudiant): void
 {
 	updateLinesWhere(
@@ -38,6 +54,11 @@ function updateEtudiant(\Etudiant $etudiant): void
 	);
 }
 
+/**
+ * Met à jour une mission dans la base de données.
+ * @param \Mission $mission la mission à mettre à jour
+ * @return void
+ */
 function updateMission(\Mission $mission): void
 {
 	updateLinesWhere(
@@ -47,6 +68,11 @@ function updateMission(\Mission $mission): void
 	);
 }
 
+/**
+ * Met à jour un professeur dans la base de données.
+ * @param \Professeur $professeur le professeur à mettre à jour
+ * @return void
+ */
 function updateProfesseur(\Professeur $professeur): void
 {
 	updateLinesWhere(
@@ -56,6 +82,11 @@ function updateProfesseur(\Professeur $professeur): void
 	);
 }
 
+/**
+ * Met à jour une spécialité dans la base de données.
+ * @param \Specialite $specialite la spécialité à mettre à jour
+ * @return void
+ */
 function updateSpecialite(\Specialite $specialite): void
 {
 	updateLinesWhere(
@@ -65,6 +96,11 @@ function updateSpecialite(\Specialite $specialite): void
 	);
 }
 
+/**
+ * Met à jour un stage dans la base de données.
+ * @param \Stage $stage le stage à mettre à jour
+ * @return void
+ */
 function updateStage(\Stage $stage): void
 {
 	updateLinesWhere(

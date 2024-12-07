@@ -52,7 +52,7 @@ function getFirstLetters(): string
  * Essaie de connecter un étudiant à partir de ses identifiants
  * @param string $login le login de l'étudiant
  * @param string $mdp le mot de passe de l'étudiant
- * @return \CheckResult le résultat de l'essai
+ * @return \Crud\CheckResult le résultat de l'essai
  */
 function connectEtudiant(string $login, string $mdp): \Crud\CheckResult
 {
@@ -68,7 +68,7 @@ function connectEtudiant(string $login, string $mdp): \Crud\CheckResult
  * Essaie de connecter un professeur à partir de ses identifiants
  * @param string $login le login du professeur
  * @param string $mdp le mot de passe du professeur
- * @return \CheckResult le résultat de l'essai
+ * @return \Crud\CheckResult le résultat de l'essai
  */
 function connectProfesseur(string $login, string $mdp): \Crud\CheckResult
 {
