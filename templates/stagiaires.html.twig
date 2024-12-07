@@ -12,14 +12,14 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-md-6">
-                <a href="#" class="btn btn-primary w-100">Rechercher un stagiaire</a>
+            <div class="col-md-6 my-2 my-md-0">
+                <a href="index.php?page=rechercherStagiaire" class="btn btn-primary w-100">Rechercher un stagiaire</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 my-2 my-md-0">
                 <a href="index.php?page=ajouterStagiaire" class="btn btn-primary w-100">Ajouter un stagiaire</a>
             </div>
         </div>
-        <table class="table table-hover table-striped-columns table-bordered">
+        <table class="table table-hover table-striped-columns table-bordered" id="stagiairesTable">
             <thead>
                 {% set columns = ["Opération", "Étudiant", "Entreprise", "Professeur"] %}
                 <tr>
@@ -83,4 +83,10 @@
         </table>
             
     </div>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/r-3.0.3/datatables.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let table = new DataTable('#stagiairesTable');
+        });
+    </script>
 {% endblock %}

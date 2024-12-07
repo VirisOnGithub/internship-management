@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../public/css/main.css">
         <!-- AOS CSS -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet">
     </head>
     <body>
         <header class="p-3">
@@ -81,6 +82,7 @@
         <script>
             AOS.init();
         </script>
+        
         {% if toast is defined %}
             {% include 'toasts.twig' with {'message': toast.message, 'color': toast.type} only %}
         {% endif %}

@@ -3,55 +3,63 @@
 {% block title %}Entreprise{% endblock %}
 
 {% block content %}
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <a href="index.php?page=rechercherEntreprise" class="btn btn-primary w-100">Rechercher une entreprise</a>
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-md-6 my-2 my-md-0">
+                <a href="index.php?page=rechercherEntreprise" class="btn btn-primary w-100 mx-1">Rechercher une entreprise</a>
+            </div>
+            <div class="col-md-6 my-2 my-md-0">
+                <a href="index.php?page=ajouterEntreprise" class="btn btn-primary w-100 mx-1">Ajouter une entreprise</a>
+            </div>
         </div>
-        <div class="col-md-6">
-            <a href="index.php?page=ajouterEntreprise" class="btn btn-primary w-100 mx-1">Ajouter une entreprise</a>
-        </div>
-    </div>
-    <table class="table table-hover table-striped-columns table-bordered table-responsive-lg">
-        <thead>
-            <tr>
-                <th>Opération</th>
-                <th>Entreprise</th>
-                <th class="d-none d-lg-table-cell">Adresse</th>
-                <th class="d-none d-lg-table-cell">Responsable</th>
-                <th>Site Web</th>
-                <th>Spécialités</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for entreprise in entreprises %}
-                <tr data-aos="fade-up">
-                    <td class="text-center d-flex flex-column flex-lg-row">
-                        <div class="d-flex justify-content-around my-2 my-lg-0">
-                            <a href="index.php?page=voirEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-eye fa-2xl"></i></a>
-                            <a href="index.php?page=inscription&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-handshake fa-2xl"></i></a>
-                        </div>
-                        <div class="d-flex justify-content-around my-2 my-lg-0">
-                            {% if prof %}
-                                <a href="index.php?page=editEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-pen fa-2xl"></i></a>
-                                <a href="index.php?page=supprEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-trash fa-2xl"></i></a>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td>{{ entreprise.getRaisonSociale() }}</td>
-                    <td class="d-none d-lg-table-cell">{{ entreprise.getRue() }}</td>
-                    <td class="d-none d-lg-table-cell">{{ entreprise.getNomResponsable() }}</td>
-                    <td class="text-center">
-                    {% if entreprise.getLienSite() %}
-                        <a href={{ entreprise.getLienSite() }} target="_blank"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></a>
-                    {% endif %}
-                    </td>
-                    <td>
-                        {% for spe in entreprise.getSpecialites() %}
-                            {{ loop.last ? spe.getNom() : spe.getNom() ~ ", " }}
-                        {% endfor %}
-                    </td>
+        <table class="table table-hover table-striped-columns table-responsive-lg" id="entrepriseTable">
+            <thead>
+                <tr>
+                    <th>Opération</th>
+                    <th>Entreprise</th>
+                    <th class="d-none d-lg-table-cell">Adresse</th>
+                    <th class="d-none d-lg-table-cell">Responsable</th>
+                    <th>Site Web</th>
+                    <th>Spécialités</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for entreprise in entreprises %}
+                    <tr data-aos="">
+                        <td class="text-center d-flex flex-column flex-lg-row">
+                            <div class="d-flex justify-content-around my-2 my-lg-0">
+                                <a href="index.php?page=voirEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-eye fa-2xl"></i></a>
+                                <a href="index.php?page=inscription&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-handshake fa-2xl"></i></a>
+                            </div>
+                            <div class="d-flex justify-content-around my-2 my-lg-0">
+                                {% if prof %}
+                                    <a href="index.php?page=editEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-pen fa-2xl"></i></a>
+                                    <a href="index.php?page=supprEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-trash fa-2xl"></i></a>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>{{ entreprise.getRaisonSociale() }}</td>
+                        <td class="d-none d-lg-table-cell">{{ entreprise.getRue() }}</td>
+                        <td class="d-none d-lg-table-cell">{{ entreprise.getNomResponsable() }}</td>
+                        <td class="text-center">
+                        {% if entreprise.getLienSite() %}
+                            <a href={{ entreprise.getLienSite() }} target="_blank"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></a>
+                        {% endif %}
+                        </td>
+                        <td>
+                            {% for spe in entreprise.getSpecialites() %}
+                                {{ loop.last ? spe.getNom() : spe.getNom() ~ ", " }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/r-3.0.3/datatables.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let table = new DataTable('#entrepriseTable');
+        });
+    </script>
 {% endblock %}
