@@ -45,7 +45,7 @@ function testCreate(): void
 {
 	$classe = new Classe(9999, "Test");
 	$prof = new Professeur(9999, "prof", "esseur", "profess", "mdp", "m@f.h");
-	$etu = new Etudiant(9999, "Nom", "Prenom", new DateTime(), "nom.pre", password_hash("motdepasse", PASSWORD_BCRYPT), $classe, true);
+	$etu = new Etudiant(9999, "Nom", "Prenom", null, "nom.pre", password_hash("motdepasse", PASSWORD_BCRYPT), $classe, true);
 	$entreprise = new Entreprise(9999, "raison", "nom_contact", null, "rue", 69210, "Lyon", "0656768696", "fax", "email@mail.mail", null, null, "BAC+40", false);
 	$stage = new Stage(9999, new DateTime(), new DateTime(), "type", "jsp", null, $etu, $prof, $entreprise);
 	$spec = new Specialite(9999, "Spec");
