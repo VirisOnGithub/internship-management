@@ -1,92 +1,65 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
 
 {% block content %}
-<style>
-        .form-container {
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h2 {
-            margin-bottom: 20px;
-        }
-        .form-container .form-label {
-            font-weight: bold;
-        }
-        .form-container .form-control,
-        .form-container .form-select {
-            margin-bottom: 15px;
-        }
-        .form-container .d-flex {
-            gap: 10px;
-        }
-        .form-container .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .form-container .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
-    </style>
-    <div class="form-container">
-        <h2 class="text-center">Inscription</h2>
-        <form method="post" action="index.php?page=inscription">
-            <label for="eleve" class="form-label">Elève</label>
-            {% if prof is defined %}
-                <select name="eleve" id="eleve" class="form-select">
-                    {% for eleve in eleves|sort((a, b) => a.getNom() <=> b.getNom()) %}
-                        <option value="{{ eleve.getNumero() }}">{{ eleve.getNom() }} {{ eleve.getPrenom() }}</option>
-                    {% endfor %}
-                </select>
-            {% else %}
-                <input type="text" name="eleveNom" id="eleveNom" class="form-control" value="{{ eleve.getNom() }} {{ eleve.getPrenom() }}" disabled>
-            {% endif %}
-            <div class="d-flex justify-content-between">
-                <div class="w-50">
-                    <label for="dateDebut" class="form-label">Date de début</label>
-                    <input type="date" name="dateDebut" id="dateDebut" class="form-control">
-                </div>
-                <div class="w-50">
-                    <label for="dateFin" class="form-label">Date de fin</label>
-                    <input type="date" name="dateFin" id="dateFin" class="form-control">
-                </div>
-            </div>
-            <label for="type" class="form-label">Type</label>
-            <select name="type" id="type" class="form-select">
-                <option value="stage">Stage</option>
-                <option value="alternance">Alternance</option>
-            </select>
-            <label for="entreprise" class="form-label">Entreprise</label>
-            {% if idEntreprise is defined %}
-                <input type="text" name="entreprise" id="entreprise" class="form-control" value="{{ idEntreprise.getRaisonSociale() }}" disabled>
-            {% else %}
-                <select name="entreprise" id="entreprise" class="form-select">
-                    {% for entreprise in entreprises|sort((a, b) => a.getRaisonSociale() <=> b.getRaisonSociale()) %}
-                        <option value="{{ entreprise.getNumero() }}">{{ entreprise.getRaisonSociale() }}</option>
-                    {% endfor %}
-                </select>
-            {% endif %}
-            <label for="description" class="form-label">Description</label>
-            <textarea name="description" id="description" class="form-control"></textarea>
-            <label for="observations" class="form-label">Observations</label>
-            <textarea name="observations" id="observations" class="form-control"></textarea>
-            <label for="professeur" class="form-label">Professeur</label>
-            <select name="professeur" id="professeur" class="form-select">
-                {% for professeur in professeurs|sort((a, b) => a.getNom() <=> b.getNom()) %}
-                    <option value="{{ professeur.getNumero() }}">{{ professeur.getPrenom() }} {{ professeur.getNom() }}</option>
-                {% endfor %}
-            </select>
-            {% if redirect is defined %}
-                <input type="hidden" name="redirect" value="{{ redirect }}">
-            {% endif %}
-            <div class="text-center mt-3">
-                <button type="submit" class="btn btn-primary">Valider</button>
-            </div>
-        </form>
-    </div>
+	<div class="container p-3 bg-secondary bg-opacity-50 rounded">
+		<h2 class="text-center">Inscription</h2>
+		<form method="post" action="index.php?page=inscription">
+			<label for="eleve" class="form-label">Elève</label>
+			{% if prof is defined %}
+				<select name="eleve" id="eleve" class="form-select">
+					{% for eleve in eleves|sort((a, b) => a.getNom() <=> b.getNom()) %}
+						<option value="{{ eleve.getNumero() }}">{{ eleve.getNom() }}
+							{{ eleve.getPrenom() }}</option>
+					{% endfor %}
+				</select>
+			{% else %}
+				<input type="text" name="eleveNom" id="eleveNom" class="form-control" value="{{ eleve.getNom() }} {{ eleve.getPrenom() }}" disabled>
+			{% endif %}
+			<div class="d-flex justify-content-between">
+				<div class="w-50">
+					<label for="dateDebut" class="form-label">Date de début</label>
+					<input type="date" name="dateDebut" id="dateDebut" class="form-control">
+				</div>
+				<div class="w-50">
+					<label for="dateFin" class="form-label">Date de fin</label>
+					<input type="date" name="dateFin" id="dateFin" class="form-control">
+				</div>
+			</div>
+			<label for="type" class="form-label">Type</label>
+			<select name="type" id="type" class="form-select">
+				<option value="stage">Stage</option>
+				<option value="alternance">Alternance</option>
+			</select>
+			<label for="entreprise" class="form-label">Entreprise</label>
+			{% if idEntreprise is defined %}
+				<input type="text" name="entreprise" id="entreprise" class="form-control" value="{{ idEntreprise.getRaisonSociale() }}" disabled>
+			{% else %}
+				<select name="entreprise" id="entreprise" class="form-select">
+					{% for entreprise in entreprises|sort((a, b) => a.getRaisonSociale() <=> b.getRaisonSociale()) %}
+						<option value="{{ entreprise.getNumero() }}">{{ entreprise.getRaisonSociale() }}</option>
+					{% endfor %}
+				</select>
+			{% endif %}
+			<label for="description" class="form-label">Description</label>
+			<textarea name="description" id="description" class="form-control"></textarea>
+			<label for="observations" class="form-label">Observations</label>
+			<textarea name="observations" id="observations" class="form-control"></textarea>
+			<label for="professeur" class="form-label">Professeur</label>
+			<select name="professeur" id="professeur" class="form-select">
+				{% for professeur in professeurs|sort((a, b) => a.getNom() <=> b.getNom()) %}
+					<option value="{{ professeur.getNumero() }}">{{ professeur.getPrenom() }}
+						{{ professeur.getNom() }}</option>
+				{% endfor %}
+			</select>
+			{% if redirect is defined %}
+				<input type="hidden" name="redirect" value="{{ redirect }}">
+			{% endif %}
+			<div class="text-center mt-3">
+				<button type="submit" class="btn btn-primary">Valider</button>
+			</div>
+		</form>
+	</div>
 {% endblock %}

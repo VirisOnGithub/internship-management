@@ -7,12 +7,12 @@
             [
                 {"title": "stagiaires", "image": "etudiant.jpg"},
                 {"title": "entreprises", "image": "stages.webp"},
-                {"title": "stages", "image": "stage.webp"},
+                {"title": "inscription", "image": "stage.webp"},
                 {"title": "aide", "image": "aide.webp"}
             ] %}
-                <a class="col-md-6 position-relative m-0 p-0 hero border border-primary rounded home-card" href="index.php?page={{ card.title }}">
+                <a class="col-md-6 position-relative m-0 p-0 hero border border-secondary rounded home-card" href="index.php?page={{ card.title }}">
                     <img src="../public/images/{{ card.image }}" alt="{{ card.title }}" class="img-fluid w-100 h-100 object-fit-cover card" id="{{ card.title }}">
-                    <p class="position-absolute top-50 start-50 translate-middle text-dark fw-bold fs-3 bg-primary p-1 rounded">{{ card.title|capitalize }}</p>
+                    <p class="position-absolute top-50 start-50 translate-middle text-dark fw-bold fs-3 bg-secondary p-1 rounded">{{ card.title|capitalize }}</p>
                 </a>
             {% endfor %}
         </div>
