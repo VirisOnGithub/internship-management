@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Stages{% endblock %}
+
+{% block content %}
+  <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Stages</h1>
+            </div>
+        </div>
+        <table class="table table-hover table-striped-columns table-bordered" id="stagiairesTable">
+            <thead>
+                {% set columns = ["Stagiaire", "Entreprise", "Début", "Fin"] %}
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for stage in stages|sort((a, b) => a.getDebut() <=> b.getDebut()) %}
+                    <tr data-aos="fade-up">
+                        <td>
+                            {{ stage.getStagiaire().getPrenom() ~ " " ~ stage.getStagiaire().getNom() }}
+                        </td>
+                        <td>
+                            {{ stage.getEntreprise().getRaisonSociale() }}
+                        </td>
+                        <td>
+                            {{ stage.getDebut().format("d/m/Y") }}
+                        </td>
+                        <td>
+                            {{ stage.getFin().format("d/m/Y") }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
