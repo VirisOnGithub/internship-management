@@ -3,7 +3,7 @@
 require_once 'src/crud/Read.php';
 require_once 'src/RequireLogin.php';
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
     $professeur = Crud\getProfesseurById($id);
     $classes = Crud\getProfesseurClasses($id);

@@ -5,9 +5,9 @@ require_once 'src/RequireLogin.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
-    $entreprise = Crud\getEntrepriseByIdWithSpecialites($id);
+    $stage = Crud\getStageById($id);
     $data = [
-        'entreprise' => $entreprise
+        'stage' => $stage
     ];
 } else {
     header('Location: index.php');

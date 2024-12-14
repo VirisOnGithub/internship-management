@@ -11,7 +11,7 @@
         </div>
         <table class="table table-hover table-striped-columns table-bordered" id="stagiairesTable">
             <thead>
-                {% set columns = ["Stagiaire", "Entreprise", "Début", "Fin"] %}
+                {% set columns = ["Action", "Stagiaire", "Entreprise", "Début", "Fin"] %}
                 <tr>
                     {% for column in columns %}
                         <th>{{ column }}</th>
@@ -21,6 +21,9 @@
             <tbody>
                 {% for stage in stages|sort((a, b) => a.getDebut() <=> b.getDebut()) %}
                     <tr data-aos="fade-up">
+                        <td>
+                            <a href="index.php?page=voirStage&id={{ stage.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
+                        </td>
                         <td>
                             {{ stage.getStagiaire().getPrenom() ~ " " ~ stage.getStagiaire().getNom() }}
                         </td>
