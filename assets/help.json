@@ -2,26 +2,36 @@
     {
         "id": 1,
         "question": "Comment voir toutes les entreprises ?",
-        "answer": "Pour voir toutes les entreprises, il suffit de cliquer sur le bouton 'Voir toutes les entreprises' dans le menu de navigation."
+        "answer": "Pour voir toutes les entreprises, il suffit de cliquer sur le bouton 'Entreprises' dans le menu de navigation."
     },
     {
         "id": 2,
         "question": "Comment voir les détails d'une entreprise ?",
-        "answer": "Pour voir les détails d'une entreprise, il suffit de cliquer sur le bouton 'Voir les détails' dans la liste des entreprises."
+        "answer": "Pour voir les détails d'une entreprise, il suffit de cliquer sur le bouton en forme d'oeil dans la liste des entreprises."
     },
     {
         "id": 3,
         "question": "Comment ajouter une entreprise ?",
-        "answer": "Pour ajouter une entreprise, il suffit de cliquer sur le bouton 'Ajouter une entreprise' dans le menu de navigation."
+        "answer": "Pour ajouter une entreprisde, il suffit de cliquer sur le bouton 'Ajouter une entreprise' dans le menu de navigation des entreprises (nécessite d'être un professeur)."
     },
     {
         "id": 4,
         "question": "Comment modifier une entreprise ?",
-        "answer": "Pour modifier une entreprise, il suffit de cliquer sur le bouton 'Modifier' dans la liste des entreprises."
+        "answer": "Pour modifier une entreprise, il suffit de cliquer sur le bouton en forme de stylo dans la liste des entreprises (nécessite d'être un professeur). "
     },
     {
         "id": 5,
         "question": "Comment supprimer une entreprise ?",
-        "answer": "Pour supprimer une entreprise, il suffit de cliquer sur le bouton 'Supprimer' dans la liste des entreprises."
+        "answer": "Pour supprimer une entreprise, il suffit de cliquer sur le bouton en forme de poubelle dans la liste des entreprises. (nécessite d'être un professeur)"
+    },
+    {
+        "id": 6,
+        "question": "Comment s'inscrire à un stage",
+        "answer": "Pour s'inscrire à un stage, vous avez deux possibilités : soit vous cliquez sur le bouton 'Inscription' dans le menu de navigation, soit vous cliquez sur la poignée de main d'une entreprise dans le menu entreprise. Certains champs seront alors pré-remplis."
+    },
+    {
+        "id": 7,
+        "question": "Comment rechercher les entreprises/stages/stagiaires ?",
+        "answer": "Pour rechercher une entreprise, un stage ou un stagiaire, vous pouvez utiliser la barre de recherche en haut à droite de la page."
     }
 ]
