@@ -9,7 +9,7 @@ L'organisation s'est développé selon les compétences de chacun. Simon, plus a
 
 # Difficultés rencontrées
 
-Côté PHP,   
+Côté PHP, un temps important à été passé à écrire le code des classes du modèle avec leur documentation. Sinon, aucune difficulté particulière n'a été rencontrée mis à part les fonction pour les toasts dans `Toast.php`.
 Côté front-end, la gestion des `extend` de Twig a été un peu compliquée à mettre en place au début, mais après quelques recherches, tout s'est bien passé. L'utilisation de certaines des classes de Bootstrap5 n'était pas non plus évidente, mais la documentation a bien aidé. Enfin, la gestion des types en base (notamment les dates) a été un peu compliquée, donc la base a été modifiée pour simplifier l'interaction entre PHP et MySQL.
 
 # Architecture de l'application
