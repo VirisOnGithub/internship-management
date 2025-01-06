@@ -37,7 +37,7 @@
                                 <a href="index.php?page=voirStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                                 {% if prof %}
                                     <a href="index.php?page=editStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
-                                    <a href="index.php?page=stagiaires&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                                    <a href="index.php?page=supprStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
                                 {% endif %}
                             </td>
                             <td>
@@ -65,7 +65,7 @@
                             <a href="index.php?page=voirStagiaire&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                             {% if prof %}
                                 <a href="index.php?page=editStagiaire&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-pen fa-2xl"></i></a>
-                                <a href="index.php?page=stagiaires&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
+                                <a href="index.php?page=supprStagiaire&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-trash fa-2xl"></i></a>
                             {% endif %}
                         </td>
                         <td>
