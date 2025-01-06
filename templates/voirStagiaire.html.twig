@@ -12,7 +12,7 @@
             {% if annee %}
                 <p><strong>Année d'obtention du diplôme :</strong> {{ annee }}</p>
             {% endif %}
-            <p><strong>Activité :</strong> {{ stagiaire.isActivite() }}</p>
+            <p><strong>En activité :</strong> {{ stagiaire.isActivite() ? "Oui" : "Non" }}</p>
             <p><strong>Classe :</strong> {{ stagiaire.getClasse().getNom() }}</p>
         </div>
         <div class="card-footer">
