@@ -15,8 +15,7 @@ if (
     isset($_POST['prenom']) &&
     isset($_POST['login']) &&
     isset($_POST['password']) &&
-    isset($_POST['classe']) &&
-    isset($_POST['isActive'])
+    isset($_POST['classe'])
 ) {
     require_once 'src/crud/Update.php';
     $mdp = empty($_POST['password']) ? Crud\getEtudiantById($_POST['id'])->getMdp() : password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -28,7 +27,7 @@ if (
         $_POST['login'],
         $mdp,
         Crud\getClasseById($_POST['classe']),
-        $_POST['isActive']
+        $_POST['isActive'] ?? 0
     );
     try {
         Crud\updateEtudiant($data["stagiaire"]);
