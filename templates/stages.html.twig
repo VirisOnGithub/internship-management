@@ -44,7 +44,11 @@
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/r-3.0.3/datatables.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            let table = new DataTable('#stagiairesTable');
+            let table = new DataTable('#stagiairesTable', {
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/2.2.0/i18n/fr-FR.json',
+                },
+            });
         });
     </script>
 {% endblock %}
