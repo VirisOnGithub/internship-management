@@ -28,3 +28,20 @@ Le fichier `assets/config.ini` peut (et doit) être modifié selon les besoins e
 Les logs de toutes les requêtes SQL est disponible dans le fichier `assets/logs.txt` par défaut. Cela peut être modifié dans le fichier de configuration.
 
 L'application peut être déployée à l'aide de docker. Plus d'informations dans `docker/README.md`.
+
+> [!WARNING]
+> Pour utiliser l'application, il est inutile d'utiliser un serveur php tel que xampp. En effet, pour augmenter la portabilité de l'application, des containers Docker ont été mis en place. 
+
+## Prérequis
+
+Pour utiliser l'application, il est nécessaire d'avoir installé [Docker](https://www.docker.com/) et [Docker-compose](https://docs.docker.com/compose/install/).
+
+## Lancement de l'application
+
+Pour lancer l'application, il suffit de se placer à la racine du projet et de lancer la commande suivante :
+```bash
+    cd docker
+    docker-compose up
+```
+
+L'application utilisera la base de données du projet (disponible dans le dossier `docker/images`).

@@ -4,6 +4,11 @@
 
 {% block content %}
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Entreprises</h1>
+            </div>
+        </div>
         <div class="row mb-3">
             <div class="col-md-6 my-2 my-md-0">
                 <a href="index.php?page=rechercherEntreprise" class="btn btn-primary w-100 mx-1">Rechercher une entreprise</a>
@@ -25,7 +30,7 @@
             </thead>
             <tbody>
                 {% for entreprise in entreprises %}
-                    <tr data-aos="">
+                    <tr>
                         <td class="text-center d-flex flex-column flex-lg-row">
                             <div class="d-flex justify-content-around my-2 my-lg-0">
                                 <a href="index.php?page=voirEntreprise&id={{ entreprise.getNumero() }}"><i class="mx-1 fa-solid fa-eye fa-2xl"></i></a>
@@ -59,7 +64,7 @@
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/r-3.0.3/datatables.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            let table = new DataTable('#entrepriseTable');
+            new DataTable('#entrepriseTable');
         });
     </script>
 {% endblock %}

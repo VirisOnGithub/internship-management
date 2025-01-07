@@ -12,10 +12,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-md-6 my-2 my-md-0">
-                <a href="index.php?page=rechercherStagiaire" class="btn btn-info w-100">Rechercher un stagiaire</a>
-            </div>
-            <div class="col-md-6 my-2 my-md-0">
+            <div class="col-md-8 offset-2 my-2 my-md-0">
                 <a href="index.php?page=ajouterStagiaire" class="btn btn-info w-100">Ajouter un stagiaire</a>
             </div>
         </div>
@@ -32,7 +29,7 @@
                 {% set precId = -1 %}
                 {% for stage in stages|sort((a, b) => a.getStagiaire().getNom() <=> b.getStagiaire().getNom()) %}
                     {% if precId != stage.getStagiaire().getNumero() %}
-                        <tr data-aos="fade-up">
+                        <tr>
                             <td class="text-center">
                                 <a href="index.php?page=voirStagiaire&id={{ stage.getStagiaire().getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                                 {% if prof %}
@@ -44,7 +41,7 @@
                                 {{ stage.getStagiaire().getPrenom() ~ " " ~ stage.getStagiaire().getNom() }}
                             </td>
                     {% else %}
-                        <tr data-aos="fade-up">
+                        <tr>
                             <td></td>
                             <td></td>
                         
@@ -60,7 +57,7 @@
                 {% endfor %}
 
 				{% for etudiant in etudiants_non_stagiaires|sort((a, b) => a.getNom() <=> b.getNom()) %}
-                    <tr data-aos="fade-up">
+                    <tr>
                         <td class="text-center">
                             <a href="index.php?page=voirStagiaire&id={{ etudiant.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                             {% if prof %}
@@ -86,7 +83,7 @@
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.8/r-3.0.3/datatables.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            let table = new DataTable('#stagiairesTable');
+            new DataTable('#stagiairesTable');
         });
     </script>
 {% endblock %}

@@ -81,10 +81,6 @@
         </footer>
         <script src="https://kit.fontawesome.com/2e65e19ba4.js" crossorigin="anonymous"></script>
         <script src="../public/js/bootstrap.bundle.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
         
         {% if toast is defined %}
             {% include 'toasts.twig' with {'message': toast.message, 'color': toast.type} only %}

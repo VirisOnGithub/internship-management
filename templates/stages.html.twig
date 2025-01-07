@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 {% for stage in stages|sort((a, b) => a.getDebut() <=> b.getDebut()) %}
-                    <tr data-aos="fade-up">
+                    <tr>
                         <td>
                             <a href="index.php?page=voirStage&id={{ stage.getNumero() }}"><i class="fa-solid fa-eye fa-2xl"></i></a>
                         </td>
